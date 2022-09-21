@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
+import './select_route_screen.dart';
 import './profile_screen.dart';
 import './tools_screen.dart';
-import './routes_screen.dart';
 import './start_screen.dart';
 
 class TabsScreen extends StatefulWidget {
-
-  const TabsScreen({ Key? key }) : super(key: key);
+  const TabsScreen({Key? key}) : super(key: key);
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -25,7 +24,7 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Inicio',
       },
       {
-        'page': const RoutesScreen(),
+        'page': const SelectRoute(),
         'title': 'Rutas',
       },
       {
