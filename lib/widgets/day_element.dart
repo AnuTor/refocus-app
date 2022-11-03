@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class DayElement extends StatelessWidget {
   final Widget content;
+  final bool enable;
 
   const DayElement({
     Key? key,
     required this.content,
+    this.enable = true,
   }) : super(key: key);
 
   @override
@@ -16,7 +18,7 @@ class DayElement extends StatelessWidget {
     );
 
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: enable ? () {} : null,
       style: style,
       child: content,
     );

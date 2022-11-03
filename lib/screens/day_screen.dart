@@ -21,7 +21,10 @@ class DayScreen extends StatelessWidget {
       if (i <= diasActivos) {
         list.add(DayElement(content: Text(i.toString())));
       } else {
-        list.add(const DayElement(content: Icon(Icons.lock)));
+        list.add(const DayElement(
+          content: Icon(Icons.lock),
+          enable: false,
+        ));
       }
     }
 
