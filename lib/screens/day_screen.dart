@@ -4,21 +4,23 @@ import '../widgets/day_element.dart';
 
 class DayScreen extends StatelessWidget {
   final int dias;
-  final int diasActivos;
+  final DateTime ingreso;
   final String titulo;
 
   const DayScreen(
       {Key? key,
       required this.titulo,
       required this.dias,
-      required this.diasActivos})
+      required this.ingreso})
       : super(key: key);
 
-  List<Widget> tipoBoton(int dias, int diasActivos) {
+  List<Widget> tipoBoton(int dias, DateTime ingreso) {
     List<Widget> list = [];
 
+    var now = DateTime.now();
+
     for (int i = 1; i <= dias; i++) {
-      if (i <= diasActivos) {
+      if (i <= now.difference(ingreso).inDays + 1) {
         list.add(DayElement(content: Text(i.toString())));
       } else {
         list.add(const DayElement(
@@ -27,6 +29,17 @@ class DayScreen extends StatelessWidget {
         ));
       }
     }
+
+    // for (int i = 1; i <= dias; i++) {
+    //   if (i <= ingreso) {
+    //     list.add(DayElement(content: Text(i.toString())));
+    //   } else {
+    //     list.add(const DayElement(
+    //       content: Icon(Icons.lock),
+    //       enable: false,
+    //     ));
+    //   }
+    // }
 
     return list;
   }
@@ -42,7 +55,7 @@ class DayScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
-        children: tipoBoton(dias, diasActivos),
+        children: tipoBoton(dias, ingreso),
       ),
     );
   }

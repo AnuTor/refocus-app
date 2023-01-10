@@ -4,7 +4,7 @@ import '../screens/day_screen.dart';
 
 class RouteElement extends StatelessWidget {
   final int dias;
-  final int diasActivo;
+  final DateTime ingreso;
   final String titulo;
   final String subtitulo;
   final String imagen;
@@ -15,7 +15,7 @@ class RouteElement extends StatelessWidget {
       required this.subtitulo,
       required this.imagen,
       required this.dias,
-      required this.diasActivo})
+      required this.ingreso})
       : super(key: key);
 
   void selectCategory(BuildContext ctx) {
@@ -24,7 +24,7 @@ class RouteElement extends StatelessWidget {
         builder: (_) {
           return DayScreen(
             dias: dias,
-            diasActivos: diasActivo,
+            ingreso: ingreso,
             titulo: titulo,
           );
         },
