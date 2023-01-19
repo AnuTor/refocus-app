@@ -1,4 +1,4 @@
-# refocus_app
+# refocus
 
 A new Flutter project.
 
