@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import './select_route_screen.dart';
 import './profile_screen.dart';
 import './tools_screen.dart';
-import './start_screen.dart';
+import './main_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
 
   @override
-  _TabsScreenState createState() => _TabsScreenState();
+  State<TabsScreen> createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
@@ -20,7 +21,7 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages = [
       {
-        'page': const StartScreen(),
+        'page': const MainScreen(),
         'title': 'Inicio',
       },
       {
@@ -50,6 +51,41 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
+        actions: [
+          _selectedPageIndex == 3
+              ? DropdownButton(
+                  underline: Container(),
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: Theme.of(context).primaryIconTheme.color,
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      value: 'logout',
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.exit_to_app,
+                              color: Theme.of(context).iconTheme.color),
+                          const SizedBox(width: 8),
+                          const Text('Cerrar sesión'),
+                        ],
+                      ),
+                    ),
+                  ],
+                  onChanged: (itemIdentifier) {
+                    if (itemIdentifier == 'logout') {
+                      FirebaseAuth.instance.signOut();
+                    }
+                  },
+                )
+              : IconButton(
+                  icon: Icon(
+                    Icons.star,
+                    color: Theme.of(context).primaryIconTheme.color,
+                  ),
+                  onPressed: () {},
+                ),
+        ],
       ),
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
