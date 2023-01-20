@@ -24,7 +24,7 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Inicio',
       },
       {
-        'page': const SelectRoute(),
+        'page': const RouteScreen(),
         'title': 'Rutas',
       },
       {
