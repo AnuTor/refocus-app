@@ -5,9 +5,9 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       //backgroundColor: Theme.of(context).primaryColor,
-      body: const Center(
+      body: Center(
         child: Text('Loading...'),
       ),
     );
