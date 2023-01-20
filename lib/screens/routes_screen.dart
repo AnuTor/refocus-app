@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../widgets/route_element.dart';
 
-class RouteScreen extends StatelessWidget {
-  const RouteScreen({Key? key}) : super(key: key);
+class RoutesScreen extends StatelessWidget {
+  const RoutesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

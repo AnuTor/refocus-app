@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import './select_route_screen.dart';
+import './routes_screen.dart';
 import './profile_screen.dart';
 import './tools_screen.dart';
 import './main_screen.dart';
@@ -25,7 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Inicio',
       },
       {
-        'page': const RouteScreen(),
+        'page': const RoutesScreen(),
         'title': 'Rutas',
       },
       {
