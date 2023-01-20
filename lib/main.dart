@@ -19,27 +19,25 @@ class MyApp extends StatelessWidget {
         // Initialize FlutterFire:
         future: initialization,
         builder: (context, appSnapshot) {
-          final ThemeData theme = ThemeData(
-            fontFamily: 'Raleway',
-          );
-
+          
           return MaterialApp(
             title: 'Refocus App',
-            theme: theme.copyWith(
-              colorScheme: ColorScheme.fromSwatch(
-                primarySwatch: Colors.lightBlue,
-              ).copyWith(
-                secondary: Colors.white,
-              ),
+            theme: ThemeData(
+              fontFamily: 'Raleway',
+              brightness: Brightness.light,
+              primarySwatch: Colors.lightBlue,
               appBarTheme: const AppBarTheme(
                 foregroundColor: Colors.white,
               ),
-              textTheme: ThemeData.light().textTheme.copyWith(
-                      headline6: const TextStyle(
-                    fontSize: 21,
-                    fontFamily: 'Raleway',
-                    fontWeight: FontWeight.bold,
-                  )),
+              textTheme: const TextTheme(
+                headline6: TextStyle(
+                  fontSize: 21,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              iconTheme: const IconThemeData(
+                color: Colors.white,
+              ),
             ),
             home: appSnapshot.connectionState != ConnectionState.done
                 ? const SplashScreen()
@@ -53,11 +51,11 @@ class MyApp extends StatelessWidget {
                       if (userSnapshot.hasData) {
                         return const TabsScreen();
                       }
-                      return AuthScreen();
+                      return const AuthScreen();
                     }),
             onUnknownRoute: (settings) {
               return MaterialPageRoute(
-                builder: (ctx) => AuthScreen(),
+                builder: (ctx) => const AuthScreen(),
               );
             },
           );
