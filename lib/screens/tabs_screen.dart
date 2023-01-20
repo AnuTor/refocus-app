@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import './select_route_screen.dart';
+import './routes_screen.dart';
 import './profile_screen.dart';
 import './tools_screen.dart';
 import './main_screen.dart';
@@ -25,7 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Inicio',
       },
       {
-        'page': const RouteScreen(),
+        'page': const RoutesScreen(),
         'title': 'Rutas',
       },
       {
@@ -57,15 +57,17 @@ class _TabsScreenState extends State<TabsScreen> {
                   underline: Container(),
                   icon: Icon(
                     Icons.more_vert,
-                    color: Theme.of(context).primaryIconTheme.color,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   items: [
                     DropdownMenuItem(
                       value: 'logout',
                       child: Row(
                         children: <Widget>[
-                          Icon(Icons.exit_to_app,
-                              color: Theme.of(context).iconTheme.color),
+                          Icon(
+                            Icons.exit_to_app,
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
                           const SizedBox(width: 8),
                           const Text('Cerrar sesión'),
                         ],
@@ -81,7 +83,7 @@ class _TabsScreenState extends State<TabsScreen> {
               : IconButton(
                   icon: Icon(
                     Icons.star,
-                    color: Theme.of(context).primaryIconTheme.color,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   onPressed: () {},
                 ),
@@ -90,32 +92,32 @@ class _TabsScreenState extends State<TabsScreen> {
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Colors.white,
         currentIndex: _selectedPageIndex,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.rocket_outlined),
             activeIcon: const Icon(Icons.rocket),
             label: 'Inicio',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.route_outlined),
             activeIcon: const Icon(Icons.route),
             label: 'Rutas',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.build_outlined),
             activeIcon: const Icon(Icons.build),
             label: 'Herramientas',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.person_outline),
             activeIcon: const Icon(Icons.person),
             label: 'Perfil',
