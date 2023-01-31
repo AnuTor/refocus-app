@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class DayElement extends StatelessWidget {
+class ActivityElement extends StatelessWidget {
   final Widget content;
   final bool enable;
 
-  const DayElement({
+  const ActivityElement({
     Key? key,
     required this.content,
     this.enable = true,

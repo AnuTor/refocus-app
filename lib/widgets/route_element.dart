@@ -1,45 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../screens/day_screen.dart';
+import '../providers/path.dart';
+import '../screens/path_screen.dart';
 
 class RouteElement extends StatelessWidget {
-  final int dias;
-  final DateTime ingreso;
-  final String titulo;
-  final String subtitulo;
-  final String imagen;
-
-  const RouteElement(
-      {Key? key,
-      required this.titulo,
-      required this.subtitulo,
-      required this.imagen,
-      required this.dias,
-      required this.ingreso})
-      : super(key: key);
-
-  void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return DayScreen(
-            dias: dias,
-            ingreso: ingreso,
-            titulo: titulo,
-          );
-        },
-      ),
-    );
-  }
+  const RouteElement({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final route = Provider.of<Path>(context, listen: false);
     return Expanded(
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         elevation: 10,
         child: InkWell(
-          onTap: () => {selectCategory(context)},
+          onTap: () => {
+            Navigator.of(context).pushNamed(
+              PathScreen.routeName,
+              arguments: route.id,
+            )
+          },
           child: Container(
               /* decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -59,7 +40,7 @@ class RouteElement extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    titulo,
+                    route.titulo,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -68,14 +49,14 @@ class RouteElement extends StatelessWidget {
                         fontFamily: 'Roboto'),
                   ),
                   Text(
-                    subtitulo,
+                    route.subtitulo,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                   ),
                   Expanded(
                       child: Image.network(
-                    imagen,
+                    route.imagen,
                   ))
                 ],
               )),
