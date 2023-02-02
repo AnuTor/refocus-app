@@ -8,6 +8,7 @@ import './screens/auth_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/path_screen.dart';
+import './screens/activity_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -58,10 +59,11 @@ class MyApp extends StatelessWidget {
                       }),
               routes: {
                 PathScreen.routeName: (ctx) => const PathScreen(),
+                ActivityScreen.routeName: (ctx) => const ActivityScreen()
               },
               onUnknownRoute: (settings) {
                 return MaterialPageRoute(
-                  builder: (ctx) => const AuthScreen(),
+                  builder: (ctx) => const SplashScreen(),
                 );
               },
             ),

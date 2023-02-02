@@ -6,7 +6,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Aún no has iniciado sesión!'),
+      child: Text('Perfil'),
     );
   }
 }

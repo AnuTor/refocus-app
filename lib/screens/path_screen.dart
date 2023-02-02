@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/activity.dart';
+import '../providers/path.dart';
 import '../providers/routes.dart';
 import '../widgets/activity_element.dart';
 
@@ -9,17 +11,23 @@ class PathScreen extends StatelessWidget {
 
   const PathScreen({Key? key}) : super(key: key);
 
-  List<Widget> tipoBoton(int dias, DateTime ingreso) {
+  List<Widget> tipoBoton(Path path) {
     List<Widget> list = [];
+    DateTime startdate = path.startdate;
+    List<Activity> activities = path.activities;
+    int days = activities.length;
+    String pathtitle = path.title;
 
     var now = DateTime.now();
 
-    for (int i = 1; i <= dias; i++) {
-      if (i <= now.difference(ingreso).inDays + 1) {
-        list.add(ActivityElement(content: Text(i.toString())));
+    for (int i = 1; i <= days; i++) {
+      if (i <= now.difference(startdate).inDays + 1) {
+        list.add(ActivityElement(path: pathtitle, activity: activities[i - 1], content: Text(i.toString())));
       } else {
-        list.add(const ActivityElement(
-          content: Icon(Icons.lock),
+        list.add(ActivityElement(
+          path: pathtitle,
+          activity: activities[i - 1],
+          content: const Icon(Icons.lock),
           enable: false,
         ));
       }
@@ -49,14 +57,14 @@ class PathScreen extends StatelessWidget {
     ).findById(pathId);
     return Scaffold(
       appBar: AppBar(
-        title: Text(loadedPath.titulo),
+        title: Text(loadedPath.title),
       ),
       body: GridView.count(
         crossAxisCount: 4,
         padding: const EdgeInsets.all(15),
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
-        children: tipoBoton(loadedPath.dias, loadedPath.ingreso),
+        children: tipoBoton(loadedPath),
       ),
     );
   }

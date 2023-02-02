@@ -3,20 +3,20 @@ import './activity.dart';
 
 class Path with ChangeNotifier {
   final int id;
-  final int dias;
-  final DateTime ingreso;
-  final String titulo;
-  final String subtitulo;
-  final String imagen;
-  final List<Activity> actividades;
+  final int days;
+  final DateTime startdate;
+  final String title;
+  final String subtitle;
+  final String image;
+  final List<Activity> activities;
 
   Path({
     required this.id,
-    required this.titulo,
-    required this.subtitulo,
-    required this.imagen,
-    required this.dias,
-    required this.ingreso,
-    required this.actividades
+    required this.title,
+    required this.subtitle,
+    required this.image,
+    required this.days,
+    required this.startdate,
+    required this.activities
   });
 }

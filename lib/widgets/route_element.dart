@@ -18,7 +18,7 @@ class RouteElement extends StatelessWidget {
           onTap: () => {
             Navigator.of(context).pushNamed(
               PathScreen.routeName,
-              arguments: path.id,
+              arguments: path.id
             )
           },
           child: Container(
@@ -40,7 +40,7 @@ class RouteElement extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    path.titulo,
+                    path.title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -49,14 +49,14 @@ class RouteElement extends StatelessWidget {
                         fontFamily: 'Roboto'),
                   ),
                   Text(
-                    path.subtitulo,
+                    path.subtitle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                   ),
                   Expanded(
                       child: Image.network(
-                    path.imagen,
+                    path.image,
                   ))
                 ],
               )),

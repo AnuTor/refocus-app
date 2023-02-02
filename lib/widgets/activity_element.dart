@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../providers/activity.dart';
+import '../screens/activity_screen.dart';
+
 class ActivityElement extends StatelessWidget {
+  final String path;
+  final Activity activity;
   final Widget content;
   final bool enable;
 
   const ActivityElement({
     Key? key,
+    required this.path,
+    required this.activity,
     required this.content,
     this.enable = true,
   }) : super(key: key);
@@ -18,7 +25,17 @@ class ActivityElement extends StatelessWidget {
     );
 
     return ElevatedButton(
-      onPressed: enable ? () {} : null,
+      onPressed: enable
+          ? () => {
+                Navigator.of(context).pushNamed(
+                  ActivityScreen.routeName,
+                  arguments: {
+                    'path': path,
+                    'activity': activity
+                  },
+                )
+              }
+          : null,
       style: style,
       child: content,
     );
