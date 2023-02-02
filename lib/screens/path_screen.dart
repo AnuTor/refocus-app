@@ -7,7 +7,7 @@ import '../widgets/activity_element.dart';
 class PathScreen extends StatelessWidget {
   static const routeName = '/path-screen';
 
-  const PathScreen({ Key? key }) : super(key: key);
+  const PathScreen({Key? key}) : super(key: key);
 
   List<Widget> tipoBoton(int dias, DateTime ingreso) {
     List<Widget> list = [];
@@ -41,22 +41,22 @@ class PathScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeId =
+    final pathId =
         ModalRoute.of(context)!.settings.arguments as int; // is the id!
-    final loadedProduct = Provider.of<Routes>(
+    final loadedPath = Provider.of<Routes>(
       context,
       listen: false,
-    ).findById(routeId);
+    ).findById(pathId);
     return Scaffold(
       appBar: AppBar(
-        title: Text(loadedProduct.titulo),
+        title: Text(loadedPath.titulo),
       ),
       body: GridView.count(
         crossAxisCount: 4,
         padding: const EdgeInsets.all(15),
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
-        children: tipoBoton(loadedProduct.dias, loadedProduct.ingreso),
+        children: tipoBoton(loadedPath.dias, loadedPath.ingreso),
       ),
     );
   }

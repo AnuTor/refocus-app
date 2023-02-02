@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import './activity.dart';
 
 class Path with ChangeNotifier {
   final int id;
@@ -7,6 +8,7 @@ class Path with ChangeNotifier {
   final String titulo;
   final String subtitulo;
   final String imagen;
+  final List<Activity> actividades;
 
   Path({
     required this.id,
@@ -14,6 +16,7 @@ class Path with ChangeNotifier {
     required this.subtitulo,
     required this.imagen,
     required this.dias,
-    required this.ingreso
+    required this.ingreso,
+    required this.actividades
   });
 }

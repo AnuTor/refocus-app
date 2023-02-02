@@ -12,7 +12,6 @@ class RoutesScreen extends StatelessWidget {
     final routesData = Provider.of<Routes>(context).items;
 
     return Column(
-      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[

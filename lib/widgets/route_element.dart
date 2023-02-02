@@ -9,7 +9,7 @@ class RouteElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final route = Provider.of<Path>(context, listen: false);
+    final path = Provider.of<Path>(context, listen: false);
     return Expanded(
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
@@ -18,7 +18,7 @@ class RouteElement extends StatelessWidget {
           onTap: () => {
             Navigator.of(context).pushNamed(
               PathScreen.routeName,
-              arguments: route.id,
+              arguments: path.id,
             )
           },
           child: Container(
@@ -40,7 +40,7 @@ class RouteElement extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    route.titulo,
+                    path.titulo,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -49,14 +49,14 @@ class RouteElement extends StatelessWidget {
                         fontFamily: 'Roboto'),
                   ),
                   Text(
-                    route.subtitulo,
+                    path.subtitulo,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                   ),
                   Expanded(
                       child: Image.network(
-                    route.imagen,
+                    path.imagen,
                   ))
                 ],
               )),
