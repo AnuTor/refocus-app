@@ -22,12 +22,11 @@ class PathScreen extends StatelessWidget {
 
     for (int i = 1; i <= days; i++) {
       if (i <= now.difference(startdate).inDays + 1) {
-        list.add(ActivityElement(path: pathtitle, activity: activities[i - 1], content: Text(i.toString())));
+        list.add(ActivityElement(path: pathtitle, activity: activities[i - 1]));
       } else {
         list.add(ActivityElement(
           path: pathtitle,
           activity: activities[i - 1],
-          content: const Icon(Icons.lock),
           enable: false,
         ));
       }
@@ -35,10 +34,9 @@ class PathScreen extends StatelessWidget {
 
     // for (int i = 1; i <= dias; i++) {
     //   if (i <= ingreso) {
-    //     list.add(DayElement(content: Text(i.toString())));
+    //     list.add(DayElement());
     //   } else {
     //     list.add(const DayElement(
-    //       content: Icon(Icons.lock),
     //       enable: false,
     //     ));
     //   }
@@ -50,7 +48,7 @@ class PathScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pathId =
-        ModalRoute.of(context)!.settings.arguments as int; // is the id!
+        ModalRoute.of(context)!.settings.arguments as int;
     final loadedPath = Provider.of<Routes>(
       context,
       listen: false,
