@@ -9,7 +9,7 @@ class ActivityScreen extends StatelessWidget {
 
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Text(
         text,
         //style: Theme.of(context).textTheme.title,
@@ -42,10 +42,11 @@ class ActivityScreen extends StatelessWidget {
               height: 5,
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 15),
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Text(
                 activity.title,
                 style: Theme.of(context).textTheme.headline6,
+                textAlign: TextAlign.center
               ),
             ),
             Container(
@@ -53,8 +54,10 @@ class ActivityScreen extends StatelessWidget {
               child: Text(
                 activity.text,
                 style: Theme.of(context).textTheme.bodyText1,
+                //textAlign: TextAlign.justify
               ),
             ),
+            const SizedBox(height: 15)
           ]
         ),
       )

@@ -9,7 +9,7 @@ class RouteElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final path = Provider.of<Path>(context, listen: false);
+    final path = Provider.of<Path>(context);
     return Expanded(
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),

@@ -83,7 +83,8 @@ class _TabsScreenState extends State<TabsScreen> {
               : IconButton(
                   icon: Icon(
                     Icons.star,
-                    color: Theme.of(context).iconTheme.color,
+                    //color: Theme.of(context).iconTheme.color,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   onPressed: () {},
                 ),
