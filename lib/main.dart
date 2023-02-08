@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Refocus App',
               theme: ThemeData(
-                fontFamily: 'Raleway',
+                fontFamily: 'Poppins',
                 brightness: Brightness.light,
                 primarySwatch: Colors.lightBlue,
                 appBarTheme: const AppBarTheme(
@@ -35,8 +35,13 @@ class MyApp extends StatelessWidget {
                 ),
                 textTheme: const TextTheme(
                   headline6: TextStyle(
-                    fontSize: 21,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    //fontWeight: FontWeight.bold,
+                    color: Colors.lightBlue,
+                  ),
+                  bodyText1: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w300,
                   ),
                 ),
                 iconTheme: const IconThemeData(

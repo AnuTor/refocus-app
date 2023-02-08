@@ -18,11 +18,15 @@ class Routes with ChangeNotifier {
           Activity(
               id: 1,
               title: "Presentación",
+              image:
+                  'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_Meditation_re_gll0.jpg?h=483&w=700&hash=BB23470361B6F5F0E12990F4FEDF8718',
               text:
                   "Día a día nos enfrentamos a diferentes eventos estresantes. Los eventos estresantes son situaciones que desencadenan en nosotros emociones negativas o desagradables como ansiedad, tristeza, miedo o irritabilidad. Si bien las emociones negativas son útiles para identificar situaciones potencialmente dañinas y atender a ellas, muchas veces nos desbordan y obstaculizan en nuestros quehaceres u objetivos diarios. Afortunadamente, existen estrategias que podemos aprender para manejar la respuesta emocional que experimentamos ante un evento dado. Aquí aprenderás a cambiar tu forma de pensar o interpretar la situación y verás que, de esta forma, puedes regular tu estado emocional. En otras palabras, si cambias la forma de pensar sobre la situación podrás cambiar la forma en que ese evento te impacta emocionalmente, ya sea disminuyendo la intensidad de la emoción experimentada (por ejemplo, no sintiendo tanta ansiedad) o logrando experimentar otra emoción distinta (por ejemplo, pasando de una emoción de angustia a una emoción agradable de tranquilidad). Es sabido también que es más dificultoso cambiar la forma de pensar o buscar formas de pensar alternativas cuando uno se encuentra bajo un estado emocional intenso. Por ejemplo, es muy difícil para una persona que se encuentra pasando por alguna crisis de angustia o tristeza profunda no tener pensamientos negativos sobre sí mismo, los demás y el mundo que lo rodea. Es por todo esto que en primer lugar aprenderás técnicas de relajación que te ayuden a alcanzar un estado emocional de baja activación (en otras palabras, a sentirte tranquilo-relajado), estado que facilitará la búsqueda de pensamientos o formas de interpretación alternativas."),
           Activity(
               id: 2,
               title: "Relajación",
+              image:
+                  'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_Meditation_re_gll0.jpg?h=483&w=700&hash=BB23470361B6F5F0E12990F4FEDF8718',
               text:
                   "Lograr estar relajados/tranquilos es un paso fundamental, tanto para lograr calmarnos ante un evento estresante como para aplicar las técnicas de modificación de pensamientos que veremos luego.\n\nEjercicios de Respiración\n\nUna de las técnicas más sencillas de...")
         ]),
@@ -37,9 +41,17 @@ class Routes with ChangeNotifier {
             'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_fitness_stats_sht6.jpg?h=515&w=740&hash=943528F20E83D48E8CDF437359001DE7',
         activities: [
           Activity(
-              id: 1, title: "Evocación de eventos positivos", text: "texto"),
+              id: 1,
+              title: "Evocación de eventos positivos",
+              image:
+                  'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_fitness_stats_sht6.jpg?h=515&w=740&hash=943528F20E83D48E8CDF437359001DE7',
+              text: "texto"),
           Activity(
-              id: 2, title: "Evocación de eventos positivos", text: "texto")
+              id: 2,
+              title: "Evocación de eventos positivos",
+              image:
+                  'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_fitness_stats_sht6.jpg?h=515&w=740&hash=943528F20E83D48E8CDF437359001DE7',
+              text: "texto")
         ]),
     Path(
         id: 3,
@@ -51,8 +63,18 @@ class Routes with ChangeNotifier {
         image:
             'https://www.goredforwomen.org/-/media/Feature/Promo/QuizSnack/undraw_sleep_analysis_o5f9.jpg?h=554&w=700&hash=C45FA7B3B72899FD8F78EAAE7C8701CE',
         activities: [
-          Activity(id: 1, title: "Reinterpretación Positiva", text: "texto"),
-          Activity(id: 2, title: "Reinterpretación Positiva", text: "texto")
+          Activity(
+              id: 1,
+              title: "Reinterpretación Positiva",
+              image:
+                  'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_Meditation_re_gll0.jpg?h=483&w=700&hash=BB23470361B6F5F0E12990F4FEDF8718',
+              text: "texto"),
+          Activity(
+              id: 2,
+              title: "Reinterpretación Positiva",
+              image:
+                  'https://www.stroke.org/-/media/Feature/Promo/QuizSnack/undraw_Meditation_re_gll0.jpg?h=483&w=700&hash=BB23470361B6F5F0E12990F4FEDF8718',
+              text: "texto")
         ]),
   ];
   // var _showFavoritesOnly = false;

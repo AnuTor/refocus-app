@@ -74,21 +74,20 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Raleway
+    - family: Poppins
       fonts:
-        - asset: assets/fonts/Raleway-Regular.ttf
-        - asset: assets/fonts/Raleway-Bold.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Raleway-Black.ttf
-          weight: 900
-    - family: RobotoCondensed
-      fonts:
-        - asset: assets/fonts/RobotoCondensed-Regular.ttf
-        - asset: assets/fonts/RobotoCondensed-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/RobotoCondensed-Light.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Light.ttf
           weight: 300
-        - asset: assets/fonts/RobotoCondensed-Italic.ttf
+        - asset: assets/fonts/Poppins-Thin.ttf
+          weight: 200
+        - asset: assets/fonts/Poppins-Italic.ttf
           style: italic
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
