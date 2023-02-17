@@ -51,7 +51,7 @@ class RouteElement extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 Expanded(
-                  child: Image.network(
+                  child: Image.asset(
                     path.image,
                   )
                 )

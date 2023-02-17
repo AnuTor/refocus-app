@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './player_screen.dart';
 import '../providers/activity.dart';
 
 class ActivityScreen extends StatelessWidget {
@@ -24,16 +25,15 @@ class ActivityScreen extends StatelessWidget {
     final path = routeArgs['path'] as String;
     final activity = routeArgs['activity'] as Activity;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(path),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
+        appBar: AppBar(
+          title: Text(path),
+        ),
+        body: SingleChildScrollView(
+          child: Column(children: <Widget>[
             SizedBox(
               height: 300,
               width: double.infinity,
-              child: Image.network(
+              child: Image.asset(
                 activity.image,
                 fit: BoxFit.cover,
               ),
@@ -43,11 +43,9 @@ class ActivityScreen extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-              child: Text(
-                activity.title,
-                style: Theme.of(context).textTheme.headline6,
-                textAlign: TextAlign.center
-              ),
+              child: Text(activity.title,
+                  style: Theme.of(context).textTheme.headline6,
+                  textAlign: TextAlign.center),
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
@@ -57,10 +55,27 @@ class ActivityScreen extends StatelessWidget {
                 //textAlign: TextAlign.justify
               ),
             ),
-            const SizedBox(height: 15)
-          ]
-        ),
-      )
-    );
+            const SizedBox(height: 20),
+            activity.audio
+                ? TextButton(
+                    onPressed: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) =>
+                                PlayerScreen(activity: activity)
+                              )
+                            )
+                          )
+                        },
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      textStyle: const TextStyle(fontSize: 20),
+                    ),
+                    child: const Text('Comenzar'))
+                : const SizedBox.shrink()
+          ]),
+        ));
   }
 }

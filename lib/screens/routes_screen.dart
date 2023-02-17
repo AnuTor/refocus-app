@@ -22,11 +22,7 @@ class RoutesScreen extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: routesData[1],
           child: const RouteElement(),
-        ),
-        ChangeNotifierProvider.value(
-          value: routesData[2],
-          child: const RouteElement(),
-        ),
+        )
       ]
     );
   }
