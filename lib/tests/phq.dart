@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../providers/test.dart';
+import '../providers/survey.dart';
 import '../providers/questions.dart';
 
 var phq = Test(
