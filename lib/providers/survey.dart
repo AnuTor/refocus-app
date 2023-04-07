@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import './questions.dart';
 
-class Test with ChangeNotifier {
+class Survey with ChangeNotifier {
   final int id;
   final String title;
   final String? subtitle;
@@ -9,7 +9,7 @@ class Test with ChangeNotifier {
   final bool done;
   final List<Question> questions;
 
-  Test(
+  Survey(
       {required this.id,
       required this.title,
       this.subtitle,

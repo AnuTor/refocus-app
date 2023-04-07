@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
-var panas = Test(
+var panas = Survey(
     id: 3,
     title:
         'Utilizando la escala de respuesta propuesta a continuación, señala en qué medida has experimentado en la última semana las siguientes emociones.',

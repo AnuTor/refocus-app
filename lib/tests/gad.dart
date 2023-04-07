@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
-var gad = Test(
+var gad = Survey(
     id: 2,
     title:
         '¿Durante la última semana, con qué frecuencia sintió́ molestias por los siguientes problemas?',
