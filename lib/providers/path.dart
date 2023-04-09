@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:refocus/providers/survey.dart';
 import './activity.dart';
 
 class Path with ChangeNotifier {
@@ -9,6 +10,7 @@ class Path with ChangeNotifier {
   final String subtitle;
   final String image;
   final List<Activity> activities;
+  final List<Survey>? surveys;
 
   Path({
     required this.id,
@@ -17,6 +19,7 @@ class Path with ChangeNotifier {
     required this.image,
     required this.days,
     required this.startdate,
-    required this.activities
+    required this.activities,
+    this.surveys,
   });
 }

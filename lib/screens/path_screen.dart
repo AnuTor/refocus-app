@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:refocus/providers/survey.dart';
+import 'package:refocus/widgets/survey_element.dart';
 
 import '../providers/activity.dart';
 import '../providers/path.dart';
@@ -15,7 +17,9 @@ class PathScreen extends StatelessWidget {
     List<Widget> list = [];
     DateTime startdate = path.startdate;
     List<Activity> activities = path.activities;
+    List<Survey>? surveys = path.surveys;
     int days = activities.length;
+    int survDays = surveys!.length;
     String pathtitle = path.title;
 
     var now = DateTime.now();
@@ -27,6 +31,18 @@ class PathScreen extends StatelessWidget {
         list.add(ActivityElement(
           path: pathtitle,
           activity: activities[i - 1],
+          enable: false,
+        ));
+      }
+    }
+
+    for (int i = 1; i <= survDays; i++) {
+      if (now.difference(startdate).inDays >= days) {
+        list.add(SurveyElement(path: pathtitle, survey: surveys[i - 1]));
+      } else {
+        list.add(SurveyElement(
+          path: pathtitle,
+          survey: surveys[i - 1],
           enable: false,
         ));
       }
@@ -47,8 +63,7 @@ class PathScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pathId =
-        ModalRoute.of(context)!.settings.arguments as int;
+    final pathId = ModalRoute.of(context)!.settings.arguments as int;
     final loadedPath = Provider.of<Routes>(
       context,
       listen: false,

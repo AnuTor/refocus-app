@@ -9,6 +9,7 @@ import './screens/tabs_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/path_screen.dart';
 import './screens/activity_screen.dart';
+import './screens/survey_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -64,7 +65,8 @@ class MyApp extends StatelessWidget {
                       }),
               routes: {
                 PathScreen.routeName: (ctx) => const PathScreen(),
-                ActivityScreen.routeName: (ctx) => const ActivityScreen()
+                ActivityScreen.routeName: (ctx) => const ActivityScreen(),
+                SurveyScreen.routeName: (ctx) => const SurveyScreen(),
               },
               onUnknownRoute: (settings) {
                 return MaterialPageRoute(
