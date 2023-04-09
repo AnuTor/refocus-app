@@ -13,6 +13,10 @@ class SurveyScreen extends StatefulWidget {
 class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  String _question1Answer = 'Respuesta 1';
+  String _question2Answer = 'Respuesta 2';
+  String _question3Answer = 'Respuesta 3';
+
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -21,7 +25,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
     final survey = routeArgs['survey'] as Survey;
     return Scaffold(
         appBar: AppBar(
-          title: Text(survey.title),
+          title: Text(path),
         ),
         body: Padding(
             padding: const EdgeInsets.all(16.0),

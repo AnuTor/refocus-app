@@ -27,7 +27,7 @@ class SurveyElement extends StatelessWidget {
           ? () => {
                 Navigator.of(context).pushNamed(
                   SurveyScreen.routeName,
-                  arguments: {'path': path, 'survey': Survey},
+                  arguments: {'path': path, 'survey': survey},
                 )
               }
           : null,
