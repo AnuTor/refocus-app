@@ -5,6 +5,7 @@ import '../providers/questions.dart';
 
 var gad = Survey(
     id: 2,
+    testName: 'GAD',
     title:
         '¿Durante la última semana, con qué frecuencia sintió́ molestias por los siguientes problemas?',
     options: [

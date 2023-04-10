@@ -35,11 +35,12 @@ class MyApp extends StatelessWidget {
                   foregroundColor: Colors.white,
                 ),
                 textTheme: const TextTheme(
-                  headline6: TextStyle(
+                  headline5: TextStyle(
                     fontSize: 22,
                     //fontWeight: FontWeight.bold,
                     color: Colors.lightBlue,
                   ),
+                  headline6: TextStyle(fontSize: 18),
                   bodyText1: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w300,

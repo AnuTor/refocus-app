@@ -5,6 +5,7 @@ import '../providers/questions.dart';
 
 var panas = Survey(
     id: 3,
+    testName: 'PANAS',
     title:
         'Utilizando la escala de respuesta propuesta a continuación, señala en qué medida has experimentado en la última semana las siguientes emociones.',
     options: [

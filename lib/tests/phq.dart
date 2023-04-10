@@ -5,6 +5,7 @@ import '../providers/questions.dart';
 
 var phq = Survey(
     id: 1,
+    testName: 'PHQ',
     title:
         'Durante las últimas 2 semanas, ¿qué tan seguido ha tenido molestias debido a los siguientes problemas?',
     options: [

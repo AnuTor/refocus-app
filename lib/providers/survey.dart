@@ -3,6 +3,7 @@ import './questions.dart';
 
 class Survey with ChangeNotifier {
   final int id;
+  final String testName;
   final String title;
   final String? subtitle;
   final List<String> options;
@@ -11,6 +12,7 @@ class Survey with ChangeNotifier {
 
   Survey(
       {required this.id,
+      required this.testName,
       required this.title,
       this.subtitle,
       required this.options,

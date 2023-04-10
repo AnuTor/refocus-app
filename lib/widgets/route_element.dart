@@ -16,13 +16,11 @@ class RouteElement extends StatelessWidget {
         elevation: 10,
         child: InkWell(
           onTap: () => {
-            Navigator.of(context).pushNamed(
-              PathScreen.routeName,
-              arguments: path.id
-            )
+            Navigator.of(context)
+                .pushNamed(PathScreen.routeName, arguments: path.id)
           },
           child: Container(
-            /* decoration: BoxDecoration(
+              /* decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(),
               /* boxShadow: const [
@@ -32,32 +30,30 @@ class RouteElement extends StatelessWidget {
                 )
               ], */
             ), */
-            width: double.infinity,
-            //margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            padding: const EdgeInsets.all(5),
-            //height: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  path.title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Text(
-                  path.subtitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                ),
-                Expanded(
-                  child: Image.asset(
+              width: double.infinity,
+              //margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              padding: const EdgeInsets.all(5),
+              //height: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    path.title,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  Text(
+                    path.subtitle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                  Expanded(
+                      child: Image.asset(
                     path.image,
-                  )
-                )
-              ],
-            )
-          ),
+                  ))
+                ],
+              )),
         ),
       ),
     );
