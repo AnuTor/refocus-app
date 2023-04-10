@@ -29,18 +29,19 @@ class _SurveyScreenState extends State<SurveyScreen> {
         ),
         body: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Text(
-                  survey.testName,
-                  style: Theme.of(context).textTheme.headline5,
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  survey.title,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Form(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    survey.testName,
+                    style: Theme.of(context).textTheme.headline5,
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    survey.title,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  Form(
                     key: _formKey,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,8 +151,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                       // Do something with the survey answers
                                     }
                                   }))
-                        ])),
-              ],
+                        ]),
+                  ),
+                ],
+              ),
             )));
   }
 }

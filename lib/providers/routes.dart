@@ -11,7 +11,7 @@ class Routes with ChangeNotifier {
     Path(
         id: 1,
         days: 10,
-        startdate: DateTime(2023, 01, 01),
+        startdate: DateTime(2023, 03, 31),
         title: 'Relajación',
         subtitle:
             'Se describe en qué consiste la relajación y sus beneficios asociados. Escribo mas texto para ver como se corta',
@@ -53,7 +53,7 @@ class Routes with ChangeNotifier {
     Path(
         id: 2,
         days: 6,
-        startdate: DateTime(2023, 01, 01 + 11),
+        startdate: DateTime(2023, 04, 10 + 11),
         title: 'Modificación de pensamiento',
         subtitle:
             'Se describe en qué consiste la evocación de eventos positivos y sus beneficios asociados.',

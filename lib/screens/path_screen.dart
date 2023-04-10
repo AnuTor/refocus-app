@@ -16,10 +16,11 @@ class PathScreen extends StatelessWidget {
   List<Widget> tipoBoton(Path path) {
     List<Widget> list = [];
     DateTime startdate = path.startdate;
+    int lenght = path.days;
     List<Activity> activities = path.activities;
-    List<Survey>? surveys = path.surveys;
+    List<Survey>? surveys = path.surveys ?? [];
     int days = activities.length;
-    int survDays = surveys!.length;
+    int survDays = surveys.length;
     String pathtitle = path.title;
 
     var now = DateTime.now();
@@ -37,7 +38,7 @@ class PathScreen extends StatelessWidget {
     }
 
     for (int i = 1; i <= survDays; i++) {
-      if (now.difference(startdate).inDays >= days) {
+      if (now.difference(startdate).inDays >= lenght) {
         list.add(SurveyElement(path: pathtitle, survey: surveys[i - 1]));
       } else {
         list.add(SurveyElement(
