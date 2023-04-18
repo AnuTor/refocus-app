@@ -14,9 +14,7 @@ class SurveyScreen extends StatefulWidget {
 class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  String _question1Answer = 'Respuesta 1';
-  String _question2Answer = 'Respuesta 2';
-  String _question3Answer = 'Respuesta 3';
+  List<String> _questionAnswer = [];
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +22,24 @@ class _SurveyScreenState extends State<SurveyScreen> {
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final path = routeArgs['path'] as String;
     final survey = routeArgs['survey'] as Survey;
-    List<Widget> list = [];
+
+    // _questionAnswer = List<String>.filled(survey.questions.length, 'respuesta');
 
     List<Widget> form(
-        Question question, List<String> options, List<Widget> list) {
+        Question question, List<String> options, List<String> answer) {
+      setState(() {
+        answer.add('Respuesta');
+      });
+      List<Widget> list = [];
       list.add(Text(question.question));
       for (String ans in options) {
         list.add(RadioListTile(
           title: Text(ans),
           value: ans,
-          groupValue: _question1Answer,
+          groupValue: answer.last,
           onChanged: (value) {
             setState(() {
-              _question1Answer = value!;
+              answer.last = value!;
             });
           },
         ));
@@ -70,7 +73,49 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          survey.questions.map((e) => form(e, survey.options)),
+                          for (var e in survey.questions)
+                            ...form(e, survey.options, _questionAnswer),
+                          /* Text(survey.questions[0].question),
+                          RadioListTile(
+                            title: Text(survey.options[0]),
+                            value: survey.options[0],
+                            groupValue: _questionAnswer[0],
+                            onChanged: (value) {
+                              setState(() {
+                                _questionAnswer[0] = value!;
+                              });
+                            },
+                          ),
+                          RadioListTile(
+                            title: Text(survey.options[1]),
+                            value: survey.options[1],
+                            groupValue: _questionAnswer[0],
+                            onChanged: (value) {
+                              setState(() {
+                                _questionAnswer[0] = value!;
+                              });
+                            },
+                          ),
+                          RadioListTile(
+                            title: Text(survey.options[2]),
+                            value: survey.options[2],
+                            groupValue: _questionAnswer[0],
+                            onChanged: (value) {
+                              setState(() {
+                                _questionAnswer[0] = value!;
+                              });
+                            },
+                          ),
+                          RadioListTile(
+                            title: Text(survey.options[3]),
+                            value: survey.options[3],
+                            groupValue: _questionAnswer[0],
+                            onChanged: (value) {
+                              setState(() {
+                                _questionAnswer[0] = value!;
+                              });
+                            },
+                          ), */
                           Center(
                               child: ElevatedButton(
                                   child: Text('Submit'),
