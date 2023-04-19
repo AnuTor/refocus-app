@@ -14,7 +14,30 @@ class SurveyScreen extends StatefulWidget {
 class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  List<String> _questionAnswer = [];
+  Map<int, String> questionAnswer = {};
+
+  List<Widget> form(
+      Question question, List<String> options, Map<int, String> answer) {
+    List<Widget> list = [];
+    answer[question.id] ??= 'Respuesta';
+    list.add(Text(question.question));
+    for (String ans in options) {
+      list.add(RadioListTile(
+        title: Text(ans),
+        value: ans,
+        groupValue: answer[question.id],
+        onChanged: (value) {
+          setState(() {
+            answer[question.id] = value!;
+          });
+        },
+      ));
+    }
+
+    list.add(const SizedBox(height: 16.0));
+
+    return list;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +47,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
     final survey = routeArgs['survey'] as Survey;
 
     // _questionAnswer = List<String>.filled(survey.questions.length, 'respuesta');
-
-    List<Widget> form(
-        Question question, List<String> options, List<String> answer) {
-      setState(() {
-        answer.add('Respuesta');
-      });
-      List<Widget> list = [];
-      list.add(Text(question.question));
-      for (String ans in options) {
-        list.add(RadioListTile(
-          title: Text(ans),
-          value: ans,
-          groupValue: answer.last,
-          onChanged: (value) {
-            setState(() {
-              answer.last = value!;
-            });
-          },
-        ));
-      }
-
-      list.add(const SizedBox(height: 16.0));
-
-      return list;
-    }
 
     return Scaffold(
         appBar: AppBar(
@@ -74,7 +72,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           for (var e in survey.questions)
-                            ...form(e, survey.options, _questionAnswer),
+                            ...form(e, survey.options, questionAnswer),
                           /* Text(survey.questions[0].question),
                           RadioListTile(
                             title: Text(survey.options[0]),
