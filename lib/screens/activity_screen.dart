@@ -44,7 +44,7 @@ class ActivityScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Text(activity.title,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.headline5,
                   textAlign: TextAlign.center),
             ),
             Container(
@@ -60,13 +60,10 @@ class ActivityScreen extends StatelessWidget {
                 ? TextButton(
                     onPressed: () => {
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                PlayerScreen(activity: activity)
-                              )
-                            )
-                          )
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) =>
+                                      PlayerScreen(activity: activity))))
                         },
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.white,
