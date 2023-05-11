@@ -118,9 +118,21 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               child: ElevatedButton(
                                   child: Text('Submit'),
                                   onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
+                                    if (questionAnswer
+                                        .containsValue("Respuesta")) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Por favor responda todas las preguntas")));
+                                    } else if (_formKey.currentState!
+                                        .validate()) {
                                       _formKey.currentState!.save();
-                                      // Do something with the survey answers
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content:
+                                                  Text("Formulario enviado")));
+                                      // Do something with the survey answers) {
+
                                     }
                                   }))
                         ]),
