@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.5
+  cloud_firestore:
   firebase_core: ^2.4.1
   firebase_auth:
   assets_audio_player: ^3.0.6

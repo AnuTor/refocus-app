@@ -44,14 +44,14 @@ class ActivityScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Text(activity.title,
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center),
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 activity.text,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyLarge,
                 //textAlign: TextAlign.justify
               ),
             ),

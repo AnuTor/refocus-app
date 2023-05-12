@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
@@ -7,7 +5,7 @@ var gad = Survey(
     id: 2,
     testName: 'GAD',
     title:
-        '¿Durante la última semana, con qué frecuencia sintió́ molestias por los siguientes problemas?',
+        '¿Durante la última semana, con qué frecuencia sintió molestias por los siguientes problemas?',
     options: [
       'Nunca',
       'Varios dias',

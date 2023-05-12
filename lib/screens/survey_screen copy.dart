@@ -34,12 +34,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                 children: [
                   Text(
                     survey.testName,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
                   Text(
                     survey.title,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Form(
                     key: _formKey,

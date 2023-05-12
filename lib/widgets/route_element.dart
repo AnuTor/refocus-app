@@ -40,7 +40,7 @@ class RouteElement extends StatelessWidget {
                   Text(
                     path.title,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Text(
                     path.subtitle,
