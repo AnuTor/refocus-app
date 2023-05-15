@@ -51,7 +51,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
         .collection('users')
         .doc(user!.uid)
         .get();
-    FirebaseFirestore.instance.collection(user.uid).doc('surveys').collection(testName).add({
+    FirebaseFirestore.instance
+        .collection(user.uid)
+        .doc('surveys')
+        .collection(testName)
+        .add({
       'createdAt': Timestamp.now(),
       'userId': user.uid,
       'username': userData.data()!['username'],
@@ -141,9 +145,21 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               child: ElevatedButton(
                                   child: const Text('Submit'),
                                   onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
+                                    if (questionAnswer
+                                        .containsValue("Respuesta")) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Por favor responda todas las preguntas")));
+                                    } else if (_formKey.currentState!
+                                        .validate()) {
                                       _formKey.currentState!.save();
-                                      // Do something with the survey answers
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content:
+                                                  Text("Formulario enviado")));
+                                      // Do something with the survey answers) {
+
                                       _submitSurvey(path, survey.testName);
                                     }
                                   }))
