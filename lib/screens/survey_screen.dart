@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../providers/questions.dart';
 import '../providers/survey.dart';
@@ -14,21 +17,21 @@ class SurveyScreen extends StatefulWidget {
 class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  Map<int, String> questionAnswer = {};
+  Map<String, String> questionAnswer = {};
 
   List<Widget> form(
-      Question question, List<String> options, Map<int, String> answer) {
+      Question question, List<String> options, Map<String, String> answer) {
     List<Widget> list = [];
-    answer[question.id] ??= 'Respuesta';
+    answer[question.id.toString()] ??= 'Respuesta';
     list.add(Text(question.question));
     for (String ans in options) {
       list.add(RadioListTile(
         title: Text(ans),
         value: ans,
-        groupValue: answer[question.id],
+        groupValue: answer[question.id.toString()],
         onChanged: (value) {
           setState(() {
-            answer[question.id] = value!;
+            answer[question.id.toString()] = value!;
           });
         },
       ));
@@ -37,6 +40,29 @@ class _SurveyScreenState extends State<SurveyScreen> {
     list.add(const SizedBox(height: 16.0));
 
     return list;
+  }
+
+  void _submitSurvey(
+    String path,
+    String testName,
+  ) async {
+    final user = FirebaseAuth.instance.currentUser;
+    final userData = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user!.uid)
+        .get();
+    FirebaseFirestore.instance
+        .collection(user.uid)
+        .doc('surveys')
+        .collection(testName)
+        .add({
+      'createdAt': Timestamp.now(),
+      'userId': user.uid,
+      'username': userData.data()!['username'],
+      'path': path,
+      'survey': testName,
+      'questionAnswer': json.encode(questionAnswer)
+    });
   }
 
   @override
@@ -59,13 +85,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                 children: [
                   Text(
                     survey.testName,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
                   Text(
                     survey.title,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
+                  const SizedBox(height: 16.0),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -116,7 +143,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           ), */
                           Center(
                               child: ElevatedButton(
-                                  child: Text('Submit'),
+                                  child: const Text('Submit'),
                                   onPressed: () {
                                     if (questionAnswer
                                         .containsValue("Respuesta")) {
@@ -133,6 +160,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                                   Text("Formulario enviado")));
                                       // Do something with the survey answers) {
 
+                                      _submitSurvey(path, survey.testName);
                                     }
                                   }))
                         ]),
