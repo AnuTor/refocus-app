@@ -161,6 +161,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                       // Do something with the survey answers) {
 
                                       _submitSurvey(path, survey.testName);
+                                      Navigator.of(context).pop();
                                     }
                                   }))
                         ]),
