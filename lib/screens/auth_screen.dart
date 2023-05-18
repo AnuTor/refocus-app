@@ -46,7 +46,8 @@ class _AuthScreenState extends State<AuthScreen> {
             .set({
           'username': username,
           'email': email,
-          'startdate': Timestamp.now()
+          'startdate': Timestamp.now(),
+          "userId": authResult.user!.uid,
         });
       }
     } on PlatformException catch (err) {

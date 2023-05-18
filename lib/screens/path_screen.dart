@@ -39,11 +39,12 @@ class PathScreen extends StatelessWidget {
 
     for (int i = 1; i <= survDays; i++) {
       if (now.difference(startdate).inDays >= lenght) {
-        list.add(SurveyElement(path: pathtitle, survey: surveys[i - 1]));
+        list.add(SurveyElement(path: pathtitle, survey: surveys[i - 1], num: i));
       } else {
         list.add(SurveyElement(
           path: pathtitle,
           survey: surveys[i - 1],
+          num: i,
           enable: false,
         ));
       }

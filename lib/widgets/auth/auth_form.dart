@@ -63,13 +63,13 @@ class _AuthFormState extends State<AuthForm> {
                     enableSuggestions: false,
                     validator: (value) {
                       if (value == null || value.isEmpty || !value.contains('@')) {
-                        return 'Please enter a valid email address.';
+                        return 'Por favor ingrese un mail válido';
                       }
                       return null;
                     },
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
-                      labelText: 'Email address',
+                      labelText: 'Correo electrónico',
                     ),
                     onSaved: (value) {
                       _userEmail = value!;
@@ -83,11 +83,11 @@ class _AuthFormState extends State<AuthForm> {
                       enableSuggestions: false,
                       validator: (value) {
                         if (value == null || value.isEmpty || value.length < 4) {
-                          return 'Please enter at least 4 characters';
+                          return 'Por favor complete su nombre';
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(labelText: 'Username'),
+                      decoration: const InputDecoration(labelText: 'Nombre completo'),
                       onSaved: (value) {
                         _userName = value!;
                       },
@@ -95,12 +95,12 @@ class _AuthFormState extends State<AuthForm> {
                   TextFormField(
                     key: const ValueKey('password'),
                     validator: (value) {
-                      if (value == null || value.isEmpty || value.length < 7) {
-                        return 'Password must be at least 7 characters long.';
+                      if (value == null || value.isEmpty || value.length < 6) {
+                        return 'La contraseña debe tener al menos 6 caracteres';
                       }
                       return null;
                     },
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: const InputDecoration(labelText: 'Contraseña'),
                     obscureText: true,
                     onSaved: (value) {
                       _userPassword = value!;
@@ -111,7 +111,7 @@ class _AuthFormState extends State<AuthForm> {
                   if (!widget.isLoading)
                     ElevatedButton(
                       onPressed: _trySubmit,
-                      child: Text(_isLogin ? 'Login' : 'Signup'),
+                      child: Text(_isLogin ? 'Iniciar sesión' : 'Crear cuenta'),
                     ),
                   if (!widget.isLoading)
                     TextButton(
@@ -119,8 +119,8 @@ class _AuthFormState extends State<AuthForm> {
                         foregroundColor: Theme.of(context).primaryColor,
                       ),
                       child: Text(_isLogin
-                          ? 'Create new account'
-                          : 'I already have an account'),
+                          ? '¿No tienes una cuenta? Registrate'
+                          : 'Ya estoy registrado'),
                       onPressed: () {
                         setState(() {
                           _isLogin = !_isLogin;

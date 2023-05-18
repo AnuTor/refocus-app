@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './activity.dart';
 import './path.dart';
+import '../tests/cerq.dart';
 import '../tests/gad.dart';
 import '../tests/panas.dart';
 import '../tests/phq.dart';
@@ -46,9 +47,9 @@ class Routes with ChangeNotifier {
               audiofile: 'estar-presentes-practica.mp3'),
         ],
         surveys: [
-          gad,
           panas,
-          phq,
+          gad,
+          phq
         ]),
     Path(
         id: 2,
@@ -112,7 +113,13 @@ class Routes with ChangeNotifier {
                   'Reflexiona sobre esto durante unos segundos.\n\n'
                   'c. Otro ejercicio útil cuando nos enfrentamos a una situación desagradable es pensar qué le diríamos a un amigo que se encontrara en la misma situación ¿cuál sería tu consejo? Muchas veces nos resulta más fácil encontrar formas de pensamiento más equilibrados (menos catastróficas y menos categóricas -de TODO o NADA-) cuando hacemos el ejercicio de pensar qué le recomendaríamos a un amigo o ser querido que estuviera pasando una situación similar. Otras preguntas que puedes hacerte en este sentido: ¿Qué tipo de pensamiento tendría un amigo/familiar en una situación semejante? ¿Qué le dirías a un amigo/familiar si en una situación similar tuviera ese pensamiento?\n\n'
                   'Reflexiona sobre esto durante unos segundos.')
-        ])
+        ],
+        surveys: [
+          panas,
+          cerq,
+          gad,
+          phq,
+        ]),
   ];
   // var _showFavoritesOnly = false;
 
