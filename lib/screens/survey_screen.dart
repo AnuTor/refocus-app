@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,18 +19,27 @@ class _SurveyScreenState extends State<SurveyScreen> {
   Map<String, String> questionAnswer = {};
 
   List<Widget> form(
-      Question question, List<String> options, Map<String, String> answer) {
+    Question question,
+    List<String> options,
+    Map<String, String> answer
+  ) {
     List<Widget> list = [];
-    answer[question.id.toString()] ??= 'Respuesta';
+    String questionNum;
+    if (question.id < 10) {
+      questionNum = 'Q0${question.id.toString()}';
+    } else {
+      questionNum = 'Q${question.id.toString()}';
+    }
+    answer[questionNum] ??= 'Respuesta';
     list.add(Text(question.question));
     for (String ans in options) {
       list.add(RadioListTile(
         title: Text(ans),
         value: ans,
-        groupValue: answer[question.id.toString()],
+        groupValue: answer[questionNum],
         onChanged: (value) {
           setState(() {
-            answer[question.id.toString()] = value!;
+            answer[questionNum] = value!;
           });
         },
       ));
@@ -52,16 +60,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
         .doc(user!.uid)
         .get();
     FirebaseFirestore.instance
-        .collection(user.uid)
-        .doc('surveys')
-        .collection(testName)
+        .collection('questionnaires')
         .add({
       'createdAt': Timestamp.now(),
       'userId': user.uid,
       'username': userData.data()!['username'],
       'path': path,
-      'survey': testName,
-      'questionAnswer': json.encode(questionAnswer)
+      'questionnaire': testName,
+      'answer': questionAnswer
     });
   }
 
@@ -71,6 +77,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final path = routeArgs['path'] as String;
     final survey = routeArgs['survey'] as Survey;
+    final num = routeArgs['num'] as int;
 
     // _questionAnswer = List<String>.filled(survey.questions.length, 'respuesta');
 
@@ -84,7 +91,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
               child: Column(
                 children: [
                   Text(
-                    survey.testName,
+                    'Cuestionario $num',
                     style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),

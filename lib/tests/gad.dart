@@ -2,15 +2,15 @@ import '../providers/survey.dart';
 import '../providers/questions.dart';
 
 var gad = Survey(
-    id: 2,
+    id: 3,
     testName: 'GAD',
     title:
-        '¿Durante la última semana, con qué frecuencia sintió molestias por los siguientes problemas?',
+        'Durante la última semana, ¿con qué frecuencia sintió molestias debido a los siguientes problemas?',
     options: [
       'Nunca',
-      'Varios dias',
-      'Mas de la mitad de los dias',
-      'Todos los dias',
+      'Varios días',
+      'Más de la mitad de los días',
+      'Todos los días',
     ],
     questions: [
       Question(
@@ -30,5 +30,5 @@ var gad = Survey(
       Question(id: 6, question: 'Enojarse o irritarse con facilidad'),
       Question(
           id: 7,
-          question: 'Sentirse con miedo como si algo terrible fuera a suceder'),
+          question: 'Sentirse con miedo, como si algo terrible fuera a suceder'),
     ]);

@@ -6,12 +6,14 @@ import '../providers/survey.dart';
 class SurveyElement extends StatelessWidget {
   final String path;
   final Survey survey;
+  final int num;
   final bool enable;
 
   const SurveyElement({
     Key? key,
     required this.path,
     required this.survey,
+    required this.num,
     this.enable = true,
   }) : super(key: key);
 
@@ -27,12 +29,12 @@ class SurveyElement extends StatelessWidget {
           ? () => {
                 Navigator.of(context).pushNamed(
                   SurveyScreen.routeName,
-                  arguments: {'path': path, 'survey': survey},
+                  arguments: {'path': path, 'survey': survey, 'num': num},
                 )
               }
           : null,
       style: style,
-      child: enable ? Text(survey.id.toString()) : const Icon(Icons.lock),
+      child: enable ? Text(num.toString()) : const Icon(Icons.lock),
     );
   }
 }
