@@ -14,7 +14,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _user = FirebaseAuth.instance.currentUser!.uid;
-    final routesData = Provider.of<Routes>(context).items;
+    var route = Provider.of<Routes>(context);
+    var routesData = Provider.of<Routes>(context).items;
 
     Widget routeCard(int start, int finish, int routeNumber) {
       return Card(
@@ -76,9 +77,16 @@ class MainScreen extends StatelessWidget {
             final String username = data['username'];
             final DateTime startDate = data['startdate'].toDate();
 
-            final daysSince = DateTime.now().difference(startDate).inDays;
+            routesData[0].startdate = DateUtils.dateOnly(startDate);
+            routesData[1].startdate =
+                DateUtils.dateOnly(startDate).add(const Duration(days: 11));
+            route.addListener(() {});
+
+            final daysSince =
+                DateTime.now().difference(DateUtils.dateOnly(startDate)).inDays;
 
             print(startDate);
+            print(DateUtils.dateOnly(startDate));
             print(daysSince);
 
             return Container(
