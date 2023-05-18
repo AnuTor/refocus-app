@@ -23,7 +23,10 @@ class PathScreen extends StatelessWidget {
     int survDays = surveys.length;
     String pathtitle = path.title;
 
-    var now = DateTime.now();
+    var now = DateUtils.dateOnly(DateTime.now());
+    print(startdate);
+    print(now);
+    print(now.difference(startdate));
 
     for (int i = 1; i <= days; i++) {
       if (i <= now.difference(startdate).inDays + 1) {

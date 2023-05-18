@@ -65,8 +65,8 @@ class MyApp extends StatelessWidget {
                         return const AuthScreen();
                       }),
               routes: {
-                PathScreen.routeName: (ctx) => const PathScreen(),
                 ActivityScreen.routeName: (ctx) => const ActivityScreen(),
+                PathScreen.routeName: (ctx) => const PathScreen(),
                 SurveyScreen.routeName: (ctx) => const SurveyScreen(),
               },
               onUnknownRoute: (settings) {
