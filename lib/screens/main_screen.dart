@@ -7,6 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/routes.dart';
+import './path_screen.dart';
+import '../providers/path.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,7 +18,6 @@ class MainScreen extends StatelessWidget {
     var _user = FirebaseAuth.instance.currentUser!.uid;
     var route = Provider.of<Routes>(context);
     var routesData = Provider.of<Routes>(context).items;
-
     Widget routeCard(int start, int finish, int routeNumber) {
       return Card(
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
@@ -25,12 +26,22 @@ class MainScreen extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               start == finish + 1
-                  ? const Text('Dia de encuesta')
-                  : Text('Dia $start de $finish'),
-              Text(routesData[routeNumber].title),
-              Image.asset(routesData[routeNumber].image)
+                  ? const Text(
+                      'Dia de encuesta',
+                      style: TextStyle(fontSize: 22, fontFamily: 'Roboto'),
+                    )
+                  : Text(
+                      'Día $start de $finish',
+                      style:
+                          const TextStyle(fontSize: 22, fontFamily: 'Roboto'),
+                    ),
+              Text('Recorrido de ${routesData[routeNumber].title}',
+                  style: const TextStyle(
+                      fontSize: 22, color: Colors.grey, fontFamily: 'Roboto')),
+              Image.asset(routesData[routeNumber].image),
             ],
           ),
         ),
@@ -94,6 +105,7 @@ class MainScreen extends StatelessWidget {
               margin: EdgeInsets.all(20),
               //color: Colors.black,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Bienvenido, $username',
