@@ -5,7 +5,7 @@ import './activity.dart';
 class Path with ChangeNotifier {
   final int id;
   final int days;
-  DateTime startdate;
+  DateTime? startdate;
   final String title;
   final String subtitle;
   final String image;
@@ -18,7 +18,7 @@ class Path with ChangeNotifier {
     required this.subtitle,
     required this.image,
     required this.days,
-    required this.startdate,
+    this.startdate,
     required this.activities,
     this.surveys,
   });

@@ -37,6 +37,7 @@ dependencies:
   firebase_auth:
   assets_audio_player: ^3.0.6
   sleek_circular_slider: ^2.0.1
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

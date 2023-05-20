@@ -9,7 +9,7 @@ class RoutesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routesData = Provider.of<Routes>(context).items;
+    final routesData = Provider.of<Routes>(context, listen: false).items;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

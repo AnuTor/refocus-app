@@ -55,16 +55,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
     String testName,
   ) async {
     final user = FirebaseAuth.instance.currentUser;
-    final userData = await FirebaseFirestore.instance
+    /*final userData = await FirebaseFirestore.instance
         .collection('users')
         .doc(user!.uid)
-        .get();
+        .get();*/
     FirebaseFirestore.instance
         .collection('questionnaires')
         .add({
       'createdAt': Timestamp.now(),
-      'userId': user.uid,
-      'username': userData.data()!['username'],
+      'userId': user!.uid,
       'path': path,
       'questionnaire': testName,
       'answer': questionAnswer

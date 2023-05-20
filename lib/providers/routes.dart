@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import './activity.dart';
 import './path.dart';
@@ -8,11 +10,13 @@ import '../tests/panas.dart';
 import '../tests/phq.dart';
 
 class Routes with ChangeNotifier {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  String _username = "";
+  DateTime _userStartdate = DateTime.now();
   final List<Path> _items = [
     Path(
         id: 1,
-        days: 10,
-        startdate: DateTime(2023, 03, 31),
+        days: 7,
         title: 'Relajación',
         subtitle:
             'Se describe en qué consiste la relajación y sus beneficios asociados. Escribo mas texto para ver como se corta',
@@ -47,14 +51,11 @@ class Routes with ChangeNotifier {
               audiofile: 'estar-presentes-practica.mp3'),
         ],
         surveys: [
-          panas,
-          gad,
-          phq
+          panas
         ]),
     Path(
         id: 2,
-        days: 6,
-        startdate: DateTime(2023, 04, 10 + 11),
+        days: 7,
         title: 'Modificación de pensamiento',
         subtitle:
             'Se describe en qué consiste la evocación de eventos positivos y sus beneficios asociados.',
@@ -121,35 +122,36 @@ class Routes with ChangeNotifier {
           phq,
         ]),
   ];
-  // var _showFavoritesOnly = false;
 
   List<Path> get items {
-    // if (_showFavoritesOnly) {
-    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
-    // }
     return [..._items];
   }
 
-//  List<RouteElement> get favoriteItems {
-//    return _items.where((prodItem) => prodItem.isFavorite).toList();
-//  }
+  DateTime get startdate => _userStartdate;
+
+  String get username => _username;
 
   Path findById(int id) {
     return _items.firstWhere((route) => route.id == id);
   }
 
-  // void showFavoritesOnly() {
-  //   _showFavoritesOnly = true;
-  //   notifyListeners();
-  // }
+  void fetchdata() async {
+    User user = _firebaseAuth.currentUser!;
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then((userData) {
+      _username = userData.data()!['username'];
+      _userStartdate = userData.data()!['startdate'].toDate();
+      _items[0].startdate = DateUtils.dateOnly(_userStartdate);
+      _items[1].startdate =
+          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 8));
+      notifyListeners();
+    });
+  }
 
-  // void showAll() {
-  //   _showFavoritesOnly = false;
-  //   notifyListeners();
-  // }
-
-  void addProduct() {
-    // _items.add(value);
-    notifyListeners();
+  void cleandata() {
+    _username = "";
   }
 }

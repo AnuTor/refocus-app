@@ -83,11 +83,11 @@ class _AuthFormState extends State<AuthForm> {
                       enableSuggestions: false,
                       validator: (value) {
                         if (value == null || value.isEmpty || value.length < 4) {
-                          return 'Por favor complete su nombre';
+                          return 'El nombre de usuario debe tener al menos 4 caracteres';
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(labelText: 'Nombre completo'),
+                      decoration: const InputDecoration(labelText: 'Nombre de usuario'),
                       onSaved: (value) {
                         _userName = value!;
                       },

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/routes.dart';
 import './routes_screen.dart';
 import './profile_screen.dart';
 import './tools_screen.dart';
@@ -48,6 +50,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<Routes>(context, listen: false).fetchdata();
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
@@ -76,6 +79,7 @@ class _TabsScreenState extends State<TabsScreen> {
                   ],
                   onChanged: (itemIdentifier) {
                     if (itemIdentifier == 'logout') {
+                      Provider.of<Routes>(context, listen: false).cleandata();
                       FirebaseAuth.instance.signOut();
                     }
                   },

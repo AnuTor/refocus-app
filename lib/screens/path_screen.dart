@@ -15,7 +15,7 @@ class PathScreen extends StatelessWidget {
 
   List<Widget> tipoBoton(Path path) {
     List<Widget> list = [];
-    DateTime startdate = path.startdate;
+    DateTime startdate = path.startdate as DateTime;
     int lenght = path.days;
     List<Activity> activities = path.activities;
     List<Survey>? surveys = path.surveys ?? [];
@@ -24,9 +24,6 @@ class PathScreen extends StatelessWidget {
     String pathtitle = path.title;
 
     var now = DateUtils.dateOnly(DateTime.now());
-    print(startdate);
-    print(now);
-    print(now.difference(startdate));
 
     for (int i = 1; i <= days; i++) {
       if (i <= now.difference(startdate).inDays + 1) {
