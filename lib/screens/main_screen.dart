@@ -13,8 +13,6 @@ class MainScreen extends StatelessWidget {
     var routesData = routes.items;
     var startdate = routes.startdate;
     var username = routes.username;
-    final daysSince =
-        DateTime.now().difference(DateUtils.dateOnly(startdate)).inDays;
 
     Widget routeCard(int start, int finish, int routeNumber) {
       return Card(
@@ -26,7 +24,7 @@ class MainScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              start == finish + 1
+              start == finish
                   ? const Text(
                       'Dia de encuesta',
                       style: TextStyle(fontSize: 22, fontFamily: 'Roboto'),
@@ -46,18 +44,22 @@ class MainScreen extends StatelessWidget {
       );
     }
 
-    Widget currentActivity(int daysSince, DateTime startdate) {
-      final int totalDays = routesData[0].days + routesData[1].days + 2;
+    Widget currentActivity() {
+      final daysSince =
+          DateTime.now().difference(DateUtils.dateOnly(startdate)).inDays;
+      final route0 = routesData[0];
+      final route1 = routesData[1];
+      final int totalDays = route0.days + route1.days + 2;
       if (daysSince < 0) {
         return Text(
             'Aún no tiene habilitado el ingreso a la plataforma. Regrese el ${DateFormat('d/M/y').format(startdate)}');
       }
-      if (daysSince >= 0 && daysSince <= routesData[0].days) {
-        return routeCard(daysSince + 1, routesData[0].days, 0);
+      if (daysSince >= 0 && daysSince < route0.days) {
+        return routeCard(daysSince + 1, route0.days, 0);
       }
-      if (daysSince > routesData[0].days && daysSince < totalDays) {
-        final int start = daysSince - (routesData[0].days + 1);
-        return routeCard(start + 1, routesData[1].days, 1);
+      if (daysSince >= route0.days && daysSince < totalDays) {
+        final int start = daysSince - route0.days;
+        return routeCard(start + 1, route1.days, 1);
       }
       return Text(
         'Ha completado todas las actividades. Felicidades!',
@@ -69,7 +71,6 @@ class MainScreen extends StatelessWidget {
       return Container(
         alignment: Alignment.center,
         margin: const EdgeInsets.all(20),
-        //color: Colors.black,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -79,7 +80,7 @@ class MainScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 10),
-            currentActivity(daysSince, startdate),
+            currentActivity(),
           ],
         ),
       );

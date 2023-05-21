@@ -146,7 +146,7 @@ class Routes with ChangeNotifier {
       _userStartdate = userData.data()!['startdate'].toDate();
       _items[0].startdate = DateUtils.dateOnly(_userStartdate);
       _items[1].startdate =
-          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 8));
+          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 7));
       notifyListeners();
     });
   }

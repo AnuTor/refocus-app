@@ -16,35 +16,34 @@ class PathScreen extends StatelessWidget {
   List<Widget> tipoBoton(Path path) {
     List<Widget> list = [];
     DateTime startdate = path.startdate as DateTime;
-    int lenght = path.days;
+    int pathLenght = path.days;
     List<Activity> activities = path.activities;
     List<Survey>? surveys = path.surveys ?? [];
-    int days = activities.length;
+    int activitiesDays = activities.length;
     int survDays = surveys.length;
     String pathtitle = path.title;
+    DateTime now = DateUtils.dateOnly(DateTime.now());
 
-    var now = DateUtils.dateOnly(DateTime.now());
-
-    for (int i = 1; i <= days; i++) {
-      if (i <= now.difference(startdate).inDays + 1) {
-        list.add(ActivityElement(path: pathtitle, activity: activities[i - 1]));
+    for (int i = 0; i < activitiesDays; i++) {
+      if (i < now.difference(startdate).inDays + 1) {
+        list.add(ActivityElement(path: pathtitle, activity: activities[i]));
       } else {
         list.add(ActivityElement(
           path: pathtitle,
-          activity: activities[i - 1],
+          activity: activities[i],
           enable: false,
         ));
       }
     }
 
-    for (int i = 1; i <= survDays; i++) {
-      if (now.difference(startdate).inDays >= lenght) {
-        list.add(SurveyElement(path: pathtitle, survey: surveys[i - 1], num: i));
+    for (int i = 0; i < survDays; i++) {
+      if (now.difference(startdate).inDays + 1 >= pathLenght) {
+        list.add(SurveyElement(path: pathtitle, survey: surveys[i], num: i + 1));
       } else {
         list.add(SurveyElement(
           path: pathtitle,
-          survey: surveys[i - 1],
-          num: i,
+          survey: surveys[i],
+          num: i + 1,
           enable: false,
         ));
       }
