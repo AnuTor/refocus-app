@@ -15,14 +15,17 @@ class RoutesScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
+        const SizedBox(height: 20),
         ChangeNotifierProvider.value(
           value: routesData[0],
           child: const RouteElement(),
         ),
+        const SizedBox(height: 20),
         ChangeNotifierProvider.value(
           value: routesData[1],
           child: const RouteElement(),
-        )
+        ),
+        const SizedBox(height: 20),
       ],
     );
   }

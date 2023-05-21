@@ -12,7 +12,7 @@ class RouteElement extends StatelessWidget {
     final path = Provider.of<Path>(context, listen: false);
     return Expanded(
       child: Card(
-        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 30),
         elevation: 10,
         child: InkWell(
           onTap: () => {
@@ -21,9 +21,7 @@ class RouteElement extends StatelessWidget {
           },
           child: Container(
             width: double.infinity,
-            //margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            padding: const EdgeInsets.all(5),
-            //height: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -34,7 +32,7 @@ class RouteElement extends StatelessWidget {
                 ),
                 Text(
                   path.subtitle,
-                  maxLines: 2,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                 ),
