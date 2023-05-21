@@ -10,7 +10,6 @@ import '../widgets/activity_element.dart';
 
 class PathScreen extends StatelessWidget {
   static const routeName = '/path-screen';
-
   const PathScreen({Key? key}) : super(key: key);
 
   List<Widget> tipoBoton(Path path) {
@@ -35,10 +34,13 @@ class PathScreen extends StatelessWidget {
         ));
       }
     }
-
     for (int i = 0; i < survDays; i++) {
       if (now.difference(startdate).inDays + 1 >= pathLenght) {
-        list.add(SurveyElement(path: pathtitle, survey: surveys[i], num: i + 1));
+        list.add(SurveyElement(
+          path: pathtitle,
+          survey: surveys[i],
+          num: i + 1,
+        ));
       } else {
         list.add(SurveyElement(
           path: pathtitle,
@@ -48,17 +50,6 @@ class PathScreen extends StatelessWidget {
         ));
       }
     }
-
-    // for (int i = 1; i <= dias; i++) {
-    //   if (i <= ingreso) {
-    //     list.add(DayElement());
-    //   } else {
-    //     list.add(const DayElement(
-    //       enable: false,
-    //     ));
-    //   }
-    // }
-
     return list;
   }
 
@@ -70,9 +61,7 @@ class PathScreen extends StatelessWidget {
       listen: false,
     ).findById(pathId);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(loadedPath.title),
-      ),
+      appBar: AppBar(title: Text(loadedPath.title)),
       body: GridView.count(
         crossAxisCount: 4,
         padding: const EdgeInsets.all(15),

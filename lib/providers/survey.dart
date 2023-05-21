@@ -10,12 +10,13 @@ class Survey with ChangeNotifier {
   final bool done;
   final List<Question> questions;
 
-  Survey(
-      {required this.id,
-      required this.testName,
-      required this.title,
-      this.subtitle,
-      required this.options,
-      this.done = false,
-      required this.questions});
+  Survey({
+    required this.id,
+    required this.testName,
+    required this.title,
+    this.subtitle,
+    required this.options,
+    this.done = false,
+    required this.questions
+  });
 }

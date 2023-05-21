@@ -71,9 +71,7 @@ class _AuthFormState extends State<AuthForm> {
                     decoration: const InputDecoration(
                       labelText: 'Correo electrónico',
                     ),
-                    onSaved: (value) {
-                      _userEmail = value!;
-                    },
+                    onSaved: (value) {_userEmail = value!;},
                   ),
                   if (!_isLogin)
                     TextFormField(
@@ -88,9 +86,7 @@ class _AuthFormState extends State<AuthForm> {
                         return null;
                       },
                       decoration: const InputDecoration(labelText: 'Nombre de usuario'),
-                      onSaved: (value) {
-                        _userName = value!;
-                      },
+                      onSaved: (value) {_userName = value!;},
                     ),
                   TextFormField(
                     key: const ValueKey('password'),
@@ -102,9 +98,7 @@ class _AuthFormState extends State<AuthForm> {
                     },
                     decoration: const InputDecoration(labelText: 'Contraseña'),
                     obscureText: true,
-                    onSaved: (value) {
-                      _userPassword = value!;
-                    },
+                    onSaved: (value) {_userPassword = value!;},
                   ),
                   const SizedBox(height: 12),
                   if (widget.isLoading) const CircularProgressIndicator(),
@@ -126,7 +120,7 @@ class _AuthFormState extends State<AuthForm> {
                           _isLogin = !_isLogin;
                         });
                       },
-                    )
+                    ),
                 ],
               ),
             ),

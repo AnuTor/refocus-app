@@ -54,44 +54,43 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
-        actions: [
-          _selectedPageIndex == 3
-              ? DropdownButton(
-                  underline: Container(),
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: Theme.of(context).iconTheme.color,
-                  ),
-                  items: [
-                    DropdownMenuItem(
-                      value: 'logout',
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.exit_to_app,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                          const SizedBox(width: 8),
-                          const Text('Cerrar sesión'),
-                        ],
-                      ),
+        actions: [_selectedPageIndex == 3
+          ? DropdownButton(
+            underline: Container(),
+            icon: Icon(
+              Icons.more_vert,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            items: [
+              DropdownMenuItem(
+                value: 'logout',
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.exit_to_app,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
+                    const SizedBox(width: 8),
+                    const Text('Cerrar sesión'),
                   ],
-                  onChanged: (itemIdentifier) {
-                    if (itemIdentifier == 'logout') {
-                      Provider.of<Routes>(context, listen: false).cleandata();
-                      FirebaseAuth.instance.signOut();
-                    }
-                  },
-                )
-              : IconButton(
-                  icon: Icon(
-                    Icons.star,
-                    //color: Theme.of(context).iconTheme.color,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  onPressed: () {},
                 ),
+              ),
+            ],
+            onChanged: (itemIdentifier) {
+              if (itemIdentifier == 'logout') {
+                Provider.of<Routes>(context, listen: false).cleandata();
+                FirebaseAuth.instance.signOut();
+              }
+            },
+          )
+          : IconButton(
+            icon: Icon(
+              Icons.star,
+              //color: Theme.of(context).iconTheme.color,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            onPressed: () {},
+          ),
         ],
       ),
       body: _pages[_selectedPageIndex]['page'] as Widget,

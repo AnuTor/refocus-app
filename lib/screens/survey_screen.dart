@@ -15,7 +15,6 @@ class SurveyScreen extends StatefulWidget {
 
 class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
-
   Map<String, String> questionAnswer = {};
 
   List<Widget> form(
@@ -55,10 +54,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
     String testName,
   ) async {
     final user = FirebaseAuth.instance.currentUser;
-    /*final userData = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user!.uid)
-        .get();*/
     FirebaseFirestore.instance
         .collection('questionnaires')
         .add({
@@ -78,102 +73,60 @@ class _SurveyScreenState extends State<SurveyScreen> {
     final survey = routeArgs['survey'] as Survey;
     final num = routeArgs['num'] as int;
 
-    // _questionAnswer = List<String>.filled(survey.questions.length, 'respuesta');
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text(path),
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    'Cuestionario $num',
-                    style: Theme.of(context).textTheme.titleLarge,
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    survey.title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 16.0),
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          for (var e in survey.questions)
-                            ...form(e, survey.options, questionAnswer),
-                          /* Text(survey.questions[0].question),
-                          RadioListTile(
-                            title: Text(survey.options[0]),
-                            value: survey.options[0],
-                            groupValue: _questionAnswer[0],
-                            onChanged: (value) {
-                              setState(() {
-                                _questionAnswer[0] = value!;
-                              });
-                            },
-                          ),
-                          RadioListTile(
-                            title: Text(survey.options[1]),
-                            value: survey.options[1],
-                            groupValue: _questionAnswer[0],
-                            onChanged: (value) {
-                              setState(() {
-                                _questionAnswer[0] = value!;
-                              });
-                            },
-                          ),
-                          RadioListTile(
-                            title: Text(survey.options[2]),
-                            value: survey.options[2],
-                            groupValue: _questionAnswer[0],
-                            onChanged: (value) {
-                              setState(() {
-                                _questionAnswer[0] = value!;
-                              });
-                            },
-                          ),
-                          RadioListTile(
-                            title: Text(survey.options[3]),
-                            value: survey.options[3],
-                            groupValue: _questionAnswer[0],
-                            onChanged: (value) {
-                              setState(() {
-                                _questionAnswer[0] = value!;
-                              });
-                            },
-                          ), */
-                          Center(
-                              child: ElevatedButton(
-                                  child: const Text('Submit'),
-                                  onPressed: () {
-                                    if (questionAnswer
-                                        .containsValue("Respuesta")) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                              content: Text(
-                                                  "Por favor responda todas las preguntas")));
-                                    } else if (_formKey.currentState!
-                                        .validate()) {
-                                      _formKey.currentState!.save();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                              content:
-                                                  Text("Formulario enviado")));
-                                      // Do something with the survey answers) {
-
-                                      _submitSurvey(path, survey.testName);
-                                      Navigator.of(context).pop();
-                                    }
-                                  }))
-                        ]),
-                  ),
-                ],
+      appBar: AppBar(title: Text(path)),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                'Cuestionario $num',
+                style: Theme.of(context).textTheme.titleLarge,
+                textAlign: TextAlign.center,
               ),
-            )));
+              Text(
+                survey.title,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 16.0),
+              Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    for (var e in survey.questions)
+                      ...form(e, survey.options, questionAnswer),
+                    Center(
+                      child: ElevatedButton(
+                        child: const Text('Submit'),
+                        onPressed: () {
+                          if (questionAnswer.containsValue("Respuesta")) {
+                            ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                                content: Text(
+                                  "Por favor responda todas las preguntas"
+                                ),
+                              ));
+                          } else if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                                  content: Text("Formulario enviado"),
+                              ));
+                            _submitSurvey(path, survey.testName);
+                            Navigator.of(context).pop();
+                          }
+                        }
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

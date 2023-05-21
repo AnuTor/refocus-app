@@ -20,19 +20,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: ElevatedButton(
-            onPressed: () {
-              Provider.of<Routes>(context, listen: false).cleandata();
-              singOut();
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.logout),
-                SizedBox(width: 8),
-                Text("Cerrar sesión"),
-              ],
-            )));
+      child: ElevatedButton(
+        onPressed: () {
+          Provider.of<Routes>(context, listen: false).cleandata();
+          singOut();
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Icon(Icons.logout),
+            SizedBox(width: 8),
+            Text("Cerrar sesión"),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -26,17 +26,20 @@ class MainScreen extends StatelessWidget {
             children: [
               start == finish
                   ? const Text(
-                      'Dia de encuesta',
-                      style: TextStyle(fontSize: 22, fontFamily: 'Roboto'),
-                    )
+                    'Dia de encuesta',
+                    style: TextStyle(fontSize: 22, fontFamily: 'Roboto'),
+                  )
                   : Text(
-                      'Día $start de $finish',
-                      style:
-                          const TextStyle(fontSize: 22, fontFamily: 'Roboto'),
-                    ),
-              Text('Recorrido de ${routesData[routeNumber].title}',
-                  style: const TextStyle(
-                      fontSize: 22, color: Colors.grey, fontFamily: 'Roboto')),
+                    'Día $start de $finish',
+                    style:
+                        const TextStyle(fontSize: 22, fontFamily: 'Roboto'),
+                  ),
+              Text(
+                'Recorrido de ${routesData[routeNumber].title}',
+                style: const TextStyle(
+                  fontSize: 22, color: Colors.grey, fontFamily: 'Roboto'
+                ),
+              ),
               Image.asset(routesData[routeNumber].image),
             ],
           ),
@@ -52,7 +55,9 @@ class MainScreen extends StatelessWidget {
       final int totalDays = route0.days + route1.days + 2;
       if (daysSince < 0) {
         return Text(
-            'Aún no tiene habilitado el ingreso a la plataforma. Regrese el ${DateFormat('d/M/y').format(startdate)}');
+          'Aún no tiene habilitado el ingreso a la plataforma. '
+          'Regrese el ${DateFormat('d/M/y').format(startdate)}'
+        );
       }
       if (daysSince >= 0 && daysSince < route0.days) {
         return routeCard(daysSince + 1, route0.days, 0);

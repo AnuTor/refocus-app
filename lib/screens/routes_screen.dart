@@ -23,7 +23,7 @@ class RoutesScreen extends StatelessWidget {
           value: routesData[1],
           child: const RouteElement(),
         )
-      ]
+      ],
     );
   }
 }

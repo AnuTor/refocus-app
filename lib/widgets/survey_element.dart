@@ -20,18 +20,19 @@ class SurveyElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20),
-        shape: const CircleBorder(),
-        backgroundColor: Colors.deepOrange);
+      textStyle: const TextStyle(fontSize: 20),
+      shape: const CircleBorder(),
+      backgroundColor: Colors.deepOrange
+    );
 
     return ElevatedButton(
       onPressed: enable
           ? () => {
-                Navigator.of(context).pushNamed(
-                  SurveyScreen.routeName,
-                  arguments: {'path': path, 'survey': survey, 'num': num},
-                )
-              }
+            Navigator.of(context).pushNamed(
+              SurveyScreen.routeName,
+              arguments: {'path': path, 'survey': survey, 'num': num},
+            )
+          }
           : null,
       style: style,
       child: enable ? Text(num.toString()) : const Icon(Icons.lock),

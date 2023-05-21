@@ -5,13 +5,13 @@ var panas = Survey(
     id: 1,
     testName: 'PANAS',
     title:
-        'Utilizando la escala de respuestas propuesta a continuación, señala en qué medida has experimentado en la última semana las siguientes emociones.',
+      'Utilizando la escala de respuestas propuesta a continuación, señala en qué medida has experimentado en la última semana las siguientes emociones.',
     options: [
       'Muy poco o nada',
       'Un poco',
       'Medianamente',
       'Bastante',
-      'Mucho o totalmente'
+      'Mucho o totalmente',
     ],
     questions: [
       Question(id: 1, question: 'Interesado'),
@@ -31,4 +31,5 @@ var panas = Survey(
       Question(id: 15, question: 'Atento'),
       Question(id: 16, question: 'Intranquilo'),
       Question(id: 17, question: 'Activo'),
-    ]);
+    ],
+);

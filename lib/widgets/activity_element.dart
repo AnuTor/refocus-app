@@ -25,11 +25,11 @@ class ActivityElement extends StatelessWidget {
     return ElevatedButton(
       onPressed: enable
           ? () => {
-                Navigator.of(context).pushNamed(
-                  ActivityScreen.routeName,
-                  arguments: {'path': path, 'activity': activity},
-                )
-              }
+            Navigator.of(context).pushNamed(
+              ActivityScreen.routeName,
+              arguments: {'path': path, 'activity': activity},
+            )
+          }
           : null,
       style: style,
       child: enable ? Text(activity.id.toString()) : const Icon(Icons.lock),

@@ -5,7 +5,9 @@ var cerq = Survey(
     id: 2,
     testName: 'CERQ',
     title:
-      'Generalmente todos hemos tenido que afrontar ahora o en el pasado sucesos negativos o displacenteros. Cada persona responde de una forma característica y propia ante estas situaciones. Por medio de las siguientes preguntas tratamos de conocer en qué piensas cuando experimentas sucesos negativos o desagradables.',
+      'Generalmente todos hemos tenido que afrontar ahora o en el pasado sucesos negativos o desagradables. '
+      'Cada persona responde de una forma característica y propia ante estas situaciones. '
+      'Por medio de las siguientes preguntas tratamos de conocer en qué piensas cuando experimentas sucesos de este tipo.',
     options: [
       'Nunca',
       'Algunas veces',
@@ -122,4 +124,5 @@ var cerq = Survey(
       Question(
         id: 36,
         question: 'Siento que la causa radica fundamentalmente en otros'),
-    ]);
+    ],
+);
