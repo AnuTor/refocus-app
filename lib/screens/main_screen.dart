@@ -34,15 +34,17 @@ class MainScreen extends StatelessWidget {
                 start == finish
                   ? const Text(
                     'Dia de encuesta',
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 22, fontFamily: 'Roboto'),
                   )
                   : Text(
                     'Día $start de $finish',
-                    style:
-                        const TextStyle(fontSize: 22, fontFamily: 'Roboto'),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 22, fontFamily: 'Roboto'),
                   ),
                 Text(
                   'Recorrido de ${routesData[routeNumber].title}',
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 22, color: Colors.grey, fontFamily: 'Roboto'
                   ),
