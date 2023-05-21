@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/routes.dart';
+import '../screens/path_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -18,13 +19,19 @@ class MainScreen extends StatelessWidget {
       return Card(
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         elevation: 10,
-        child: Container(
-          padding: const EdgeInsets.all(5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              start == finish
+        child: InkWell(
+          onTap: routeNumber == 0
+            ? () => {Navigator.of(context)
+                .pushNamed(PathScreen.routeName, arguments: 1)}
+            : () => {Navigator.of(context)
+                .pushNamed(PathScreen.routeName, arguments: 2)},
+          child: Container(
+            padding: const EdgeInsets.all(5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                start == finish
                   ? const Text(
                     'Dia de encuesta',
                     style: TextStyle(fontSize: 22, fontFamily: 'Roboto'),
@@ -34,14 +41,15 @@ class MainScreen extends StatelessWidget {
                     style:
                         const TextStyle(fontSize: 22, fontFamily: 'Roboto'),
                   ),
-              Text(
-                'Recorrido de ${routesData[routeNumber].title}',
-                style: const TextStyle(
-                  fontSize: 22, color: Colors.grey, fontFamily: 'Roboto'
+                Text(
+                  'Recorrido de ${routesData[routeNumber].title}',
+                  style: const TextStyle(
+                    fontSize: 22, color: Colors.grey, fontFamily: 'Roboto'
+                  ),
                 ),
-              ),
-              Image.asset(routesData[routeNumber].image),
-            ],
+                Image.asset(routesData[routeNumber].image),
+              ],
+            ),
           ),
         ),
       );
