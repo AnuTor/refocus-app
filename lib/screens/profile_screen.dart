@@ -25,6 +25,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Provider.of<Routes>(context, listen: false).cleandata();
           singOut();
         },
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          textStyle: const TextStyle(fontSize: 20),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

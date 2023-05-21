@@ -48,6 +48,9 @@ class _AuthFormState extends State<AuthForm> {
     return Center(
       child: Card(
         margin: const EdgeInsets.all(20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -100,17 +103,24 @@ class _AuthFormState extends State<AuthForm> {
                     obscureText: true,
                     onSaved: (value) {_userPassword = value!;},
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 20),
                   if (widget.isLoading) const CircularProgressIndicator(),
                   if (!widget.isLoading)
                     ElevatedButton(
                       onPressed: _trySubmit,
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        textStyle: const TextStyle(fontSize: 20),
+                      ),
                       child: Text(_isLogin ? 'Iniciar sesión' : 'Crear cuenta'),
                     ),
+                    const SizedBox(height: 2),
                   if (!widget.isLoading)
                     TextButton(
                       style: TextButton.styleFrom(
                         foregroundColor: Theme.of(context).primaryColor,
+                        textStyle: const TextStyle(fontSize: 19),
                       ),
                       child: Text(_isLogin
                           ? '¿No tienes una cuenta? Registrate'
