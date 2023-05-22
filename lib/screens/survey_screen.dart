@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 import '../providers/questions.dart';
 import '../providers/survey.dart';
+import '../providers/routes.dart';
+import '../screens/path_screen.dart';
 
 class SurveyScreen extends StatefulWidget {
   static const routeName = '/survey-screen';
@@ -18,10 +21,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
   Map<String, String> questionAnswer = {};
 
   List<Widget> form(
-    Question question,
-    List<String> options,
-    Map<String, String> answer
-  ) {
+      Question question, List<String> options, Map<String, String> answer) {
     List<Widget> list = [];
     String questionNum;
     if (question.id < 10) {
@@ -54,9 +54,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
     String testName,
   ) async {
     final user = FirebaseAuth.instance.currentUser;
-    FirebaseFirestore.instance
-        .collection('questionnaires')
-        .add({
+    FirebaseFirestore.instance.collection('questionnaires').add({
       'createdAt': Timestamp.now(),
       'userId': user!.uid,
       'path': path,
@@ -68,11 +66,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
   @override
   Widget build(BuildContext context) {
     final routeArgs =
-        ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
+      ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final path = routeArgs['path'] as String;
     final survey = routeArgs['survey'] as Survey;
     final num = routeArgs['num'] as int;
-
+    final loadedPath = Provider.of<Routes>(
+      context,
+      listen: false,
+    ).findByPathname(path);
     return Scaffold(
       appBar: AppBar(title: Text(path)),
       body: Padding(
@@ -104,18 +105,21 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           if (questionAnswer.containsValue("Respuesta")) {
                             ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
-                                content: Text(
-                                  "Por favor responda todas las preguntas"
-                                ),
-                              ));
+                              content: Text(
+                                "Por favor responda todas las preguntas"),
+                            ));
                           } else if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
                             ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
-                                  content: Text("Formulario enviado"),
-                              ));
+                              content: Text("Formulario enviado"),
+                            ));
                             _submitSurvey(path, survey.testName);
-                            Navigator.of(context).pop();
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                              PathScreen.routeName,
+                              (route) => route.isFirst,
+                              arguments: loadedPath.id,
+                            );
                           }
                         }
                       ),

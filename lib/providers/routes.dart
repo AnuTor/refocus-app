@@ -143,6 +143,10 @@ class Routes with ChangeNotifier {
     return _items.firstWhere((route) => route.id == id);
   }
 
+  Path findByPathname(String pathname) {
+    return _items.firstWhere((route) => route.title == pathname);
+  }
+
   void fetchdata() async {
     User user = _firebaseAuth.currentUser!;
     await FirebaseFirestore.instance
