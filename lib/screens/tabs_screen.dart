@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/routes.dart';
 import './routes_screen.dart';
 import './profile_screen.dart';
-import './tools_screen.dart';
+//import './tools_screen.dart';
 import './main_screen.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -30,10 +30,10 @@ class _TabsScreenState extends State<TabsScreen> {
         'page': const RoutesScreen(),
         'title': 'Rutas',
       },
-      {
-        'page': const ToolsScreen(),
-        'title': 'Herramientas',
-      },
+      // {
+      //   'page': const ToolsScreen(),
+      //   'title': 'Herramientas',
+      // },
       {
         'page': const ProfileScreen(),
         'title': 'Perfil',
@@ -54,7 +54,7 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
-        actions: [_selectedPageIndex == 3
+        actions: [_selectedPageIndex == 2
           ? DropdownButton(
             underline: Container(),
             icon: Icon(
@@ -114,12 +114,12 @@ class _TabsScreenState extends State<TabsScreen> {
             activeIcon: const Icon(Icons.route),
             label: 'Rutas',
           ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            icon: const Icon(Icons.build_outlined),
-            activeIcon: const Icon(Icons.build),
-            label: 'Herramientas',
-          ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: Theme.of(context).colorScheme.primary,
+          //   icon: const Icon(Icons.build_outlined),
+          //   activeIcon: const Icon(Icons.build),
+          //   label: 'Herramientas',
+          // ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).colorScheme.primary,
             icon: const Icon(Icons.person_outline),

@@ -17,19 +17,21 @@ class RouteElement extends StatelessWidget {
         child: InkWell(
           onTap: () => {
             Navigator.of(context)
-                .pushNamed(PathScreen.routeName, arguments: path.id)
+              .pushNamed(PathScreen.routeName, arguments: path.id)
           },
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   path.title,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
+                const SizedBox(height: 5),
                 Text(
                   path.subtitle,
                   maxLines: 3,
