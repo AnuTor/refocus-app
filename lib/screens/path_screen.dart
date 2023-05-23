@@ -36,18 +36,28 @@ class PathScreen extends StatelessWidget {
     }
     for (int i = 0; i < survDays; i++) {
       if (now.difference(startdate).inDays + 1 >= pathLenght) {
-        list.add(SurveyElement(
-          path: pathtitle,
-          survey: surveys[i],
-          num: i + 1,
-        ));
+        list.add(
+          ChangeNotifierProvider.value(
+            value: surveys[i],
+            child: SurveyElement(
+              path: pathtitle,
+              survey: surveys[i],
+              num: i + 1,
+            ),
+          ),
+        );
       } else {
-        list.add(SurveyElement(
-          path: pathtitle,
-          survey: surveys[i],
-          num: i + 1,
-          enable: false,
-        ));
+        list.add(
+          ChangeNotifierProvider.value(
+            value: surveys[i],
+            child: SurveyElement(
+              path: pathtitle,
+              survey: surveys[i],
+              num: i + 1,
+              enable: false,
+            ),
+          ),
+        );
       }
     }
     return list;

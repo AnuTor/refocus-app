@@ -7,7 +7,7 @@ class Survey with ChangeNotifier {
   final String title;
   final String? subtitle;
   final List<String> options;
-  final bool done;
+  bool done;
   final List<Question> questions;
 
   Survey({
@@ -19,4 +19,12 @@ class Survey with ChangeNotifier {
     this.done = false,
     required this.questions
   });
+
+  void setDone() {
+    done = true;
+  }
+
+  void clearDoneState() {
+    done = false;
+  }
 }
