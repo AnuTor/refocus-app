@@ -1,8 +1,9 @@
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
-var cerq = Survey(
-    id: 2,
+Survey cerq(int id) {
+  return Survey(
+    id: id,
     testName: 'CERQ',
     title:
       'Generalmente todos hemos tenido que afrontar ahora o en el pasado sucesos negativos o desagradables. '
@@ -125,4 +126,5 @@ var cerq = Survey(
         id: 36,
         question: 'Siento que la causa radica fundamentalmente en otros'),
     ],
-);
+  );
+}

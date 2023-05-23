@@ -51,7 +51,7 @@ class Routes with ChangeNotifier {
           audiofile: 'estar-presentes-practica.mp3',
         ),
       ],
-      surveys: [panas],
+      surveys: [panas(1)],
     ),
     Path(
       id: 2,
@@ -118,10 +118,10 @@ class Routes with ChangeNotifier {
         ),
       ],
       surveys: [
-        panas,
-        cerq,
-        gad,
-        phq,
+        panas(2),
+        cerq(3),
+        gad(4),
+        phq(5),
       ],
     ),
   ];

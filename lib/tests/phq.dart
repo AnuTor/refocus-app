@@ -1,8 +1,9 @@
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
-var phq = Survey(
-    id: 4,
+Survey phq(int id) {
+  return Survey(
+    id: id,
     testName: 'PHQ',
     title:
       'Durante la última semana, ¿con qué frecuencia ha sentido molestias debido a los siguientes problemas?',
@@ -43,4 +44,5 @@ var phq = Survey(
         id: 9,
         question: 'Pensamientos de que estaría mejor muerto(a) o de lastimarse de alguna manera'),
     ],
-);
+  );
+}

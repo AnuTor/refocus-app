@@ -1,8 +1,9 @@
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
-var panas = Survey(
-    id: 1,
+Survey panas(int id) {
+  return Survey(
+    id: id,
     testName: 'PANAS',
     title:
       'Utilizando la escala de respuestas propuesta a continuación, señala en qué medida has experimentado en la última semana las siguientes emociones.',
@@ -32,4 +33,5 @@ var panas = Survey(
       Question(id: 16, question: 'Intranquilo'),
       Question(id: 17, question: 'Activo'),
     ],
-);
+  );
+} 

@@ -1,8 +1,9 @@
 import '../providers/survey.dart';
 import '../providers/questions.dart';
 
-var gad = Survey(
-    id: 3,
+Survey gad(int id) {
+  return Survey(
+    id: id,
     testName: 'GAD',
     title:
       'Durante la última semana, ¿con qué frecuencia sintió molestias debido a los siguientes problemas?',
@@ -35,4 +36,5 @@ var gad = Survey(
         id: 7,
         question: 'Sentirse con miedo, como si algo terrible fuera a suceder'),
     ],
-);
+  );
+}

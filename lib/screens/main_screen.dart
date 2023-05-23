@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
     var username = routes.username;
 
     Widget buildCardContent(
-      int start, int finish, int routeNumber, bool isSmallScreen) {
+        int start, int finish, int routeNumber, bool isSmallScreen) {
       return Card(
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         elevation: 10,
@@ -37,14 +37,14 @@ class MainScreen extends StatelessWidget {
               children: <Widget>[
                 start == finish
                   ? const Text(
-                      'Dia de cuestionarios',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 22),
+                    'Dia de cuestionarios',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 22),
                   )
                   : Text(
-                      'Día $start de $finish',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 22),
+                    'Día $start de $finish',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 22),
                   ),
                 Text(
                   'Recorrido de ${routesData[routeNumber].title}',
@@ -66,21 +66,27 @@ class MainScreen extends StatelessWidget {
     }
 
     Widget routeCard(
-      int start, int finish, int routeNumber, bool isSmallScreen) {
+        int start, int finish, int routeNumber, bool isSmallScreen) {
       final Widget cardContent = isSmallScreen
-        ? Expanded(
-          child: buildCardContent(start, finish, routeNumber, isSmallScreen),
+        ? Expanded(child:
+          buildCardContent(start, finish, routeNumber, isSmallScreen),
         )
         : buildCardContent(start, finish, routeNumber, isSmallScreen);
       return cardContent;
     }
 
     Widget currentActivity(bool isSmallScreen) {
+      final DateTime currentDate = DateTime.now();
+      final DateTime currentDateOnly = DateTime(
+        currentDate.year,
+        currentDate.month,
+        currentDate.day
+      );
       final daysSince =
-        DateTime.now().difference(DateUtils.dateOnly(startdate)).inDays;
+        currentDateOnly.difference(DateUtils.dateOnly(startdate)).inDays;
       final route0 = routesData[0];
       final route1 = routesData[1];
-      final int totalDays = route0.days + route1.days + 2;
+      final int totalDays = route0.days + route1.days;
       if (daysSince < 0) {
         return Text(
           'Aún no tiene habilitado el ingreso a la plataforma. '
@@ -95,33 +101,35 @@ class MainScreen extends StatelessWidget {
         return routeCard(start + 1, route1.days, 1, isSmallScreen);
       }
       return Text(
-        'Ha completado todas las actividades. Felicidades!',
+        'Felicidades! Has completado las 2 semanas de actividades. '
+        'De todos modos quedan habilitados todos los ejercicios '
+        'por si quieres seguir practicando.',
         style: Theme.of(context).textTheme.bodyMedium,
+        textAlign: TextAlign.center,
       );
     }
 
     if (username != "") {
       return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          bool isSmallScreen = constraints.maxHeight < 400;
-          return Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Bienvenido, $username',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 10),
-                currentActivity(isSmallScreen),
-              ],
-            ),
-          );
-        }
-      );
+          builder: (BuildContext context, BoxConstraints constraints) {
+        bool isSmallScreen = constraints.maxHeight < 400;
+        return Container(
+          alignment: Alignment.center,
+          margin: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Bienvenido, $username',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 10),
+              currentActivity(isSmallScreen),
+            ],
+          ),
+        );
+      });
     }
     return const Center(child: CircularProgressIndicator());
   }
