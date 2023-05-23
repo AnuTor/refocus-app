@@ -73,7 +73,7 @@ class _SurveyElementState extends State<SurveyElement> {
           }
           : null,
         style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 20),
+          textStyle: const TextStyle(fontSize: 22),
           shape: const CircleBorder(),
           backgroundColor: (widget.enable && !widget.survey.done)
             ? Colors.deepOrange

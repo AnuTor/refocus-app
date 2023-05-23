@@ -100,7 +100,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       ...form(e, survey.options, questionAnswer),
                     Center(
                       child: ElevatedButton(
-                        child: const Text('Submit'),
                         onPressed: () {
                           if (questionAnswer.containsValue("Respuesta")) {
                             ScaffoldMessenger.of(context)
@@ -121,7 +120,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               arguments: loadedPath.id,
                             );
                           }
-                        }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        child: const Text('Submit'),
                       ),
                     ),
                   ],

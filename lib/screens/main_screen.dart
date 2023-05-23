@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
               children: <Widget>[
                 start == finish
                   ? const Text(
-                    'Dia de cuestionarios',
+                    'Día de cuestionarios',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 22),
                   )
@@ -89,8 +89,8 @@ class MainScreen extends StatelessWidget {
       final int totalDays = route0.days + route1.days;
       if (daysSince < 0) {
         return Text(
-          'Aún no tiene habilitado el ingreso a la plataforma. '
-          'Regrese el ${DateFormat('d/M/y').format(startdate)}'
+          'Aún no tienes habilitado el ingreso a la plataforma. '
+          'Regresa el ${DateFormat('d/M/y').format(startdate)}'
         );
       }
       if (daysSince >= 0 && daysSince < route0.days) {
