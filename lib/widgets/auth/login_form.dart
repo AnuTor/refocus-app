@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AuthForm extends StatefulWidget {
-  const AuthForm({
+import '../../screens/intro_screen.dart';
+
+class LoginForm extends StatefulWidget {
+  const LoginForm({
     Key? key,
     required this.submitFn,
     this.isLoading = false,
@@ -11,33 +13,27 @@ class AuthForm extends StatefulWidget {
   final void Function(
     String email,
     String password,
-    String userName,
-    bool isLogin,
     BuildContext ctx,
   ) submitFn;
 
   @override
-  State<AuthForm> createState() => _AuthFormState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
-class _AuthFormState extends State<AuthForm> {
+class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  var _isLogin = true;
+  var _isLogin = false;
   var _userEmail = '';
-  var _userName = '';
   var _userPassword = '';
 
   void _trySubmit() {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
-
     if (isValid) {
       _formKey.currentState!.save();
       widget.submitFn(
         _userEmail.trim(),
         _userPassword.trim(),
-        _userName.trim(),
-        _isLogin,
         context,
       );
     }
@@ -59,55 +55,46 @@ class _AuthFormState extends State<AuthForm> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  TextFormField(
-                    key: const ValueKey('email'),
-                    autocorrect: false,
-                    textCapitalization: TextCapitalization.none,
-                    enableSuggestions: false,
-                    validator: (value) {
-                      if (value == null || value.isEmpty || !value.contains('@')) {
-                        return 'Por favor ingrese un mail válido';
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: 'Correo electrónico',
-                    ),
-                    onSaved: (value) {_userEmail = value!;},
-                  ),
-                  if (!_isLogin)
+                  if (_isLogin)
                     TextFormField(
-                      key: const ValueKey('username'),
-                      autocorrect: true,
-                      textCapitalization: TextCapitalization.words,
+                      key: const ValueKey('email'),
+                      autocorrect: false,
+                      textCapitalization: TextCapitalization.none,
                       enableSuggestions: false,
                       validator: (value) {
-                        if (value == null || value.isEmpty || value.length < 4) {
-                          return 'El nombre de usuario debe tener al menos 4 caracteres';
+                        if (value == null || value.isEmpty || !value.contains('@')) {
+                          return 'Por favor ingrese un mail válido';
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(labelText: 'Nombre de usuario'),
-                      onSaved: (value) {_userName = value!;},
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: 'Correo electrónico',
+                      ),
+                      onSaved: (value) {_userEmail = value!;},
                     ),
-                  TextFormField(
-                    key: const ValueKey('password'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty || value.length < 6) {
-                        return 'La contraseña debe tener al menos 6 caracteres';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(labelText: 'Contraseña'),
-                    obscureText: true,
-                    onSaved: (value) {_userPassword = value!;},
-                  ),
+                  if (_isLogin)
+                    TextFormField(
+                      key: const ValueKey('password'),
+                      validator: (value) {
+                        if (value == null || value.isEmpty || value.length < 6) {
+                          return 'La contraseña debe tener al menos 6 caracteres';
+                        }
+                        return null;
+                      },
+                      decoration: const InputDecoration(labelText: 'Contraseña'),
+                      obscureText: true,
+                      onSaved: (value) {_userPassword = value!;},
+                    ),
                   const SizedBox(height: 20),
                   if (widget.isLoading) const CircularProgressIndicator(),
                   if (!widget.isLoading)
                     ElevatedButton(
-                      onPressed: _trySubmit,
+                      onPressed: _isLogin
+                        ? _trySubmit
+                        : () => {
+                          Navigator.of(context).pushNamed(IntroScreen.routeName)
+                        },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -124,7 +111,7 @@ class _AuthFormState extends State<AuthForm> {
                       ),
                       child: Text(_isLogin
                           ? '¿No tienes una cuenta? Registrate'
-                          : 'Ya estoy registrado'),
+                          : 'Ya estás registrado? Ingresá'),
                       onPressed: () {
                         setState(() {
                           _isLogin = !_isLogin;

@@ -4,9 +4,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../providers/routes.dart';
-import './screens/auth_screen.dart';
-import './screens/tabs_screen.dart';
 import './screens/splash_screen.dart';
+import './screens/login_screen.dart';
+import './screens/intro_screen.dart';
+import './screens/tabs_screen.dart';
 import './screens/path_screen.dart';
 import './screens/activity_screen.dart';
 import './screens/survey_screen.dart';
@@ -62,12 +63,13 @@ class MyApp extends StatelessWidget {
                     if (userSnapshot.hasData) {
                       return const TabsScreen();
                     }
-                    return const AuthScreen();
+                    return const LoginScreen();
                   }
                 ),
             routes: {
-              ActivityScreen.routeName: (ctx) => const ActivityScreen(),
+              IntroScreen.routeName: (ctx) => const IntroScreen(),
               PathScreen.routeName: (ctx) => const PathScreen(),
+              ActivityScreen.routeName: (ctx) => const ActivityScreen(),
               SurveyScreen.routeName: (ctx) => const SurveyScreen(),
             },
             onUnknownRoute: (settings) {
