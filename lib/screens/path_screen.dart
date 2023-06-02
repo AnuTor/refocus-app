@@ -22,6 +22,11 @@ class PathScreen extends StatelessWidget {
     int survDays = surveys.length;
     String pathtitle = path.title;
     DateTime now = DateUtils.dateOnly(DateTime.now());
+    double spacing = 20;
+
+    list.add(SizedBox(
+      height: spacing,
+    ));
 
     for (int i = 0; i < activitiesDays; i++) {
       if (i < now.difference(startdate).inDays + 1) {
@@ -33,6 +38,9 @@ class PathScreen extends StatelessWidget {
           enable: false,
         ));
       }
+      list.add(SizedBox(
+        height: spacing,
+      ));
     }
     for (int i = 0; i < survDays; i++) {
       if (now.difference(startdate).inDays + 1 >= pathLenght) {
@@ -72,12 +80,19 @@ class PathScreen extends StatelessWidget {
     ).findById(pathId);
     return Scaffold(
       appBar: AppBar(title: Text(loadedPath.title)),
-      body: GridView.count(
-        crossAxisCount: 4,
-        padding: const EdgeInsets.all(15),
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
-        children: tipoBoton(loadedPath),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(loadedPath.image, fit: BoxFit.fitWidth),
+            Text(loadedPath.title,
+                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              loadedPath.subtitle,
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+            ...tipoBoton(loadedPath),
+          ],
+        ),
       ),
     );
   }

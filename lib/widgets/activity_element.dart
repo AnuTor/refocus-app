@@ -20,19 +20,35 @@ class ActivityElement extends StatelessWidget {
     final ButtonStyle style = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 22),
       shape: const CircleBorder(),
+      fixedSize: Size(64, 64),
     );
 
-    return ElevatedButton(
-      onPressed: enable
-          ? () => {
-            Navigator.of(context).pushNamed(
-              ActivityScreen.routeName,
-              arguments: {'path': path, 'activity': activity},
-            )
-          }
-          : null,
-      style: style,
-      child: enable ? Text(activity.id.toString()) : const Icon(Icons.lock),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        ElevatedButton(
+          onPressed: enable
+              ? () => {
+                    Navigator.of(context).pushNamed(
+                      ActivityScreen.routeName,
+                      arguments: {'path': path, 'activity': activity},
+                    )
+                  }
+              : null,
+          style: style,
+          child: enable ? Text(activity.id.toString()) : const Icon(Icons.lock),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(activity.title),
+            activity.audio ? const Text('Audio') : const Text('Texto')
+          ],
+        )
+      ],
     );
   }
 }
