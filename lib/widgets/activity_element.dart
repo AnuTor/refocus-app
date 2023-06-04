@@ -18,35 +18,54 @@ class ActivityElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 22),
-      shape: const CircleBorder(),
-      fixedSize: Size(64, 64),
-    );
+        textStyle: const TextStyle(fontSize: 22),
+        shape: const CircleBorder(),
+        //fixedSize: Size(60, 60),
+        padding: EdgeInsets.all(15));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        ElevatedButton(
-          onPressed: enable
-              ? () => {
-                    Navigator.of(context).pushNamed(
-                      ActivityScreen.routeName,
-                      arguments: {'path': path, 'activity': activity},
-                    )
-                  }
-              : null,
-          style: style,
-          child: enable ? Text(activity.id.toString()) : const Icon(Icons.lock),
+        Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: ElevatedButton(
+            onPressed: enable
+                ? () => {
+                      Navigator.of(context).pushNamed(
+                        ActivityScreen.routeName,
+                        arguments: {'path': path, 'activity': activity},
+                      )
+                    }
+                : null,
+            style: style,
+            child:
+                enable ? Text(activity.id.toString()) : const Icon(Icons.lock),
+          ),
         ),
         SizedBox(
           width: 20,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(activity.title),
-            activity.audio ? const Text('Audio') : const Text('Texto')
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                activity.title,
+                overflow: TextOverflow.fade,
+                softWrap: false,
+                maxLines: 1,
+              ),
+              activity.audio
+                  ? const Text(
+                      'Audio',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  : const Text(
+                      'Texto',
+                      style: TextStyle(color: Colors.grey),
+                    )
+            ],
+          ),
         )
       ],
     );

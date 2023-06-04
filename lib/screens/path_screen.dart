@@ -67,6 +67,9 @@ class PathScreen extends StatelessWidget {
           ),
         );
       }
+      list.add(SizedBox(
+        height: spacing,
+      ));
     }
     return list;
   }
