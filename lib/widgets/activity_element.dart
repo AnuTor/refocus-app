@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../providers/activity.dart';
@@ -20,13 +22,42 @@ class ActivityElement extends StatefulWidget {
 }
 
 class _ActivityElementState extends State<ActivityElement> {
+  bool isDone = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.enable) {
+      Future.delayed(Duration.zero, () async {
+        bool isAlreadyDone = await checkDone();
+        if (isAlreadyDone) {
+          setState(() {
+            isDone = true;
+          });
+        }
+      });
+    }
+  }
+
+  Future<bool> checkDone() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    final activityDone = await FirebaseFirestore.instance
+        .collection('activitiesDone')
+        .where('UserID', isEqualTo: user.uid)
+        .where('path', isEqualTo: widget.path)
+        .where('activity', isEqualTo: widget.activity.title)
+        .get();
+    return activityDone.docs.isNotEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 22),
         shape: const CircleBorder(),
         //fixedSize: Size(60, 60),
-        padding: EdgeInsets.all(15));
+        padding: EdgeInsets.all(15),
+        backgroundColor: isDone ? Colors.green : Colors.blue);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,

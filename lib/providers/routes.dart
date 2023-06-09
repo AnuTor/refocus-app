@@ -42,7 +42,7 @@ class Routes with ChangeNotifier {
                 'Podemos combinar la forma anterior de respirar con inhalaciones lentas y profundas, haciendo una pequeña pausa y manteniendo el aire en nuestro interior. Luego expulsamos el aire lentamente por la boca, como si estuviéramos soplando la llama de una vela para hacer oscilar, pero sin hacer que se apague. Expulsamos la tensión junto con el aire.'),
         Activity(
           id: 3,
-          title: 'Audio de relajación',
+          title: 'Relajación',
           subtitle: "Estar presentes",
           image: 'assets/images/app_meditating.png',
           text:
