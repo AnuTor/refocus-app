@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../providers/activity.dart';
 import '../screens/activity_screen.dart';
 
-class ActivityElement extends StatelessWidget {
+class ActivityElement extends StatefulWidget {
   final String path;
   final Activity activity;
   final bool enable;
@@ -15,6 +15,11 @@ class ActivityElement extends StatelessWidget {
     this.enable = true,
   }) : super(key: key);
 
+  @override
+  State<ActivityElement> createState() => _ActivityElementState();
+}
+
+class _ActivityElementState extends State<ActivityElement> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
@@ -29,17 +34,21 @@ class ActivityElement extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: ElevatedButton(
-            onPressed: enable
+            onPressed: widget.enable
                 ? () => {
                       Navigator.of(context).pushNamed(
                         ActivityScreen.routeName,
-                        arguments: {'path': path, 'activity': activity},
+                        arguments: {
+                          'path': widget.path,
+                          'activity': widget.activity
+                        },
                       )
                     }
                 : null,
             style: style,
-            child:
-                enable ? Text(activity.id.toString()) : const Icon(Icons.lock),
+            child: widget.enable
+                ? Text(widget.activity.id.toString())
+                : const Icon(Icons.lock),
           ),
         ),
         SizedBox(
@@ -50,12 +59,12 @@ class ActivityElement extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                activity.title,
+                widget.activity.title,
                 overflow: TextOverflow.fade,
                 softWrap: false,
                 maxLines: 1,
               ),
-              activity.audio
+              widget.activity.audio
                   ? const Text(
                       'Audio',
                       style: TextStyle(color: Colors.grey),

@@ -9,13 +9,12 @@ class Activity with ChangeNotifier {
   final bool audio;
   final String? audiofile;
 
-  Activity({
-    required this.id,
-    required this.title,
-    this.subtitle,
-    required this.image,
-    required this.text,
-    this.audio = false,
-    this.audiofile
-  });
+  Activity(
+      {required this.id,
+      required this.title,
+      this.subtitle,
+      required this.image,
+      required this.text,
+      this.audio = false,
+      this.audiofile});
 }
