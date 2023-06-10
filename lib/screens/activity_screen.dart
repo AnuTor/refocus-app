@@ -68,8 +68,10 @@ class ActivityScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: ((context) =>
-                                PlayerScreen(activity: activity))))
+                            builder: ((context) => PlayerScreen(
+                                  activity: activity,
+                                  path: path,
+                                ))))
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.white,

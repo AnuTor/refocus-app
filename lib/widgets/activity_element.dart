@@ -53,11 +53,13 @@ class _ActivityElementState extends State<ActivityElement> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 22),
-        shape: const CircleBorder(),
-        //fixedSize: Size(60, 60),
-        padding: EdgeInsets.all(15),
-        backgroundColor: isDone ? Colors.green : Colors.blue);
+      textStyle: const TextStyle(fontSize: 22),
+      shape: CircleBorder(
+          side: BorderSide(width: 3, color: Theme.of(context).primaryColor)),
+      //fixedSize: Size(60, 60),
+      padding: EdgeInsets.all(15),
+      backgroundColor: isDone ? null : Colors.grey.shade200,
+    );
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
