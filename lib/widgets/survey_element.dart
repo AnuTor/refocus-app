@@ -105,7 +105,7 @@ class _SurveyElementState extends State<SurveyElement> {
                   maxLines: 1,
                 ),
                 Text(
-                  '${widget.survey.questions.length + 1} preguntas',
+                  '${widget.survey.questions.length} preguntas',
                   style: const TextStyle(color: Colors.grey),
                 )
               ],
