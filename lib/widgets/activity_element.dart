@@ -57,7 +57,7 @@ class _ActivityElementState extends State<ActivityElement> {
       shape: CircleBorder(
           side: BorderSide(width: 3, color: Theme.of(context).primaryColor)),
       //fixedSize: Size(60, 60),
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       backgroundColor: isDone ? null : Colors.grey.shade200,
     );
 
@@ -65,7 +65,7 @@ class _ActivityElementState extends State<ActivityElement> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10),
           child: ElevatedButton(
             onPressed: widget.enable
                 ? () => {
@@ -84,7 +84,7 @@ class _ActivityElementState extends State<ActivityElement> {
                 : const Icon(Icons.lock),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Expanded(
