@@ -83,7 +83,7 @@ class _SurveyElementState extends State<SurveyElement> {
                   backgroundColor: (widget.enable && !widget.survey.done)
                       ? Colors.deepOrange
                       : Colors.lightGreenAccent[700],
-                  padding: EdgeInsets.all(15)),
+                  padding: const EdgeInsets.all(15)),
               child: widget.enable
                   ? (widget.survey.done
                       ? const Icon(Icons.check)
@@ -91,7 +91,7 @@ class _SurveyElementState extends State<SurveyElement> {
                   : const Icon(Icons.lock),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Expanded(
@@ -105,8 +105,8 @@ class _SurveyElementState extends State<SurveyElement> {
                   maxLines: 1,
                 ),
                 Text(
-                  '${widget.survey.questions.length + 1} preguntas',
-                  style: TextStyle(color: Colors.grey),
+                  '${widget.survey.questions.length} preguntas',
+                  style: const TextStyle(color: Colors.grey),
                 )
               ],
             ),

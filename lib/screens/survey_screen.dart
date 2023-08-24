@@ -20,8 +20,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
   Map<String, String> questionAnswer = {};
 
-  List<Widget> form(
-      Question question, List<String> options, Map<String, String> answer) {
+  List<Widget> form(Question question, int lenght, List<String> options,
+      Map<String, String> answer) {
     List<Widget> list = [];
     String questionNum;
     if (question.id < 10) {
@@ -30,7 +30,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
       questionNum = 'Q${question.id.toString()}';
     }
     answer[questionNum] ??= 'Respuesta';
-    list.add(Text(question.question));
+    list.add(Text('(${question.id}/${lenght}) ${question.question}'));
     for (String ans in options) {
       list.add(RadioListTile(
         title: Text(ans),
@@ -66,10 +66,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
   @override
   Widget build(BuildContext context) {
     final routeArgs =
-      ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final path = routeArgs['path'] as String;
     final survey = routeArgs['survey'] as Survey;
     final num = routeArgs['num'] as int;
+    final length = survey.questions.length;
     final loadedPath = Provider.of<Routes>(
       context,
       listen: false,
@@ -97,20 +98,20 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     for (var e in survey.questions)
-                      ...form(e, survey.options, questionAnswer),
+                      ...form(e, length, survey.options, questionAnswer),
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
                           if (questionAnswer.containsValue("Respuesta")) {
                             ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
+                                .showSnackBar(const SnackBar(
                               content: Text(
-                                "Por favor responda todas las preguntas"),
+                                  "Por favor responda todas las preguntas"),
                             ));
                           } else if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
                             ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
+                                .showSnackBar(const SnackBar(
                               content: Text("Formulario enviado"),
                             ));
                             _submitSurvey(path, survey.testName);
@@ -123,7 +124,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           textStyle: const TextStyle(fontSize: 20),
                         ),
                         child: const Text('Submit'),
