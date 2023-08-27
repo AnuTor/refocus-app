@@ -8,6 +8,7 @@ class Activity with ChangeNotifier {
   final String text;
   final bool audio;
   final String? audiofile;
+  bool done;
 
   Activity(
       {required this.id,
@@ -16,5 +17,14 @@ class Activity with ChangeNotifier {
       required this.image,
       required this.text,
       this.audio = false,
-      this.audiofile});
+      this.audiofile,
+      this.done = false});
+
+  void setDone() {
+    done = true;
+  }
+
+  void clearDoneState() {
+    done = false;
+  }
 }

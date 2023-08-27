@@ -72,29 +72,11 @@ class Routes with ChangeNotifier {
             image: 'assets/images/landscape_photographer.png',
             text:
                 'Cuando experimentamos una situación o evento en nuestras vidas, no es este evento o situación lo que nos determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
-                'En esta sección, se verán las técnicas para poder lograr este cambio de pensamiento',
+                'En esta sección, se verán las técnicas para poder lograr este cambio de pensamiento, junto a un par de ejemplos para comprender mejor dicha técnica.',
             audio: true,
-            audiofile: '3.Intro_Mod Pensamiento.m4a'),
+            audiofile: '3.5.Intro_Ejemplo_Mod Pensamiento.m4a'),
         Activity(
-            id: 2,
-            title: 'Modificación de pensamiento 1',
-            subtitle: 'Ejemplo 1',
-            image: 'assets/images/two_relaxation.png',
-            text:
-                'En el siguiente audio, se verá un ejemplo de como se puede aplicar la modificación del pensamiento',
-            audio: true,
-            audiofile: '4.Mod Pensamiento.Ejemplo.m4a'),
-        Activity(
-            id: 3,
-            title: 'Modificación de pensamiento 2',
-            subtitle: 'Ejemplo 2',
-            image: 'assets/images/through_the_window.png',
-            text:
-                'En el siguiente audio, se verá un ejemplo de como se puede aplicar la modificación del pensamiento',
-            audio: true,
-            audiofile: '5.Mod Pensamiento.Ejemplo2.m4a'),
-        Activity(
-          id: 4,
+          id: 2,
           title: 'Refocalización positiva 1',
           subtitle: 'Descripción inicial',
           image: 'assets/images/two_relaxation.png',
@@ -105,19 +87,10 @@ class Routes with ChangeNotifier {
               'c. ¿Cómo puedes aprender a relacionarte, empatizar o ayudar a otros a superar retos similares en el futuro?\n\n'
               'd. Ahora has un esfuerzo por pensar en todos los demás beneficios potenciales, por pequeños que sean, que pueden derivarse de la experiencia vivida.',
           audio: true,
-          audiofile: '6. Refo Posit_Descripcion inicial.m4a',
+          audiofile: '6.5 Refo Posit_Descripcion inicial_ejemplo.m4a',
         ),
         Activity(
-            id: 5,
-            title: 'Refocalización positiva 2',
-            subtitle: 'Ejemplo',
-            image: 'assets/images/two_relaxation.png',
-            text:
-                'A continuación se verá un ejemplo en la aplicación práctica de la refocalización positiva',
-            audio: true,
-            audiofile: '7.Ejemplo Refoc Posi.m4a'),
-        Activity(
-            id: 6,
+            id: 4,
             title: 'Reinterpretación alternativa 1',
             subtitle: 'Descripción inicial',
             image: 'assets/images/two_relaxation.png',
@@ -129,9 +102,9 @@ class Routes with ChangeNotifier {
                 'b- ¿Qué sería lo mejor que podría pasar?,\n\n'
                 'c- ¿Qué resultados serían más realistas?',
             audio: true,
-            audiofile: '8.Reinterpreta Descripcion.m4a'),
+            audiofile: '8.5.Reinterpreta Descripcion_ejemplo.m4a'),
         Activity(
-            id: 7,
+            id: 5,
             title: 'Reinterpretación alternativa 2',
             subtitle: 'Ejemplo',
             image: 'assets/images/two_relaxation.png',
@@ -142,7 +115,7 @@ class Routes with ChangeNotifier {
             audio: true,
             audiofile: '9.Reinterpreta Ejemplo.m4a'),
         Activity(
-            id: 9,
+            id: 6,
             title: 'Reinterpretación alternativa 3',
             image: 'assets/images/two_relaxation.png',
             text:
