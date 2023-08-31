@@ -9,6 +9,7 @@ class Activity with ChangeNotifier {
   final bool audio;
   final String? audiofile;
   bool done;
+  bool reversed;
 
   Activity(
       {required this.id,
@@ -18,7 +19,8 @@ class Activity with ChangeNotifier {
       required this.text,
       this.audio = false,
       this.audiofile,
-      this.done = false});
+      this.done = false,
+      this.reversed = false});
 
   void setDone() {
     done = true;

@@ -53,42 +53,63 @@ class ActivityScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              activity.text,
-              style: Theme.of(context).textTheme.bodyLarge,
-              //textAlign: TextAlign.justify
-            ),
-          ),
+          activity.reversed
+              ? buttonActivity(activity, context, path)
+              : contentActivity(activity, context),
           const SizedBox(height: 20),
-          activity.audio
-              ? TextButton(
-                  onPressed: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => PlayerScreen(
-                                  activity: activity,
-                                  path: path,
-                                ))))
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  child: const Text('Comenzar'),
+          activity.reversed
+              ? Column(
+                  children: [
+                    const Text(
+                      "FAVOR DE ESCUCHAR PRIMERO EL AUDIO",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    contentActivity(activity, context),
+                  ],
                 )
-              : ElevatedButton(
-                  onPressed: () =>
-                      {_activityDone(path, activity), Navigator.pop(context)},
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20)),
-                  child: const Text('Completar')),
+              : buttonActivity(activity, context, path),
         ]),
       ),
     );
+  }
+
+  Container contentActivity(Activity activity, BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      child: Text(
+        activity.text,
+        style: Theme.of(context).textTheme.bodyLarge,
+        //textAlign: TextAlign.justify
+      ),
+    );
+  }
+
+  ButtonStyleButton buttonActivity(
+      Activity activity, BuildContext context, String path) {
+    return activity.audio
+        ? TextButton(
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => PlayerScreen(
+                            activity: activity,
+                            path: path,
+                          ))))
+            },
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              textStyle: const TextStyle(fontSize: 20),
+            ),
+            child: const Text('Escuchar audio'),
+          )
+        : ElevatedButton(
+            onPressed: () =>
+                {_activityDone(path, activity), Navigator.pop(context)},
+            style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                textStyle: const TextStyle(fontSize: 20)),
+            child: const Text('Completar actividad'));
   }
 }
