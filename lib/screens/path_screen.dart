@@ -89,10 +89,13 @@ class PathScreen extends StatelessWidget {
             Image.asset(loadedPath.image, fit: BoxFit.fitWidth),
             Text(loadedPath.title,
                 style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 10),
             Text(
               loadedPath.subtitle,
               style: Theme.of(context).textTheme.subtitle1,
+              textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 10),
             ...tipoBoton(loadedPath),
           ],
         ),

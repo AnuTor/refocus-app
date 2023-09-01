@@ -32,11 +32,11 @@ class Routes with ChangeNotifier {
               'Nuestra aplicación ha sido cuidadosamente diseñada para proporcionarte las herramientas y técnicas necesarias para sobrellevar esas tensiones cotidianas y recuperar tu equilibrio interno. \n\n.'
               'Antes de sumergirte en las herramientas presentes en la aplicación, te invitamos a escuchar un breve audio en el que profundizamos en los objetivos de nuestra aplicación. Mucha suerte.',
           audio: true,
-          audiofile: '1.Audio Intro a REFOCUS.m4a',
+          audiofile: '1_intro.m4a',
         ),
         Activity(
             id: 2,
-            title: 'Relajación',
+            title: 'Relajación 1',
             image: 'assets/images/meditation.png',
             text: '\n\nEjercicios de Respiración\n\n'
                 'Una de las técnicas más sencillas de relajación son los ejercicios de respiración. En general, el objetivo de los ejercicios de respiración es fomentar la respiración diafragmática, a un ritmo lento, profundo y homogéneo.\n\n'
@@ -45,17 +45,17 @@ class Routes with ChangeNotifier {
                 'Este ejercicio puede hacerse también recostado y variando un poco la técnica. Uno se recuesta, coloca las manos en el regazo o a un costado, y se relaja. Comenzamos a respirar con suavidad, dejando que el flujo de aire sea leve y homogéneo. Mientras respiramos cerramos los ojos y nos imaginamos en un lugar que nos haga sentir plenos, tranquilos, relajados. Nos concentramos en ese lugar, estamos ahí, sentimos el aire y percibimos el entorno imaginario que nos rodea. Intentamos hacer tan vívidas como se puedan estas imágenes de este lugar tranquilo, que nos hace sentir plenos y relajados. Mientras tanto dejamos que el flujo de aire que entra por la nariz sea tan suave y pausado como sea posible. Respiramos profundamente, y nos relajamos, dejando que el aire salga al exterior lenta y naturalmente, sin esfuerzo. Seguimos respirando de este modo, inhalando y exhalando el aire con lentitud y suavidad, a nuestro propio ritmo. Reposadamente mientras respiramos prestamos atención a la calma interna que se produce.\n\n'
                 'Podemos combinar la forma anterior de respirar con inhalaciones lentas y profundas, haciendo una pequeña pausa y manteniendo el aire en nuestro interior. Luego expulsamos el aire lentamente por la boca, como si estuviéramos soplando la llama de una vela para hacer oscilar, pero sin hacer que se apague. Expulsamos la tensión junto con el aire.',
             audio: true,
-            audiofile: '2.Intro_Relajacion.m4a',
+            audiofile: '2_intro_relajacion.m4a',
             reversed: true),
         Activity(
           id: 3,
-          title: 'Audio de relajación',
+          title: 'Relajación 2',
           subtitle: "Estar presentes",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad vamos a realizar un nuevo ejercicio para el cual te vas a guiar de un audio para realizarlo.',
           audio: true,
-          audiofile: 'estar-presentes-practica.mp3',
+          audiofile: '3_practica_relajacion.mp3',
         ),
       ],
       surveys: [panas(5)],
@@ -77,11 +77,11 @@ class Routes with ChangeNotifier {
               '\nCuando experimentamos una situación o evento en nuestras vidas, no es este evento o situación lo que nos determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se verán las técnicas para poder lograr este cambio de pensamiento, junto a un par de ejemplos para comprender mejor dicha técnica.',
           audio: true,
-          audiofile: '3.5.Intro_Ejemplo_Mod Pensamiento.m4a',
+          audiofile: '4_intro_mod_pensamiento_ejemplos.m4a',
         ),
         Activity(
             id: 2,
-            title: 'Refocalización positiva 1',
+            title: 'Refocalización positiva',
             subtitle: 'Descripción inicial y ejemplo',
             image: 'assets/images/two_relaxation.png',
             text: '\n\nEjercicios de refocalización positiva\n\n'
@@ -91,11 +91,11 @@ class Routes with ChangeNotifier {
                 'c. ¿Cómo puedes aprender a relacionarte, empatizar o ayudar a otros a superar retos similares en el futuro?\n\n'
                 'd. Ahora has un esfuerzo por pensar en todos los demás beneficios potenciales, por pequeños que sean, que pueden derivarse de la experiencia vivida.',
             audio: true,
-            audiofile: '6.5 Refo Posit_Descripcion inicial_ejemplo.m4a',
+            audiofile: '5_intro_refocalizacion_ejemplo.m4a',
             reversed: true),
         Activity(
             id: 4,
-            title: 'Reinterpretación alternativa 1',
+            title: 'Reinterpretación 1',
             subtitle: 'Descripción inicial y ejemplo',
             image: 'assets/images/two_relaxation.png',
             text: '\n\nEjercicio de Reinterpretación alternativa\n\n'
@@ -106,11 +106,11 @@ class Routes with ChangeNotifier {
                 'b- ¿Qué sería lo mejor que podría pasar?,\n\n'
                 'c- ¿Qué resultados serían más realistas?',
             audio: true,
-            audiofile: '8.5.Reinterpreta Descripcion_ejemplo.m4a',
+            audiofile: '6_intro_reinterpretacion_ejemplo.m4a',
             reversed: true),
         Activity(
           id: 5,
-          title: 'Reinterpretación alternativa 2',
+          title: 'Reinterpretación 2',
           subtitle: 'Ejemplo',
           image: 'assets/images/two_relaxation.png',
           text: '\n\nEjercicio de Reinterpretación alternativa\n\n'
@@ -120,7 +120,7 @@ class Routes with ChangeNotifier {
         ),
         Activity(
             id: 6,
-            title: 'Reinterpretación alternativa 3',
+            title: 'Reinterpretación 3',
             image: 'assets/images/two_relaxation.png',
             text: '\n\nEjercicio de Reinterpretación alternativa\n\n'
                 'Otro ejercicio útil cuando nos enfrentamos a una situación desagradable es pensar qué le diríamos a un amigo que se encontrara en la misma situación ¿cuál sería tu consejo?\n'
