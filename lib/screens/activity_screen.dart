@@ -54,20 +54,31 @@ class ActivityScreen extends StatelessWidget {
             ),
           ),
           activity.reversed
-              ? buttonActivity(activity, context, path)
+              ? Container(
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  children: [
+                    Text(
+                      "Comienza escuchando el audio de introducción que preparamos para vos.",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      textAlign: TextAlign.center,  
+                    ),
+                    const SizedBox(height: 15),
+                    buttonActivity(activity, context, path),
+                    //const SizedBox(height: 15),
+                  ],
+                ),
+              )
               : contentActivity(activity, context),
           const SizedBox(height: 20),
           activity.reversed
               ? Column(
                   children: [
-                    const Text(
-                      "FAVOR DE ESCUCHAR PRIMERO EL AUDIO",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
                     contentActivity(activity, context),
                   ],
                 )
               : buttonActivity(activity, context, path),
+          const SizedBox(height: 15),
         ]),
       ),
     );
@@ -102,7 +113,13 @@ class ActivityScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.primary,
               textStyle: const TextStyle(fontSize: 20),
             ),
-            child: const Text('Escuchar audio'),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Text('Escuchar'),
+                Icon(Icons.arrow_right, size: 35),
+              ],
+            ),
           )
         : ElevatedButton(
             onPressed: () =>

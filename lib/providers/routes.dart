@@ -18,27 +18,28 @@ class Routes with ChangeNotifier {
       id: 1,
       days: 7,
       title: 'Relajación',
-      subtitle: 'Técnicas que te ayudarán a alcanzar un estado emocional de '
-          'baja activación, a sentirte más tranquilo y relajado.',
+      subtitle: 'Técnicas que te ayudarán a alcanzar un estado emocional de baja activación, a sentirte más tranquilo y relajado.',
       image: 'assets/images/relaxing_at_home.png',
       activities: [
         Activity(
           id: 1,
           title: 'Presentación',
-          subtitle: 'Introducción a la relajación',
+          subtitle: 'Introducción a ReFocus',
           image: 'assets/images/relaxing_at_home.png',
           text:
-              'Te damos la bienvenida a ReFocus. Es normal habitualmente enfrentarse a situaciones de estrés, pero lo importante es cómo las abordamos. '
-              'Nuestra aplicación ha sido cuidadosamente diseñada para proporcionarte las herramientas y técnicas necesarias para sobrellevar esas tensiones cotidianas y recuperar tu equilibrio interno. \n\n.'
-              'Antes de sumergirte en las herramientas presentes en la aplicación, te invitamos a escuchar un breve audio en el que profundizamos en los objetivos de nuestra aplicación. Mucha suerte.',
+              'Antes de comenzar con las actividades de relajación queremos darte la bienvenida a ReFocus. '
+              'Día a día nos enfrentamos a diferentes eventos estresantes, afortunadamente, existen estrategias que podemos aprender para manejar la respuesta emocional que experimentamos ante un evento dado. ' 
+              'Nuestra aplicación ha sido cuidadosamente diseñada para proporcionarte de herramientas y técnicas que te ayudarán a sobrellevar estas situaciones y a regular tu estado emocional.\n\n'
+              'Te invitamos a escuchar un breve audio de presentación en el que profundizamos sobre los objetivos y contenidos de la aplicación. Que lo disfrutes.',
           audio: true,
           audiofile: '1_intro.m4a',
         ),
         Activity(
             id: 2,
             title: 'Relajación 1',
+            subtitle: 'Introducción a la relajación',
             image: 'assets/images/meditation.png',
-            text: '\n\nEjercicios de Respiración\n\n'
+            text: 
                 'Una de las técnicas más sencillas de relajación son los ejercicios de respiración. En general, el objetivo de los ejercicios de respiración es fomentar la respiración diafragmática, a un ritmo lento, profundo y homogéneo.\n\n'
                 'Para practicar este tipo de ejercicios, uno puede sentarse cómodamente con los pies apoyados en el suelo, o recostarse en algún lugar cómodo. Luego colocamos las manos suavemente sobre el estómago, de manera que los pulgares se encuentren inmediatamente debajo de la última costilla. Ahora, la respiración debe hacerse intentando mantener el pecho y hombros tan quietos y relajados como se pueda.\n\n'
                 'Al respirar, hay que imaginar que uno está llenando de aire el estómago, como si fuera un globo grande y blando; esto permitirá lograr una respiración diafragmática. Hay que recordar que en este modo de respiración la inhalación debe ser profunda, con un ritmo lento, tranquilo y suave. La exhalación también debe ser lenta, suave y relativamente pasiva. Además, cuando exhalamos el aire debe producirse una pausa hasta que la necesidad de oxígeno provoque la inhalación automática y relajada.\n\n'
@@ -53,7 +54,7 @@ class Routes with ChangeNotifier {
           subtitle: "Estar presentes",
           image: 'assets/images/app_meditating.png',
           text:
-              'En esta actividad vamos a realizar un nuevo ejercicio para el cual te vas a guiar de un audio para realizarlo.',
+              'En esta actividad vamos a practicar la relajación con la guía de un audio para acompañarte en el proceso.',
           audio: true,
           audiofile: '3_practica_relajacion.mp3',
         ),
@@ -71,20 +72,22 @@ class Routes with ChangeNotifier {
         Activity(
           id: 1,
           title: 'Modificación de pensamiento',
-          subtitle: 'Introducción y ejemplos.',
+          subtitle: 'Introducción y ejemplos',
           image: 'assets/images/landscape_photographer.png',
-          text: 'Bienvenidos a la ruta de modificación de pensamiento.'
-              '\nCuando experimentamos una situación o evento en nuestras vidas, no es este evento o situación lo que nos determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
-              'En esta sección, se verán las técnicas para poder lograr este cambio de pensamiento, junto a un par de ejemplos para comprender mejor dicha técnica.',
+          text: 'Bienvenidos a la ruta de modificación de pensamiento. '
+              'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
+              'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
+              'Te invitamos a escuchar el siguiente audio para comenzar con el recorrido.',
           audio: true,
           audiofile: '4_intro_mod_pensamiento_ejemplos.m4a',
         ),
         Activity(
             id: 2,
             title: 'Refocalización positiva',
-            subtitle: 'Descripción inicial y ejemplo',
+            subtitle: 'Introducción y ejemplo',
             image: 'assets/images/two_relaxation.png',
-            text: '\n\nEjercicios de refocalización positiva\n\n'
+            text: 
+                'A continuación te presentamos un ejercicio de refocalización positiva. Recuerda! Antes de realizarlo debes estar relajado, por lo que te recomendamos comenzar con un ejercicio de relajación para lograr un estado emocional de baja activación (esto es, lograr sentirte relajado y tranquilo).\n\n'
                 'Piensa en un evento reciente ante el que hayas experimentado una emoción negativa o desagradable. Aunque hay muchas maneras en que este acontecimiento puede estar afectándote negativamente en este momento, piensa en los aspectos positivos que pueden rescatarse de la situación:\n\n'
                 'a. Intenta explorar las formas en que puedes crecer a partir de esta experiencia. ¿Qué lecciones, nuevos conocimientos o cambios de perspectiva te ha aportado este acontecimiento que puedan ayudarte a partir de ahora?\n\n'
                 'b. Piensa en cómo la experiencia vivida ahora puede ayudarte a sentirte más fuerte o más capaz de afrontar algo similar, o incluso de afrontar nuevos retos en el futuro.\n\n'
@@ -96,15 +99,16 @@ class Routes with ChangeNotifier {
         Activity(
             id: 4,
             title: 'Reinterpretación 1',
-            subtitle: 'Descripción inicial y ejemplo',
+            subtitle: 'Introducción y ejemplo',
             image: 'assets/images/two_relaxation.png',
-            text: '\n\nEjercicio de Reinterpretación alternativa\n\n'
+            text: 
+                'A continuación te presentamos un ejercicio de reinterpretación. Recuerda! Antes de realizarlo debes estar relajado, por lo que te recomendamos comenzar con un ejercicio de relajación.\n\n'
                 'Piensa en un evento reciente ante el que hayas experimentado una emoción negativa o desagradable. Aunque hay muchas maneras en que este acontecimiento puede estar afectándote negativamente en este momento, intenta encontrarle nuevas interpretaciones a lo sucedido. La pregunta central que debes hacerte aquí es: ¿Puede haber un punto de vista alternativo para interpretar lo sucedido?\n\n'
-                'Ante un evento negativo muchas veces concluimos que se trata de una situación muy grave que tiene consecuencias nefastas para nosotros o nuestros allegados.\n'
-                'Piensa: ¿es una situación realmente tan grave? Intenta una forma alternativa de pensar la situación que te ayuda a relativizar (visualizar como menos catastrófico o grave) lo sucedido. Para ayudarte a obtener una visión más realista del asunto puedes hacerte, consecutivamente, las siguientes preguntas:\n\n'
-                'a- ¿Qué es lo peor que podría pasar? ¿Podría vivir con eso?,\n\n'
-                'b- ¿Qué sería lo mejor que podría pasar?,\n\n'
-                'c- ¿Qué resultados serían más realistas?',
+                'Ante un evento negativo muchas veces concluimos que se trata de una situación muy grave que tiene consecuencias nefastas para nosotros o nuestros allegados. '
+                'Piensa: ¿es una situación realmente tan grave? Intenta una forma alternativa de pensar la situación que te ayude a relativizar (visualizar como menos catastrófico o grave) lo sucedido. Para ayudarte a obtener una visión más realista del asunto puedes hacerte, consecutivamente, las siguientes preguntas:\n\n'
+                'a. ¿Qué es lo peor que podría pasar? ¿Podría vivir con eso?\n\n'
+                'b. ¿Qué sería lo mejor que podría pasar?\n\n'
+                'c. ¿Qué resultados serían más realistas?',
             audio: true,
             audiofile: '6_intro_reinterpretacion_ejemplo.m4a',
             reversed: true),
@@ -113,19 +117,21 @@ class Routes with ChangeNotifier {
           title: 'Reinterpretación 2',
           subtitle: 'Ejemplo',
           image: 'assets/images/two_relaxation.png',
-          text: '\n\nEjercicio de Reinterpretación alternativa\n\n'
-              'Ante un evento negativo muchas veces concluimos que TODO está mal, que TODO terminará de la peor manera, que nosotros no servimos para NADA o los demás no sirven para NADA ¿Puedes pensar en evidencia o situaciones que contradigan este tipo de conclusiones categóricas (de TODO o NADA) sobre el evento? Has un esfuerzo por buscar formas de pensar alternativas que sean más equilibradas, realistas y justas con lo sucedido. Aquí suele ayudar buscar matices en la interpretación de las situaciones que nos permitan arribar a una conclusión menos categórica: es poco probable que las cosas sean o TOTALMENTE NEGRAS o TOTALMENTE BLANCAS, seguro podremos encontrar matices de grises intermedios entre estos dos polos de pensamiento. Para ayudarte a obtener una visión más realista del asunto puedes hacerte, consecutivamente, las siguientes preguntas:\n\n'
-              'a- ¿Qué evidencia tengo a favor de esta interpretación o pensamiento?, \n\n'
-              'b- ¿Qué evidencia hay que contradiga esta idea o pensamiento?',
+          text: 
+              'Veamos otro ejercicio que nos puede ayudar a realizar una interpretación alternativa.\n\n'
+              'Ante un evento negativo muchas veces concluimos que TODO está mal, que TODO terminará de la peor manera, que nosotros no servimos para NADA o los demás no sirven para NADA ¿Puedes pensar en evidencia o situaciones que contradigan este tipo de conclusiones categóricas (de TODO o NADA) sobre el evento? Haz un esfuerzo por buscar formas de pensar alternativas que sean más equilibradas, realistas y justas con lo sucedido. Aquí suele ayudar buscar matices en la interpretación de las situaciones que nos permitan arribar a una conclusión menos categórica: es poco probable que las cosas sean o TOTALMENTE NEGRAS o TOTALMENTE BLANCAS, seguro podremos encontrar matices de grises intermedios entre estos dos polos de pensamiento. Para ayudarte a obtener una visión más realista del asunto puedes hacerte, consecutivamente, las siguientes preguntas:\n\n'
+              'a. ¿Qué evidencia tengo a favor de esta interpretación o pensamiento?\n\n'
+              'b. ¿Qué evidencia hay que contradiga esta idea o pensamiento?',
         ),
         Activity(
             id: 6,
             title: 'Reinterpretación 3',
+            subtitle: 'Ejemplo',
             image: 'assets/images/two_relaxation.png',
-            text: '\n\nEjercicio de Reinterpretación alternativa\n\n'
-                'Otro ejercicio útil cuando nos enfrentamos a una situación desagradable es pensar qué le diríamos a un amigo que se encontrara en la misma situación ¿cuál sería tu consejo?\n'
-                'Muchas veces nos resulta más fácil encontrar formas de pensamiento más equilibrados (menos catastróficas y menos categóricas -de TODO o NADA-) cuando hacemos el ejercicio de pensar qué le recomendaríamos a un amigo o ser querido que estuviera pasando una situación similar. Otras preguntas que puedes hacerte en este sentido:\n '
-                '¿Qué tipo de pensamiento tendría un amigo/familiar en una situación semejante?\n'
+            text:
+                'Otro ejercicio útil cuando nos enfrentamos a una situación desagradable es pensar qué le diríamos a un amigo que se encontrara en la misma situación ¿cuál sería tu consejo?\n\n'
+                'Muchas veces nos resulta más fácil encontrar formas de pensamiento más equilibrados (menos catastróficas y menos categóricas -de TODO o NADA-) cuando hacemos el ejercicio de pensar qué le recomendaríamos a un amigo o ser querido que estuviera pasando una situación similar. Otras preguntas que puedes hacerte en este sentido: '
+                '¿Qué tipo de pensamiento tendría un amigo/familiar en una situación semejante? '
                 '¿Qué le dirías a un amigo/familiar si en una situación similar tuviera ese pensamiento?')
       ],
       surveys: [
