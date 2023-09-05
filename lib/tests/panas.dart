@@ -8,11 +8,11 @@ Survey panas(int id) {
     title:
         'Utilizando la escala de respuestas propuesta a continuación, señala en qué medida has experimentado en la última semana las siguientes emociones.',
     options: [
-      'Muy poco o nada',
-      'Un poco',
-      'Medianamente',
-      'Bastante',
-      'Mucho o totalmente',
+      '1 Muy poco o nada',
+      '2 Un poco',
+      '3 Medianamente',
+      '4 Bastante',
+      '5 Mucho o totalmente',
     ],
     questions: [
       Question(id: 1, question: 'Interesado'),

@@ -5,10 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widgets/auth/register_form.dart';
 import '../screens/intro_survey_screen.dart';
-import '../tests/gad.dart';
 import '../tests/panas.dart';
 import '../tests/cerq.dart';
-import '../tests/phq.dart';
 import '../providers/survey.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -37,8 +35,6 @@ class _IntroScreenState extends State<IntroScreen> {
   final List<Survey> introSurveys = [
     panas(1),
     cerq(2),
-    gad(3),
-    phq(4),
   ];
 
   @override
@@ -50,14 +46,6 @@ class _IntroScreenState extends State<IntroScreen> {
       ),
       IntroSurveyScreen(
         survey: introSurveys[1],
-        onAnswered: _answerQuestion,
-      ),
-      IntroSurveyScreen(
-        survey: introSurveys[2],
-        onAnswered: _answerQuestion,
-      ),
-      IntroSurveyScreen(
-        survey: introSurveys[3],
         onAnswered: _answerQuestion,
       ),
       RegisterForm(

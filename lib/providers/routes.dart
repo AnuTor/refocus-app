@@ -5,9 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './activity.dart';
 import './path.dart';
 import '../tests/cerq.dart';
-import '../tests/gad.dart';
 import '../tests/panas.dart';
-import '../tests/phq.dart';
 
 class Routes with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -59,7 +57,7 @@ class Routes with ChangeNotifier {
           audiofile: '3_practica_relajacion.mp3',
         ),
       ],
-      surveys: [panas(5)],
+      surveys: [panas(3)],
     ),
     Path(
       id: 2,
@@ -135,10 +133,8 @@ class Routes with ChangeNotifier {
                 '¿Qué le dirías a un amigo/familiar si en una situación similar tuviera ese pensamiento?')
       ],
       surveys: [
-        panas(6),
-        cerq(7),
-        gad(8),
-        phq(9),
+        panas(4),
+        cerq(5),
       ],
     ),
   ];
