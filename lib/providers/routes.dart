@@ -23,7 +23,7 @@ class Routes with ChangeNotifier {
           id: 1,
           title: 'Presentación',
           subtitle: 'Introducción a ReFocus',
-          image: 'assets/images/relaxing_at_home.png',
+          image: 'assets/images/welcome.png',
           text:
               'Antes de comenzar con las actividades de relajación queremos darte la bienvenida a ReFocus. '
               'Día a día nos enfrentamos a diferentes eventos estresantes, afortunadamente, existen estrategias que podemos aprender para manejar la respuesta emocional que experimentamos ante un evento dado. ' 
@@ -65,13 +65,13 @@ class Routes with ChangeNotifier {
       title: 'Modificación de pensamiento',
       subtitle:
           'Técnicas para lograr un pensamiento más equilibrado, refocalizar y buscar interpretaciones alternativas.',
-      image: 'assets/images/two_relaxation.png',
+      image: 'assets/images/art_museum.png',
       activities: [
         Activity(
           id: 1,
           title: 'Modificación de pensamiento',
           subtitle: 'Introducción y ejemplos',
-          image: 'assets/images/landscape_photographer.png',
+          image: 'assets/images/through_the_window.png',
           text: 'Bienvenidos a la ruta de modificación de pensamiento. '
               'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
@@ -83,7 +83,7 @@ class Routes with ChangeNotifier {
             id: 2,
             title: 'Refocalización positiva',
             subtitle: 'Introducción y ejemplo',
-            image: 'assets/images/two_relaxation.png',
+            image: 'assets/images/both_sides.png',
             text: 
                 'A continuación te presentamos un ejercicio de refocalización positiva. Recuerda! Antes de realizarlo debes estar relajado, por lo que te recomendamos comenzar con un ejercicio de relajación para lograr un estado emocional de baja activación (esto es, lograr sentirte relajado y tranquilo).\n\n'
                 'Piensa en un evento reciente ante el que hayas experimentado una emoción negativa o desagradable. Aunque hay muchas maneras en que este acontecimiento puede estar afectándote negativamente en este momento, piensa en los aspectos positivos que pueden rescatarse de la situación:\n\n'
@@ -98,7 +98,7 @@ class Routes with ChangeNotifier {
             id: 4,
             title: 'Reinterpretación 1',
             subtitle: 'Introducción y ejemplo',
-            image: 'assets/images/two_relaxation.png',
+            image: 'assets/images/soccer.png',
             text: 
                 'A continuación te presentamos un ejercicio de reinterpretación. Recuerda! Antes de realizarlo debes estar relajado, por lo que te recomendamos comenzar con un ejercicio de relajación.\n\n'
                 'Piensa en un evento reciente ante el que hayas experimentado una emoción negativa o desagradable. Aunque hay muchas maneras en que este acontecimiento puede estar afectándote negativamente en este momento, intenta encontrarle nuevas interpretaciones a lo sucedido. La pregunta central que debes hacerte aquí es: ¿Puede haber un punto de vista alternativo para interpretar lo sucedido?\n\n'
@@ -114,7 +114,7 @@ class Routes with ChangeNotifier {
           id: 5,
           title: 'Reinterpretación 2',
           subtitle: 'Ejemplo',
-          image: 'assets/images/two_relaxation.png',
+          image: 'assets/images/random_thoughts.png',
           text: 
               'Veamos otro ejercicio que nos puede ayudar a realizar una interpretación alternativa.\n\n'
               'Ante un evento negativo muchas veces concluimos que TODO está mal, que TODO terminará de la peor manera, que nosotros no servimos para NADA o los demás no sirven para NADA ¿Puedes pensar en evidencia o situaciones que contradigan este tipo de conclusiones categóricas (de TODO o NADA) sobre el evento? Haz un esfuerzo por buscar formas de pensar alternativas que sean más equilibradas, realistas y justas con lo sucedido. Aquí suele ayudar buscar matices en la interpretación de las situaciones que nos permitan arribar a una conclusión menos categórica: es poco probable que las cosas sean o TOTALMENTE NEGRAS o TOTALMENTE BLANCAS, seguro podremos encontrar matices de grises intermedios entre estos dos polos de pensamiento. Para ayudarte a obtener una visión más realista del asunto puedes hacerte, consecutivamente, las siguientes preguntas:\n\n'
