@@ -22,17 +22,21 @@ class ActivityElement extends StatefulWidget {
 }
 
 class _ActivityElementState extends State<ActivityElement> {
-  bool isDone = false;
+  //bool isDone = false;
 
   @override
   void initState() {
     super.initState();
-    if (widget.enable) {
+    refreshDone();
+  }
+
+  Future<void> refreshDone() async {
+    if (widget.enable && !widget.activity.done) {
       Future.delayed(Duration.zero, () async {
         bool isAlreadyDone = await checkDone();
         if (isAlreadyDone) {
           setState(() {
-            isDone = true;
+            widget.activity.setDone();
           });
         }
       });
@@ -58,7 +62,7 @@ class _ActivityElementState extends State<ActivityElement> {
           side: BorderSide(width: 3, color: Theme.of(context).primaryColor)),
       //fixedSize: Size(60, 60),
       padding: const EdgeInsets.all(15),
-      backgroundColor: isDone ? null : Colors.grey.shade200,
+      backgroundColor: widget.activity.done ? null : Colors.grey.shade200,
     );
 
     return Row(
@@ -75,7 +79,9 @@ class _ActivityElementState extends State<ActivityElement> {
                           'path': widget.path,
                           'activity': widget.activity
                         },
-                      )
+                      ).whenComplete(() => setState(() {
+                            refreshDone();
+                          })),
                     }
                 : null,
             style: style,
