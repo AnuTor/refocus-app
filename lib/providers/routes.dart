@@ -138,7 +138,7 @@ class Routes with ChangeNotifier {
           id: 1,
           title: 'Modificación de pensamiento',
           subtitle: 'Introducción y ejemplos',
-          image: 'assets/images/through_the_window.png',
+          image: 'assets/images/landscape_photographer.png',
           text: 'Bienvenidos a la ruta de modificación de pensamiento. '
               'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
