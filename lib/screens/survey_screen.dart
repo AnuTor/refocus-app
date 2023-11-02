@@ -30,11 +30,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
       questionNum = 'Q${question.id.toString()}';
     }
     answer[questionNum] ??= 'Respuesta';
-    list.add(Text('(${question.id}/${lenght}) ${question.question}'));
-    for (String ans in options) {
+    list.add(Text('(${question.id}/$lenght) ${question.question}'));
+    for (int i = 0; i < options.length; i++) {
+      int j = i + 1;
       list.add(RadioListTile(
-        title: Text(ans),
-        value: ans,
+        title: Text(options[i]),
+        value: j.toString(),
         groupValue: answer[questionNum],
         onChanged: (value) {
           setState(() {
@@ -43,9 +44,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
         },
       ));
     }
-
     list.add(const SizedBox(height: 16.0));
-
     return list;
   }
 

@@ -10,11 +10,11 @@ Survey cerq(int id) {
         'Cada persona responde de una forma característica y propia ante estas situaciones. '
         'Por medio de las siguientes preguntas tratamos de conocer en qué piensas cuando experimentas sucesos de este tipo.',
     options: [
-      '1 Casi Nunca',
-      '2 Algunas veces',
-      '3 Ocasionalmente',
-      '4 Generalmente',
-      '5 Casi siempre',
+      'Casi Nunca',
+      'Algunas veces',
+      'Ocasionalmente',
+      'Generalmente',
+      'Casi siempre',
     ],
     questions: [
       Question(
