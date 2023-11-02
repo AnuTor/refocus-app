@@ -14,7 +14,7 @@ class Routes with ChangeNotifier {
   final List<Path> _items = [
     Path(
       id: 1,
-      days: 7,
+      days: 9,
       title: 'Relajación',
       subtitle:
           'Técnicas que te ayudarán a alcanzar un estado emocional de baja activación, a sentirte más tranquilo y relajado.',
@@ -114,7 +114,7 @@ class Routes with ChangeNotifier {
           audiofile: 'meditacion 6 Biota.m4a',
         ),
         Activity(
-          id: 8,
+          id: 9,
           title: 'Relajación 8',
           subtitle: "Estar presentes",
           image: 'assets/images/app_meditating.png',
@@ -128,7 +128,7 @@ class Routes with ChangeNotifier {
     ),
     Path(
       id: 2,
-      days: 9,
+      days: 5,
       title: 'Modificación de pensamiento',
       subtitle:
           'Técnicas para lograr un pensamiento más equilibrado, refocalizar y buscar interpretaciones alternativas.',
@@ -136,9 +136,9 @@ class Routes with ChangeNotifier {
       activities: [
         Activity(
           id: 1,
-          title: 'Modificación de pensamiento',
-          subtitle: 'Introducción y ejemplos',
-          image: 'assets/images/landscape_photographer.png',
+          title: 'Presentación',
+          subtitle: 'Modificación de pensamiento',
+          image: 'assets/images/through_the_window.png',
           text: 'Bienvenidos a la ruta de modificación de pensamiento. '
               'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
@@ -233,7 +233,7 @@ class Routes with ChangeNotifier {
       _userStartdate = userData.data()!['startdate'].toDate();
       _items[0].startdate = DateUtils.dateOnly(_userStartdate);
       _items[1].startdate =
-          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 7));
+          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 9));
       notifyListeners();
     });
   }
@@ -243,6 +243,11 @@ class Routes with ChangeNotifier {
     for (int i = 0; i < _items.length; i++) {
       for (int j = 0; j < _items[i].surveys!.length; j++) {
         _items[i].surveys![j].clearDoneState();
+      }
+    }
+    for (int i = 0; i < _items.length; i++) {
+      for (int j = 0; j < _items[i].activities.length; j++) {
+        _items[i].activities[j].clearDoneState();
       }
     }
   }
