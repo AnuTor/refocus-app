@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 
 import '../screens/survey_screen.dart';
 import '../providers/survey.dart';
@@ -25,21 +24,22 @@ class SurveyElement extends StatefulWidget {
 }
 
 class _SurveyElementState extends State<SurveyElement> {
-  Future<bool>? _isDoneFuture;
 
   @override
   void initState() {
     super.initState();
-    if (!widget.survey.done && widget.enable) {
+    refreshDone();
+  }
+
+  Future<void> refreshDone() async {
+    if (widget.enable && !widget.survey.done) {
       //solo ejecuta checkDone() si no está hecha la encuesta y está habilitada
-      _isDoneFuture = checkDone();
-      _isDoneFuture!.then((isDone) {
-        if (isDone) {
-          setState(() {
-            Provider.of<Survey>(context, listen: false).setDone();
-          });
-        }
-      });
+      bool isAlreadyDone = await checkDone();
+      if (isAlreadyDone) {
+        setState(() {
+          widget.survey.setDone();
+        });
+      }
     }
   }
 
@@ -66,15 +66,16 @@ class _SurveyElementState extends State<SurveyElement> {
             padding: const EdgeInsets.only(left: 10.0),
             child: ElevatedButton(
               onPressed: widget.enable
-                  ? () {
+                  ? () => {
                       Navigator.of(context).pushNamed(
                         SurveyScreen.routeName,
                         arguments: {
                           'path': widget.path,
-                          'survey': widget.survey,
-                          'num': widget.num
+                          'survey': widget.survey
                         },
-                      );
+                      ).whenComplete(() => setState(() {
+                            refreshDone();
+                          })),
                     }
                   : null,
               style: ElevatedButton.styleFrom(
@@ -98,8 +99,8 @@ class _SurveyElementState extends State<SurveyElement> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Encuesta: ${widget.survey.testName}',
+                const Text(
+                  'Cuestionario',
                   overflow: TextOverflow.fade,
                   softWrap: false,
                   maxLines: 1,

@@ -96,37 +96,42 @@ class ActivityScreen extends StatelessWidget {
   }
 
   ButtonStyleButton buttonActivity(
-      Activity activity, BuildContext context, String path) {
+    Activity activity, BuildContext context, String path) {
     return activity.audio
-        ? TextButton(
-            onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => PlayerScreen(
-                            activity: activity,
-                            path: path,
-                          ))))
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              textStyle: const TextStyle(fontSize: 20),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Text('Escuchar'),
-                Icon(Icons.arrow_right, size: 35),
-              ],
-            ),
-          )
-        : ElevatedButton(
-            onPressed: () =>
-                {_activityDone(path, activity), Navigator.pop(context)},
-            style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                textStyle: const TextStyle(fontSize: 20)),
-            child: const Text('Completar actividad'));
+      ? TextButton(
+        onPressed: () => {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => PlayerScreen(
+                        activity: activity,
+                        path: path,
+                      ))))
+        },
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          textStyle: const TextStyle(fontSize: 20),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text('Escuchar'),
+            Icon(Icons.arrow_right, size: 35),
+          ],
+        ),
+      )
+      : ElevatedButton(
+        onPressed: () => {
+          _activityDone(path, activity),
+          Future.delayed(const Duration(milliseconds: 300)).then((_) {
+            Navigator.of(context).pop();
+          })
+        },
+        style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            textStyle: const TextStyle(fontSize: 20)),
+        child: const Text('Completar actividad')
+      );
   }
 }

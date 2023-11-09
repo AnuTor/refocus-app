@@ -22,7 +22,6 @@ class ActivityElement extends StatefulWidget {
 }
 
 class _ActivityElementState extends State<ActivityElement> {
-  //bool isDone = false;
 
   @override
   void initState() {
@@ -32,14 +31,12 @@ class _ActivityElementState extends State<ActivityElement> {
 
   Future<void> refreshDone() async {
     if (widget.enable && !widget.activity.done) {
-      Future.delayed(Duration.zero, () async {
-        bool isAlreadyDone = await checkDone();
-        if (isAlreadyDone) {
-          setState(() {
-            widget.activity.setDone();
-          });
-        }
-      });
+      bool isAlreadyDone = await checkDone();
+      if (isAlreadyDone) {
+        setState(() {
+          widget.activity.setDone();
+        });
+      }
     }
   }
 
@@ -50,6 +47,7 @@ class _ActivityElementState extends State<ActivityElement> {
         .where('UserID', isEqualTo: user.uid)
         .where('path', isEqualTo: widget.path)
         .where('activity', isEqualTo: widget.activity.title)
+        .limit(1)
         .get();
     return activityDone.docs.isNotEmpty;
   }

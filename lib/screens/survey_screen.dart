@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:provider/provider.dart';
 
 import '../providers/questions.dart';
 import '../providers/survey.dart';
-import '../providers/routes.dart';
-import '../screens/path_screen.dart';
 
 class SurveyScreen extends StatefulWidget {
   static const routeName = '/survey-screen';
@@ -30,12 +27,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
       questionNum = 'Q${question.id.toString()}';
     }
     answer[questionNum] ??= 'Respuesta';
-    list.add(Text('(${question.id}/$lenght) ${question.question}'));
+    list.add(Text('(${question.id}/$lenght) ${question.question}',
+        style: const TextStyle(fontSize: 16)));
     for (int i = 0; i < options.length; i++) {
-      int j = i + 1;
       list.add(RadioListTile(
         title: Text(options[i]),
-        value: j.toString(),
+        value: (i + 1).toString(),
         groupValue: answer[questionNum],
         onChanged: (value) {
           setState(() {
@@ -44,7 +41,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
         },
       ));
     }
-    list.add(const SizedBox(height: 16.0));
+    list.add(const SizedBox(height: 16));
     return list;
   }
 
@@ -68,29 +65,25 @@ class _SurveyScreenState extends State<SurveyScreen> {
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final path = routeArgs['path'] as String;
     final survey = routeArgs['survey'] as Survey;
-    final num = routeArgs['num'] as int;
     final length = survey.questions.length;
-    final loadedPath = Provider.of<Routes>(
-      context,
-      listen: false,
-    ).findByPathname(path);
     return Scaffold(
       appBar: AppBar(title: Text(path)),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Text(
-                'Cuestionario $num',
+                'Cuestionario',
                 style: Theme.of(context).textTheme.titleLarge,
                 textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 8),
               Text(
                 survey.title,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 16),
               Form(
                 key: _formKey,
                 child: Column(
@@ -114,11 +107,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               content: Text("Formulario enviado"),
                             ));
                             _submitSurvey(path, survey.testName);
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                              PathScreen.routeName,
-                              (route) => route.isFirst,
-                              arguments: loadedPath.id,
-                            );
+                            Future.delayed(const Duration(milliseconds: 300))
+                                .then((_) {
+                              Navigator.of(context).pop();
+                            });
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -127,7 +119,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               Theme.of(context).colorScheme.primary,
                           textStyle: const TextStyle(fontSize: 20),
                         ),
-                        child: const Text('Submit'),
+                        child: const Text('Enviar'),
                       ),
                     ),
                   ],

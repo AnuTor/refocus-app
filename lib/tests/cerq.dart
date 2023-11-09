@@ -10,7 +10,7 @@ Survey cerq(int id) {
         'Cada persona responde de una forma característica y propia ante estas situaciones. '
         'Por medio de las siguientes preguntas tratamos de conocer en qué piensas cuando experimentas sucesos de este tipo.',
     options: [
-      'Casi Nunca',
+      'Casi nunca',
       'Algunas veces',
       'Ocasionalmente',
       'Generalmente',
