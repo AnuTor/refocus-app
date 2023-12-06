@@ -35,8 +35,8 @@ class Routes with ChangeNotifier {
         ),
         Activity(
             id: 2,
-            title: 'Relajación 1',
-            subtitle: 'Introducción a la relajación',
+            title: 'Introducción',
+            subtitle: 'Día 1',
             image: 'assets/images/meditation.png',
             text:
                 'Una de las técnicas más sencillas de relajación son los ejercicios de respiración. En general, el objetivo de los ejercicios de respiración es fomentar la respiración diafragmática, a un ritmo lento, profundo y homogéneo.\n\n'
@@ -49,8 +49,8 @@ class Routes with ChangeNotifier {
             reversed: true),
         Activity(
           id: 3,
-          title: 'Relajación 2',
-          subtitle: "Relajación progresiva",
+          title: 'Relajación progresiva',
+          subtitle: "Día 2",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación progresiva de todo el cuerpo con la guía de un audio para acompañarte en el proceso.\n'
@@ -60,8 +60,8 @@ class Routes with ChangeNotifier {
         ),
         Activity(
           id: 4,
-          title: 'Relajación 3',
-          subtitle: "Entrenamiento autógeno",
+          title: 'Entrenamiento autógeno',
+          subtitle: "Día 3",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación basada en el entrenamiento autógeno con la guía de un audio para acompañarte en el proceso.\n'
@@ -71,8 +71,8 @@ class Routes with ChangeNotifier {
         ),
         Activity(
           id: 5,
-          title: 'Relajación 4',
-          subtitle: "Respiración",
+          title: 'Relajación y respiración',
+          subtitle: "Día 4",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación basada en la respiración con la guía de un audio para acompañarte en el proceso.\n'
@@ -82,8 +82,8 @@ class Routes with ChangeNotifier {
         ),
         Activity(
           id: 6,
-          title: 'Relajación 5',
-          subtitle: "Atención focalizada en la música",
+          title: 'Atención focalizada',
+          subtitle: "Día 5",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante la atención focalizada en la música con la guía de un audio para acompañarte en el proceso.\n'
@@ -93,8 +93,8 @@ class Routes with ChangeNotifier {
         ),
         Activity(
           id: 7,
-          title: 'Relajación 6',
-          subtitle: "Movimiento consciente",
+          title: 'Movimiento corporal',
+          subtitle: "Día 6",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante el movimiento consciente de todo el cuerpo con la guía de un audio para acompañarte en el proceso.\n'
@@ -104,24 +104,14 @@ class Routes with ChangeNotifier {
         ),
         Activity(
           id: 8,
-          title: 'Relajación 7',
-          subtitle: "Visualización creativa",
+          title: 'Visualización creativa',
+          subtitle: "Día 7",
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante la visualización creativa con la guía de un audio para acompañarte en el proceso.\n'
               'Necesitamos para esta actividad encontrar un espacio en el podamos estar sentados comodamente, con la planta de los pies en el suelo.',
           audio: true,
           audiofile: 'meditacion 6 Biota.m4a',
-        ),
-        Activity(
-          id: 9,
-          title: 'Relajación 8',
-          subtitle: "Estar presentes",
-          image: 'assets/images/app_meditating.png',
-          text:
-              'En esta actividad vamos a practicar la relajación con la guía de un audio para acompañarte en el proceso.',
-          audio: true,
-          audiofile: '3_practica_relajacion.mp3',
         ),
       ],
       surveys: [panas(3)],
@@ -136,7 +126,7 @@ class Routes with ChangeNotifier {
       activities: [
         Activity(
           id: 1,
-          title: 'Presentación',
+          title: 'Introducción',
           subtitle: 'Modificación de pensamiento',
           image: 'assets/images/through_the_window.png',
           text: 'Bienvenidos a la ruta de modificación de pensamiento. '
