@@ -14,27 +14,14 @@ class Routes with ChangeNotifier {
   final List<Path> _items = [
     Path(
       id: 1,
-      days: 9,
+      days: 7,
       title: 'Relajación',
       subtitle:
           'Técnicas que te ayudarán a alcanzar un estado emocional de baja activación, a sentirte más tranquilo y relajado.',
       image: 'assets/images/relaxing_at_home.png',
       activities: [
         Activity(
-          id: 1,
-          title: 'Presentación',
-          subtitle: 'Introducción a ReFocus',
-          image: 'assets/images/welcome.png',
-          text:
-              'Antes de comenzar con las actividades de relajación queremos darte la bienvenida a ReFocus. '
-              'Día a día nos enfrentamos a diferentes eventos estresantes, afortunadamente, existen estrategias que podemos aprender para manejar la respuesta emocional que experimentamos ante un evento dado. '
-              'Nuestra aplicación ha sido cuidadosamente diseñada para proporcionarte de herramientas y técnicas que te ayudarán a sobrellevar estas situaciones y a regular tu estado emocional.\n\n'
-              'Te invitamos a escuchar un breve audio de presentación en el que profundizamos sobre los objetivos y contenidos de la aplicación. Que lo disfrutes.',
-          audio: true,
-          audiofile: '1_intro.m4a',
-        ),
-        Activity(
-            id: 2,
+            id: 1,
             title: 'Introducción',
             subtitle: 'Día 1',
             image: 'assets/images/meditation.png',
@@ -48,9 +35,9 @@ class Routes with ChangeNotifier {
             audiofile: '2_intro_relajacion.m4a',
             reversed: true),
         Activity(
-          id: 3,
+          id: 2,
           title: 'Relajación progresiva',
-          subtitle: "Día 2",
+          subtitle: 'Día 2',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación progresiva de todo el cuerpo con la guía de un audio para acompañarte en el proceso.\n'
@@ -59,9 +46,9 @@ class Routes with ChangeNotifier {
           audiofile: 'meditacion 1 Biota.m4a',
         ),
         Activity(
-          id: 4,
+          id: 3,
           title: 'Entrenamiento autógeno',
-          subtitle: "Día 3",
+          subtitle: 'Día 3',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación basada en el entrenamiento autógeno con la guía de un audio para acompañarte en el proceso.\n'
@@ -70,9 +57,9 @@ class Routes with ChangeNotifier {
           audiofile: 'meditacion 2 Biota.m4a',
         ),
         Activity(
-          id: 5,
+          id: 4,
           title: 'Relajación y respiración',
-          subtitle: "Día 4",
+          subtitle: 'Día 4',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación basada en la respiración con la guía de un audio para acompañarte en el proceso.\n'
@@ -81,9 +68,9 @@ class Routes with ChangeNotifier {
           audiofile: 'meditacion 3 Biota.m4a',
         ),
         Activity(
-          id: 6,
+          id: 5,
           title: 'Atención focalizada',
-          subtitle: "Día 5",
+          subtitle: 'Día 5',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante la atención focalizada en la música con la guía de un audio para acompañarte en el proceso.\n'
@@ -92,9 +79,9 @@ class Routes with ChangeNotifier {
           audiofile: 'meditacion 4 Biota.m4a',
         ),
         Activity(
-          id: 7,
+          id: 6,
           title: 'Movimiento corporal',
-          subtitle: "Día 6",
+          subtitle: 'Día 6',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante el movimiento consciente de todo el cuerpo con la guía de un audio para acompañarte en el proceso.\n'
@@ -103,9 +90,9 @@ class Routes with ChangeNotifier {
           audiofile: 'meditacion 5 Biota.m4a',
         ),
         Activity(
-          id: 8,
+          id: 7,
           title: 'Visualización creativa',
-          subtitle: "Día 7",
+          subtitle: 'Día 7',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante la visualización creativa con la guía de un audio para acompañarte en el proceso.\n'
@@ -223,7 +210,7 @@ class Routes with ChangeNotifier {
       _userStartdate = userData.data()!['startdate'].toDate();
       _items[0].startdate = DateUtils.dateOnly(_userStartdate);
       _items[1].startdate =
-          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 9));
+          DateUtils.dateOnly(_userStartdate).add(const Duration(days: 7));
       notifyListeners();
     });
   }
