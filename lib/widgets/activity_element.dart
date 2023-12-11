@@ -84,7 +84,7 @@ class _ActivityElementState extends State<ActivityElement> {
                 : null,
             style: style,
             child: widget.enable
-                ? Text(widget.activity.id.toString())
+                ? Text((widget.activity.id-1).toString())
                 : const Icon(Icons.lock),
           ),
         ),

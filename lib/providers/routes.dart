@@ -22,8 +22,8 @@ class Routes with ChangeNotifier {
       activities: [
         Activity(
             id: 1,
-            title: 'Introducción',
-            subtitle: 'Día 1',
+            title: 'Presentación',
+            subtitle: 'Relajación',
             image: 'assets/images/meditation.png',
             text:
                 'Una de las técnicas más sencillas de relajación son los ejercicios de respiración. En general, el objetivo de los ejercicios de respiración es fomentar la respiración diafragmática, a un ritmo lento, profundo y homogéneo.\n\n'
@@ -37,7 +37,7 @@ class Routes with ChangeNotifier {
         Activity(
           id: 2,
           title: 'Relajación progresiva',
-          subtitle: 'Día 2',
+          subtitle: 'Día 1',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación progresiva de todo el cuerpo con la guía de un audio para acompañarte en el proceso.\n'
@@ -48,7 +48,7 @@ class Routes with ChangeNotifier {
         Activity(
           id: 3,
           title: 'Entrenamiento autógeno',
-          subtitle: 'Día 3',
+          subtitle: 'Día 2',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación basada en el entrenamiento autógeno con la guía de un audio para acompañarte en el proceso.\n'
@@ -59,7 +59,7 @@ class Routes with ChangeNotifier {
         Activity(
           id: 4,
           title: 'Relajación y respiración',
-          subtitle: 'Día 4',
+          subtitle: 'Día 3',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación basada en la respiración con la guía de un audio para acompañarte en el proceso.\n'
@@ -70,7 +70,7 @@ class Routes with ChangeNotifier {
         Activity(
           id: 5,
           title: 'Atención focalizada',
-          subtitle: 'Día 5',
+          subtitle: 'Día 4',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante la atención focalizada en la música con la guía de un audio para acompañarte en el proceso.\n'
@@ -81,7 +81,7 @@ class Routes with ChangeNotifier {
         Activity(
           id: 6,
           title: 'Movimiento corporal',
-          subtitle: 'Día 6',
+          subtitle: 'Día 5',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante el movimiento consciente de todo el cuerpo con la guía de un audio para acompañarte en el proceso.\n'
@@ -92,7 +92,7 @@ class Routes with ChangeNotifier {
         Activity(
           id: 7,
           title: 'Visualización creativa',
-          subtitle: 'Día 7',
+          subtitle: 'Día 6',
           image: 'assets/images/app_meditating.png',
           text:
               'En esta actividad, vamos a practicar la relajación mediante la visualización creativa con la guía de un audio para acompañarte en el proceso.\n'
@@ -113,10 +113,22 @@ class Routes with ChangeNotifier {
       activities: [
         Activity(
           id: 1,
+          title: 'Presentación',
+          subtitle: 'Modificación de pensamiento',
+          image: 'assets/images/art_museum.png',
+          text: 
+              'Bienvenidos a la ruta de ejercicios de Modificación de Pensamiento. '
+              'Aquí trabajaremos sobre técnicas que te ayudarán a buscar formas alternativas de pensar. '
+              'El objetivo final es que aprendas a modificar cómo te sientes a partir de la modificación de tus propios pensamientos. '
+              'Recuerda que es importante estar relajado previo a realizar estas actividades. Si te sientes intranquilo o ansioso, prueba realizar algunos de los ejercicios de relajación que tienes disponible en la app antes de empezar con las actividades. '
+              'Te invitamos entonces a comenzar con este nuevo recorrido.',
+        ),
+        Activity(
+          id: 2,
           title: 'Introducción',
           subtitle: 'Modificación de pensamiento',
           image: 'assets/images/through_the_window.png',
-          text: 'Bienvenidos a la ruta de modificación de pensamiento. '
+          text: 
               'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
               'Te invitamos a escuchar el siguiente audio para comenzar con el recorrido.',
@@ -124,7 +136,7 @@ class Routes with ChangeNotifier {
           audiofile: '4_intro_mod_pensamiento_ejemplos.m4a',
         ),
         Activity(
-            id: 2,
+            id: 3,
             title: 'Refocalización positiva',
             subtitle: 'Introducción y ejemplo',
             image: 'assets/images/both_sides.png',
@@ -139,7 +151,7 @@ class Routes with ChangeNotifier {
             audiofile: '5_intro_refocalizacion_ejemplo.m4a',
             reversed: true),
         Activity(
-            id: 3,
+            id: 4,
             title: 'Reinterpretación 1',
             subtitle: 'Introducción y ejemplo',
             image: 'assets/images/soccer.png',
@@ -155,7 +167,7 @@ class Routes with ChangeNotifier {
             audiofile: '6_intro_reinterpretacion_ejemplo.m4a',
             reversed: true),
         Activity(
-          id: 4,
+          id: 5,
           title: 'Reinterpretación 2',
           subtitle: 'Ejemplo',
           image: 'assets/images/random_thoughts.png',
@@ -166,7 +178,7 @@ class Routes with ChangeNotifier {
               'b. ¿Qué evidencia hay que contradiga esta idea o pensamiento?',
         ),
         Activity(
-            id: 5,
+            id: 6,
             title: 'Reinterpretación 3',
             subtitle: 'Ejemplo',
             image: 'assets/images/two_relaxation.png',

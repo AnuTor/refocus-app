@@ -7,12 +7,13 @@ import '../providers/activity.dart';
 import '../providers/path.dart';
 import '../providers/routes.dart';
 import '../widgets/activity_element.dart';
+import './activity_screen.dart';
 
 class PathScreen extends StatelessWidget {
   static const routeName = '/path-screen';
   const PathScreen({Key? key}) : super(key: key);
 
-  List<Widget> tipoBoton(Path path) {
+  List<Widget> tipoBoton(context, Path path) {
     List<Widget> list = [];
     DateTime startdate = path.startdate as DateTime;
     int pathLenght = path.days;
@@ -29,7 +30,36 @@ class PathScreen extends StatelessWidget {
     ));
 
     for (int i = 0; i < activitiesDays; i++) {
-      if (i < now.difference(startdate).inDays + 1) {
+      if (i == 0) {
+        list.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                    ActivityScreen.routeName,
+                    arguments: {'path': pathtitle, 'activity': activities[0]},
+                  );
+                },
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.all(16.0),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).primaryColor,
+                ),
+                child: Text(
+                  activities[0].title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      } else if (i == 1 || i < now.difference(startdate).inDays + 1) {
         list.add(ActivityElement(path: pathtitle, activity: activities[i]));
       } else {
         list.add(ActivityElement(
@@ -90,7 +120,7 @@ class PathScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            ...tipoBoton(loadedPath),
+            ...tipoBoton(context, loadedPath),
           ],
         ),
       ),

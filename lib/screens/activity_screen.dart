@@ -121,17 +121,23 @@ class ActivityScreen extends StatelessWidget {
           ],
         ),
       )
-      : ElevatedButton(
+      : TextButton(
         onPressed: () => {
           _activityDone(path, activity),
           Future.delayed(const Duration(milliseconds: 300)).then((_) {
             Navigator.of(context).pop();
           })
         },
-        style: ElevatedButton.styleFrom(
+        style: TextButton.styleFrom(
             foregroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             textStyle: const TextStyle(fontSize: 20)),
-        child: const Text('Completar actividad')
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text('Completar actividad'),
+          ],
+        )
       );
   }
 }
