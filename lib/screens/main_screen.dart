@@ -125,6 +125,9 @@ class MainScreen extends StatelessWidget {
                               'Antes de comenzar con las actividades de relajación queremos darte la bienvenida a ReFocus. '
                               'Día a día nos enfrentamos a diferentes eventos estresantes, afortunadamente existen estrategias que podemos aprender para manejar la respuesta emocional que experimentamos ante un evento dado. '
                               'Nuestra aplicación ha sido cuidadosamente diseñada para proporcionarte de herramientas y técnicas que te ayudarán a sobrellevar estas situaciones y a regular tu estado emocional.\n\n'
+                              'La aplicación cuenta con distintas rutas de una duración determinada. Cada ruta se habilita luego de terminar la ruta anterior.\n'
+                              'Cada ruta contiene múltiples actividades centradas alrededor de una temática general. Se habilita una actividad nueva por día, y en el último día de la ruta se habilitan cuestionarios para que usted realice. '
+                              'Estos cuestionarios son necesarios para hacer un seguimiento de bienestar luego de finalizar la ruta, para luego compararlo con los cuestionarios iniciales que usted realizó al registrarse.\n\n'
                               'Te invitamos a escuchar un breve audio de presentación en el que profundizamos sobre los objetivos y contenidos de la aplicación. Que lo disfrutes.',
                           audio: true,
                           audiofile: '1_intro.m4a',

@@ -88,11 +88,11 @@ class _TabsScreenState extends State<TabsScreen> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  "Pablo Ezequiel Flores Kanter: Licenciado en Psicología por la Universidad Nacional de Córdoba y Magister en Neurociencias por la Universidad Nacional Arturo Jauretche de Buenos Aires. Es investigador en psicología y becario del Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET).",
-                  textAlign: TextAlign.justify),
+                    "Pablo Ezequiel Flores Kanter: Licenciado en Psicología por la Universidad Nacional de Córdoba y Magister en Neurociencias por la Universidad Nacional Arturo Jauretche de Buenos Aires. Es investigador en psicología y becario del Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET).",
+                    textAlign: TextAlign.justify),
                 const Text(
-                  "Leonardo Adrián Medrano: Licenciado y Doctor en Psicología por la Universidad Nacional de Córdoba. Es investigador en psicología y profesor titular en la Facultad de Psicología de Universidad Nacional de Córdoba.",
-                  textAlign: TextAlign.justify),
+                    "Leonardo Adrián Medrano: Licenciado y Doctor en Psicología por la Universidad Nacional de Córdoba. Es investigador en psicología y profesor titular en la Facultad de Psicología de Universidad Nacional de Córdoba.",
+                    textAlign: TextAlign.justify),
                 const SizedBox(height: 10),
                 const Text(
                   "Encargada de elaborar el material de Relajación:",
@@ -103,8 +103,8 @@ class _TabsScreenState extends State<TabsScreen> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  "Magdalena Biota: Traductora pública en lengua inglesa (UNLP) formada en gestión de bibliotecas (UCES) y tesista doctoral en ciencias sociales y humanas (UNQ). Integra el CONICET y forma parte como colaboradora del Instituto de Literatura Argentina “Ricardo Rojas” (UBA). Desde 2018 dicta clases de yoga y meditación en el Programa Puntos Culturales de la Municipalidad de Avellaneda, Provincia de Buenos Aires.",
-                  textAlign: TextAlign.justify),
+                    "Magdalena Biota: Traductora pública en lengua inglesa (UNLP) formada en gestión de bibliotecas (UCES) y tesista doctoral en ciencias sociales y humanas (UNQ). Integra el CONICET y forma parte como colaboradora del Instituto de Literatura Argentina “Ricardo Rojas” (UBA). Desde 2018 dicta clases de yoga y meditación en el Programa Puntos Culturales de la Municipalidad de Avellaneda, Provincia de Buenos Aires.",
+                    textAlign: TextAlign.justify),
                 const SizedBox(height: 10),
                 const Text(
                   "Ingenieros encargados del diseño y desarrollo de la App:",
@@ -115,11 +115,11 @@ class _TabsScreenState extends State<TabsScreen> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  "Alejo González Pignol: Estudiante de Ingeniería Biomédica de la UNC. Desarrollador en Flutter.",
-                  textAlign: TextAlign.justify),
+                    "Alejo González Pignol: Estudiante de Ingeniería Biomédica de la UNC. Gestor de Proyectos. Científico de datos y Desarrollador en Python y Flutter.",
+                    textAlign: TextAlign.justify),
                 const Text(
-                  "Franco Tomás García: Estudiante de Ingeniería Biomédica de la UNC. Gestor de Proyectos. Científico de Datos y Desarrollador en Python y Flutter.",
-                  textAlign: TextAlign.justify),
+                    "Franco Tomás García: Estudiante de Ingeniería Biomédica de la UNC. Gestor de Proyectos. Científico de Datos y Desarrollador en Python y Flutter.",
+                    textAlign: TextAlign.justify),
                 const SizedBox(height: 20),
                 const Text(
                   "Consultas, inquietudes y opiniones dirigirse a:",
@@ -159,47 +159,47 @@ class _TabsScreenState extends State<TabsScreen> {
         title: Text(_pages[_selectedPageIndex]['title'] as String),
         actions: [
           _selectedPageIndex == 2
-          ? DropdownButton(
-            underline: Container(),
-            icon: Align(
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.more_vert,
-                color: Theme.of(context).iconTheme.color,
-              ),
-            ),
-            items: [
-              DropdownMenuItem(
-                value: 'logout',
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.exit_to_app,
-                      color: Theme.of(context).colorScheme.onPrimary,
+              ? DropdownButton(
+                  underline: Container(),
+                  icon: Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.more_vert,
+                      color: Theme.of(context).iconTheme.color,
                     ),
-                    const SizedBox(width: 8),
-                    const Text('Cerrar sesión'),
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      value: 'logout',
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.exit_to_app,
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
+                          const SizedBox(width: 8),
+                          const Text('Cerrar sesión'),
+                        ],
+                      ),
+                    ),
                   ],
+                  onChanged: (itemIdentifier) {
+                    if (itemIdentifier == 'logout') {
+                      Provider.of<Routes>(context, listen: false).cleandata();
+                      FirebaseAuth.instance.signOut();
+                    }
+                  },
+                )
+              : IconButton(
+                  icon: Icon(
+                    Icons.info,
+                    color: Theme.of(context).iconTheme.color,
+                    //color: Theme.of(context).colorScheme.primary,
+                  ),
+                  onPressed: () {
+                    _showAboutUsSheet(context);
+                  },
                 ),
-              ),
-            ],
-            onChanged: (itemIdentifier) {
-              if (itemIdentifier == 'logout') {
-                Provider.of<Routes>(context, listen: false).cleandata();
-                FirebaseAuth.instance.signOut();
-              }
-            },
-          )
-          : IconButton(
-            icon: Icon(
-              Icons.info,
-              color: Theme.of(context).iconTheme.color,
-              //color: Theme.of(context).colorScheme.primary,
-            ),
-            onPressed: () {
-              _showAboutUsSheet(context);
-            },
-          ),
         ],
       ),
       body: _pages[_selectedPageIndex]['page'] as Widget,
