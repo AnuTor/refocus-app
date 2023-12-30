@@ -105,7 +105,7 @@ class Routes with ChangeNotifier {
     ),
     Path(
       id: 2,
-      days: 5,
+      days: 6,
       title: 'Modificación de pensamiento',
       subtitle:
           'Técnicas para lograr un pensamiento más equilibrado, refocalizar y buscar interpretaciones alternativas.',
@@ -116,7 +116,7 @@ class Routes with ChangeNotifier {
           title: 'Presentación',
           subtitle: 'Modificación de pensamiento',
           image: 'assets/images/art_museum.png',
-          text: 
+          text:
               'Bienvenidos a la ruta de ejercicios de Modificación de Pensamiento. '
               'Aquí trabajaremos sobre técnicas que te ayudarán a buscar formas alternativas de pensar. '
               'El objetivo final es que aprendas a modificar cómo te sientes a partir de la modificación de tus propios pensamientos. '
@@ -128,7 +128,7 @@ class Routes with ChangeNotifier {
           title: 'Introducción',
           subtitle: 'Modificación de pensamiento',
           image: 'assets/images/through_the_window.png',
-          text: 
+          text:
               'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
               'Te invitamos a escuchar el siguiente audio para comenzar con el recorrido.',

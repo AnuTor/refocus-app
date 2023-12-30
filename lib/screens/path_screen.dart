@@ -59,7 +59,7 @@ class PathScreen extends StatelessWidget {
             ),
           ),
         );
-      } else if (i == 1 || i < now.difference(startdate).inDays + 1) {
+      } else if (i < now.difference(startdate).inDays + 2) {
         list.add(ActivityElement(path: pathtitle, activity: activities[i]));
       } else {
         list.add(ActivityElement(
