@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/intro_welcome.dart';
 import '../../screens/intro_screen.dart';
 
 class LoginForm extends StatefulWidget {
@@ -62,7 +63,9 @@ class _LoginFormState extends State<LoginForm> {
                       textCapitalization: TextCapitalization.none,
                       enableSuggestions: false,
                       validator: (value) {
-                        if (value == null || value.isEmpty || !value.contains('@')) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            !value.contains('@')) {
                           return 'Por favor ingrese un mail válido';
                         }
                         return null;
@@ -71,30 +74,38 @@ class _LoginFormState extends State<LoginForm> {
                       decoration: const InputDecoration(
                         labelText: 'Correo electrónico',
                       ),
-                      onSaved: (value) {_userEmail = value!;},
+                      onSaved: (value) {
+                        _userEmail = value!;
+                      },
                     ),
                   if (_isLogin)
                     TextFormField(
                       key: const ValueKey('password'),
                       validator: (value) {
-                        if (value == null || value.isEmpty || value.length < 6) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.length < 6) {
                           return 'La contraseña debe tener al menos 6 caracteres';
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(labelText: 'Contraseña'),
+                      decoration:
+                          const InputDecoration(labelText: 'Contraseña'),
                       obscureText: true,
-                      onSaved: (value) {_userPassword = value!;},
+                      onSaved: (value) {
+                        _userPassword = value!;
+                      },
                     ),
                   const SizedBox(height: 20),
                   if (widget.isLoading) const CircularProgressIndicator(),
                   if (!widget.isLoading)
                     ElevatedButton(
                       onPressed: _isLogin
-                        ? _trySubmit
-                        : () => {
-                          Navigator.of(context).pushNamed(IntroScreen.routeName)
-                        },
+                          ? _trySubmit
+                          : () => {
+                                Navigator.of(context)
+                                    .pushNamed(IntroWelcome.routeName)
+                              },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -102,7 +113,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       child: Text(_isLogin ? 'Iniciar sesión' : 'Crear cuenta'),
                     ),
-                    const SizedBox(height: 2),
+                  const SizedBox(height: 2),
                   if (!widget.isLoading)
                     TextButton(
                       style: TextButton.styleFrom(
