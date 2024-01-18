@@ -172,6 +172,7 @@ class Routes with ChangeNotifier {
           subtitle: 'Ejemplo',
           image: 'assets/images/random_thoughts.png',
           text:
+              'Importante: Recuerda que debes estar relajado para poder sacar el mejor provecho de estos ejercicios. Previo a realizar esta nueva actividad, te invitamos a que realices algunos de los ejercicios de relajación que tienes disponible en la app.\n\n'
               'Veamos otro ejercicio que nos puede ayudar a realizar una interpretación alternativa.\n\n'
               'Ante un evento negativo muchas veces concluimos que TODO está mal, que TODO terminará de la peor manera, que nosotros no servimos para NADA o los demás no sirven para NADA ¿Puedes pensar en evidencia o situaciones que contradigan este tipo de conclusiones categóricas (de TODO o NADA) sobre el evento? Haz un esfuerzo por buscar formas de pensar alternativas que sean más equilibradas, realistas y justas con lo sucedido. Aquí suele ayudar buscar matices en la interpretación de las situaciones que nos permitan arribar a una conclusión menos categórica: es poco probable que las cosas sean o TOTALMENTE NEGRAS o TOTALMENTE BLANCAS, seguro podremos encontrar matices de grises intermedios entre estos dos polos de pensamiento. Para ayudarte a obtener una visión más realista del asunto puedes hacerte, consecutivamente, las siguientes preguntas:\n\n'
               'a. ¿Qué evidencia tengo a favor de esta interpretación o pensamiento?\n\n'
@@ -183,6 +184,7 @@ class Routes with ChangeNotifier {
             subtitle: 'Ejemplo',
             image: 'assets/images/two_relaxation.png',
             text:
+                'Importante: Recuerda que debes estar relajado para poder sacar el mejor provecho de estos ejercicios. Previo a realizar esta nueva actividad, te invitamos a que realices algunos de los ejercicios de relajación que tienes disponible en la app.\n\n'
                 'Otro ejercicio útil cuando nos enfrentamos a una situación desagradable es pensar qué le diríamos a un amigo que se encontrara en la misma situación ¿cuál sería tu consejo?\n\n'
                 'Muchas veces nos resulta más fácil encontrar formas de pensamiento más equilibrados (menos catastróficas y menos categóricas -de TODO o NADA-) cuando hacemos el ejercicio de pensar qué le recomendaríamos a un amigo o ser querido que estuviera pasando una situación similar. Otras preguntas que puedes hacerte en este sentido: '
                 '¿Qué tipo de pensamiento tendría un amigo/familiar en una situación semejante? '
