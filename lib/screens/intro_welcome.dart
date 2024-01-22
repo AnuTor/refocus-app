@@ -24,8 +24,9 @@ class _IntroWelcomeState extends State<IntroWelcome> {
             ),
             Text(
               'Antes de continuar con el registro dentro de la plataforma, le pedimos que complete dos cuestionarios.\n\n'
-              'Estos cuestionarios servirán para determinar el estado base de bienestar sobre el cual luego poder realizar un seguimiento con cuestionarios futuros.\n\n'
+              'Estos cuestionarios servirán para determinar su estado de animo usual, sobre el cual luego poder realizar un seguimiento comparativo con cuestionarios futuros.\n\n'
               'Luego de realizar estos cuestionarios, podrá proceder a la ventana de registro en la cual luego de colocar sus datos podrá hacer uso de la plataforma.\n\n'
+              'Haciendo click en \'continuar\', da usted consentimiento de participar en la aplicación, y de que esta recopile y envie datos de uso y respuestas a los cuestionarios presentes\n\n'
               '¡Bienvenido!',
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,

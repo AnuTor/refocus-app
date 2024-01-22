@@ -129,6 +129,7 @@ class Routes with ChangeNotifier {
           subtitle: 'Modificación de pensamiento',
           image: 'assets/images/through_the_window.png',
           text:
+              'Recuerda que es importante estar relajado previo a realizar estas actividades. Si te sientes intranquilo o ansioso, prueba de realizar algunos de los ejercicios de relajación que tienes disponible previo a realizar las actividades de modificación de pensamientos.\n\n'
               'Cuando experimentamos un evento en nuestras vidas, no es este evento lo que directamente determina cómo nos sentimos o comportamos, sino la forma en que evaluamos, pensamos, o interpretamos esas situaciones.\n\n'
               'En esta sección, se presentarán técnicas para lograr un pensamiento equilibrado, junto a algunos ejemplos y ejercicios para comprender mejor dichas técnicas. '
               'Te invitamos a escuchar el siguiente audio para comenzar con el recorrido.',
