@@ -18,16 +18,15 @@ class _IntroWelcomeState extends State<IntroWelcome> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              '¡Bienvenido a ReFocus!',
+              '¡Bienvenido/a a ReFocus!',
               style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
             Text(
-              'Antes de continuar con el registro dentro de la plataforma, le pedimos que complete dos cuestionarios.\n\n'
-              'Estos cuestionarios servirán para determinar su estado de animo usual, sobre el cual luego poder realizar un seguimiento comparativo con cuestionarios futuros.\n\n'
-              'Luego de realizar estos cuestionarios, podrá proceder a la ventana de registro en la cual luego de colocar sus datos podrá hacer uso de la plataforma.\n\n'
-              'Haciendo click en \'continuar\', da usted consentimiento de participar en la aplicación, y de que esta recopile y envie datos de uso y respuestas a los cuestionarios presentes\n\n'
-              '¡Bienvenido!',
+              'Para poder registrarte en la plataforma necesitamos que completes dos breves cuestionarios.\n\n'
+              'Los mismos servirán para determinar tu estado de ánimo general al momento de comenzar a utilizar la aplicación y nos permitirán realizar un seguimiento comparativo con cuestionarios futuros.\n\n'
+              'Una vez completados estos cuestionarios podrás acceder a la ventana de registro para crear tu cuenta y comenzar a utilizar la app.\n\n'
+              'Al presionar en \'Aceptar\' estarás dando consentimiento para participar de este estudio y para que se recopilen y registren datos de uso de la app y de las respuestas a los respectivos cuestionarios. Recuerda que no se recopilan datos personales y que se respetará el anonimato de las respuestas.\n\n',
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
@@ -43,7 +42,7 @@ class _IntroWelcomeState extends State<IntroWelcome> {
                   borderRadius: BorderRadius.circular(35),
                 ),
                 child: const Text(
-                  'Comenzar',
+                  'Aceptar',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

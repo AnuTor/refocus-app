@@ -60,7 +60,7 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   void _finish() {
-    Navigator.of(context).pop();
+    Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
   void _submitRegisterForm(

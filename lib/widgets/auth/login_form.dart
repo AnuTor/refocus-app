@@ -122,7 +122,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       child: Text(_isLogin
                           ? '¿No tienes una cuenta? Registrate'
-                          : 'Ya estás registrado? Ingresá'),
+                          : '¿Ya estás registrado? Ingresá'),
                       onPressed: () {
                         setState(() {
                           _isLogin = !_isLogin;
