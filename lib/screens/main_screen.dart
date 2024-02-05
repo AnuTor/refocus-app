@@ -38,7 +38,7 @@ class MainScreen extends StatelessWidget {
               children: <Widget>[
                 start == finish
                     ? Text(
-                        'Día de cuestionarios',
+                        'Día de cuestionario',
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleLarge,
                       )
@@ -73,8 +73,27 @@ class MainScreen extends StatelessWidget {
       final route1 = routesData[1];
       final int totalDays = route0.days + route1.days;
       if (daysSince < 0) {
-        return Text('Aún no tienes habilitado el ingreso a la plataforma. '
-            'Regresa el ${DateFormat('d/M/y').format(startdate)}');
+        return Card(
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        elevation: 10,
+          child: Container(
+            padding:
+                const EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Aún no tienes habilitado el ingreso a la plataforma. '
+                  'Regresa el ${DateFormat('d/M/y').format(startdate)}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 8),
+                Image.asset('assets/images/time.png'),
+              ],
+            ),
+          ),
+      );
       }
       if (daysSince >= 0 && daysSince < route0.days) {
         return routeCard(daysSince + 1, route0.days, 0);
@@ -83,12 +102,31 @@ class MainScreen extends StatelessWidget {
         final int start = daysSince - route0.days;
         return routeCard(start + 1, route1.days, 1);
       }
-      return Text(
-        'Felicidades! Has completado las 2 semanas de actividades. '
-        'De todos modos quedan habilitados todos los ejercicios '
-        'por si quieres seguir practicando.',
-        style: Theme.of(context).textTheme.bodyMedium,
-        textAlign: TextAlign.center,
+      return Card(
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        elevation: 10,
+          child: Container(
+            padding:
+                const EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  '¡Felicidades! Has completado todas las actividades. '
+                  'Las mismas quedarán habilitadas por si quieres volver a realizarlas.',
+                  textAlign: TextAlign.center,
+                  //style: Theme.of(context).textTheme.titleLarge,
+                  style: TextStyle(
+                    fontSize: 19,
+                    //fontWeight: FontWeight.bold,
+                    color: Colors.lightBlue,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Image.asset('assets/images/choque.png'),
+              ],
+            ),
+          ),
       );
     }
 
@@ -100,12 +138,13 @@ class MainScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 10),
               Text(
-                'Bienvenido, $username',
+                '¡Bienvenido/a $username!',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 15),
               Card(
                 margin:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
