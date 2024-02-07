@@ -10,39 +10,59 @@ class RouteElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final path = Provider.of<Path>(context, listen: false);
+    DateTime now = DateUtils.dateOnly(DateTime.now());
     return Expanded(
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 30),
         elevation: 10,
+        color: now.difference(path.startdate as DateTime).inDays + 1 <= 0
+            ? const Color.fromARGB(255, 202, 202, 202)
+            : null,
         child: InkWell(
-          onTap: () => {
-            Navigator.of(context)
-              .pushNamed(PathScreen.routeName, arguments: path.id)
-          },
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  path.title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  path.subtitle,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                ),
-                Expanded(child: Image.asset(path.image)),
-              ],
-            ),
-          ),
+          onTap: now.difference(path.startdate as DateTime).inDays + 1 > 0
+              ? () {
+                  Navigator.of(context).pushNamed(PathScreen.routeName, arguments: path.id);
+                }
+              : null, 
+          child: _buildContent(context, path),
         ),
+      ),
+    );
+  }
+  
+  
+  Widget _buildContent(BuildContext context, Path path) {
+    DateTime now = DateUtils.dateOnly(DateTime.now());
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            path.title,
+            textAlign: TextAlign.center,
+            style: now.difference(path.startdate as DateTime).inDays + 1 <= 0
+            ? const TextStyle(fontSize: 22, color: Color.fromARGB(255, 129, 128, 128))
+            : Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 5),
+          Text(
+            path.subtitle,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+          Expanded(
+            child: now.difference(path.startdate as DateTime).inDays + 1 <= 0
+            ? ColorFiltered(
+              colorFilter: const ColorFilter.mode(Color.fromARGB(255, 202, 202, 202), BlendMode.saturation),
+              child: Image.asset(path.image)
+            )
+            : Image.asset(path.image),
+          ),
+        ],
       ),
     );
   }
