@@ -158,7 +158,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
         actions: [
-          _selectedPageIndex == 2
+          _selectedPageIndex == 3
               ? DropdownButton(
                   underline: Container(),
                   icon: Align(
