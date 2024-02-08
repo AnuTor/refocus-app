@@ -56,8 +56,9 @@ class _ActivityElementState extends State<ActivityElement> {
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 22),
-      shape: CircleBorder(
-          side: BorderSide(width: 3, color: Theme.of(context).primaryColor)),
+      shape: widget.enable 
+        ? CircleBorder(side: BorderSide(width: 3, color: Theme.of(context).primaryColor))
+        : const CircleBorder(),
       //fixedSize: Size(60, 60),
       padding: const EdgeInsets.all(15),
       backgroundColor: widget.activity.done ? null : Colors.grey.shade200,
