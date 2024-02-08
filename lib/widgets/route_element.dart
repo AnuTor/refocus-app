@@ -11,28 +11,27 @@ class RouteElement extends StatelessWidget {
   Widget build(BuildContext context) {
     final path = Provider.of<Path>(context, listen: false);
     DateTime now = DateUtils.dateOnly(DateTime.now());
+    final bool isPathValid =
+        now.difference(path.startdate as DateTime).inDays + 1 > 0;
     return Expanded(
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 30),
         elevation: 10,
-        color: now.difference(path.startdate as DateTime).inDays + 1 <= 0
-            ? const Color.fromARGB(255, 202, 202, 202)
-            : null,
+        color: !isPathValid ? const Color.fromARGB(255, 202, 202, 202) : null,
         child: InkWell(
-          onTap: now.difference(path.startdate as DateTime).inDays + 1 > 0
+          onTap: isPathValid
               ? () {
-                  Navigator.of(context).pushNamed(PathScreen.routeName, arguments: path.id);
+                  Navigator.of(context)
+                      .pushNamed(PathScreen.routeName, arguments: path.id);
                 }
-              : null, 
-          child: _buildContent(context, path),
+              : null,
+          child: _buildContent(context, path, isPathValid),
         ),
       ),
     );
   }
-  
-  
-  Widget _buildContent(BuildContext context, Path path) {
-    DateTime now = DateUtils.dateOnly(DateTime.now());
+
+  Widget _buildContent(BuildContext context, Path path, bool isPathValid) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
@@ -43,9 +42,10 @@ class RouteElement extends StatelessWidget {
           Text(
             path.title,
             textAlign: TextAlign.center,
-            style: now.difference(path.startdate as DateTime).inDays + 1 <= 0
-            ? const TextStyle(fontSize: 22, color: Color.fromARGB(255, 129, 128, 128))
-            : Theme.of(context).textTheme.titleLarge,
+            style: !isPathValid
+                ? const TextStyle(
+                    fontSize: 22, color: Color.fromARGB(255, 129, 128, 128))
+                : Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 5),
           Text(
@@ -55,12 +55,13 @@ class RouteElement extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Expanded(
-            child: now.difference(path.startdate as DateTime).inDays + 1 <= 0
-            ? ColorFiltered(
-              colorFilter: const ColorFilter.mode(Color.fromARGB(255, 202, 202, 202), BlendMode.saturation),
-              child: Image.asset(path.image)
-            )
-            : Image.asset(path.image),
+            child: !isPathValid
+                ? ColorFiltered(
+                    colorFilter: const ColorFilter.mode(
+                        Color.fromARGB(255, 202, 202, 202),
+                        BlendMode.saturation),
+                    child: Image.asset(path.image))
+                : Image.asset(path.image),
           ),
         ],
       ),
