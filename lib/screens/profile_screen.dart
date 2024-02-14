@@ -20,12 +20,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
+      child: TextButton(
         onPressed: () {
           Provider.of<Routes>(context, listen: false).cleandata();
           singOut();
         },
-        style: ElevatedButton.styleFrom(
+        style: TextButton.styleFrom(
           foregroundColor: Colors.white,
           backgroundColor: Theme.of(context).colorScheme.primary,
           textStyle: const TextStyle(fontSize: 20),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../screens/intro_welcome.dart';
-import '../../screens/intro_screen.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -73,6 +72,7 @@ class _LoginFormState extends State<LoginForm> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         labelText: 'Correo electrónico',
+                        prefixIcon: Icon(Icons.email),
                       ),
                       onSaved: (value) {
                         _userEmail = value!;
@@ -90,7 +90,7 @@ class _LoginFormState extends State<LoginForm> {
                         return null;
                       },
                       decoration:
-                          const InputDecoration(labelText: 'Contraseña'),
+                          const InputDecoration(labelText: 'Contraseña', prefixIcon: Icon(Icons.lock),),
                       obscureText: true,
                       onSaved: (value) {
                         _userPassword = value!;
@@ -99,14 +99,14 @@ class _LoginFormState extends State<LoginForm> {
                   const SizedBox(height: 20),
                   if (widget.isLoading) const CircularProgressIndicator(),
                   if (!widget.isLoading)
-                    ElevatedButton(
+                    TextButton(
                       onPressed: _isLogin
                           ? _trySubmit
                           : () => {
                                 Navigator.of(context)
                                     .pushNamed(IntroWelcome.routeName)
                               },
-                      style: ElevatedButton.styleFrom(
+                      style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         textStyle: const TextStyle(fontSize: 20),
