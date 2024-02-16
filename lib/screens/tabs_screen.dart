@@ -107,7 +107,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                    "Alejo González Pignol: Estudiante de Ingeniería Biomédica de la Universidad Nacional de Córdoba. Gestor de Proyectos. Científico de datos y Desarrollador en Python y Flutter.",
+                    "Alejo González Pignol: Estudiante de Ingeniería Biomédica de la Universidad Nacional de Córdoba. Gestor de Proyectos y QA. Desarrollador en Flutter.",
                     textAlign: TextAlign.justify),
                 const Text(
                     "Franco Tomás García: Estudiante de Ingeniería Biomédica de la Universidad Nacional de Córdoba. Gestor de Proyectos. Científico de Datos y Desarrollador en Python y Flutter.",
