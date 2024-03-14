@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.refocus">
    <application
-        android:label="ReFocus"
+        android:label="Refocus"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

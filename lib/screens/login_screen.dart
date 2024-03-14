@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import '../widgets/auth/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/login-screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,6 +15,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   var _isLoading = false;
+
+  void _finish() {
+    Navigator.of(context).popUntil((route) => route.isFirst);
+  }
 
   void _submitLoginForm(
     String email,
@@ -28,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
         email: email,
         password: password,
       );
+      _finish();
     } on PlatformException catch (err) {
       var message = 'An error occurred, pelase check your credentials!';
 
@@ -53,12 +59,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: LoginForm(
-        key: const ValueKey('LoginForm'),
-        submitFn: _submitLoginForm,
-        isLoading: _isLoading,
+    return WillPopScope(
+      onWillPop: () async {
+        // Evitar que la página retroceda
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
+        body: LoginForm(
+          key: const ValueKey('LoginForm'),
+          submitFn: _submitLoginForm,
+          isLoading: _isLoading,
+        ),
       ),
     );
   }

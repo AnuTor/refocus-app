@@ -21,7 +21,7 @@ class _IntroWelcomeState extends State<IntroWelcome> {
             children: <Widget>[
               const SizedBox(height: 20),
               Text(
-                '¡Bienvenido/a a ReFocus!',
+                '¡Bienvenido/a a Refocus!',
                 style: Theme.of(context).textTheme.titleLarge,
                 textAlign: TextAlign.center,
               ),

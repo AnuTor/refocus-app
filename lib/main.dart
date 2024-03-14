@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../providers/routes.dart';
 import './screens/splash_screen.dart';
+import './screens/refocus_splash_screen.dart';
 import './screens/login_screen.dart';
 import './screens/intro_screen.dart';
 import './screens/intro_welcome.dart';
@@ -64,9 +65,10 @@ class MyApp extends StatelessWidget {
                         if (userSnapshot.hasData) {
                           return const TabsScreen();
                         }
-                        return const LoginScreen();
+                        return const RefocusSplashScreen();
                       }),
               routes: {
+                LoginScreen.routeName: (ctx) => const LoginScreen(),
                 IntroScreen.routeName: (ctx) => const IntroScreen(),
                 IntroWelcome.routeName: (ctx) => const IntroWelcome(),
                 PathScreen.routeName: (ctx) => const PathScreen(),

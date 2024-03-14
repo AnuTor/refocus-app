@@ -139,7 +139,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 const SizedBox(height: 20),
                 const Center(
                   child: Text(
-                    "ReFocus 1.0.0",
+                    "Refocus 1.0.0",
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.grey,

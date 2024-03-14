@@ -158,10 +158,10 @@ class MainScreen extends StatelessWidget {
                         'activity': Activity(
                           id: 1,
                           title: 'Presentación',
-                          subtitle: 'Introducción a ReFocus',
+                          subtitle: 'Introducción a Refocus',
                           image: 'assets/images/welcome.png',
                           text:
-                              'Antes de comenzar con las actividades que preparamos para vos queremos darte la bienvenida a ReFocus. '
+                              'Antes de comenzar con las actividades que preparamos para vos queremos darte la bienvenida a Refocus. '
                               'Día a día nos enfrentamos a diferentes eventos estresantes, afortunadamente existen estrategias que podemos aprender para manejar la respuesta emocional que experimentamos ante un evento dado. '
                               'Nuestra aplicación ha sido cuidadosamente diseñada para proporcionarte de herramientas y técnicas que te ayudarán a sobrellevar estas situaciones y a regular tu estado emocional.\n\n'
                               'La app está pensada para que comiences a realizar las actividades desde el primer día en que creas tu cuenta y para que puedas realizar una actividad al día. Cuenta con 2 rutas de una semana de duración cada una, la segunda ruta se habilitará una vez finalizada la primera semana del programa. '
@@ -180,7 +180,7 @@ class MainScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Introducción a ReFocus',
+                          'Introducción a Refocus',
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
