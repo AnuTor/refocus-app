@@ -31,6 +31,8 @@ class _IntroScreenState extends State<IntroScreen> {
   var _userEmail = "";
   var _userName = "";
   var _userPassword = "";
+  var _userAge = 0;
+  var _userGender = "";
 
   final List<Survey> introSurveys = [
     panas(1),
@@ -54,6 +56,8 @@ class _IntroScreenState extends State<IntroScreen> {
         setMail: _setMail,
         setUser: _setUser,
         setPassword: _setPassword,
+        setAge: _setAge,
+        setGender: _setGender,
       ),
     ];
     super.initState();
@@ -67,6 +71,8 @@ class _IntroScreenState extends State<IntroScreen> {
     String email,
     String password,
     String username,
+    int age,
+    String gender,
     BuildContext ctx,
   ) async {
     UserCredential authResult;
@@ -84,6 +90,8 @@ class _IntroScreenState extends State<IntroScreen> {
           .set({
         'username': username,
         'email': email,
+        'age': age,
+        'gender': gender,
         'startdate': Timestamp.now(),
         'userId': authResult.user!.uid,
       });
@@ -136,6 +144,18 @@ class _IntroScreenState extends State<IntroScreen> {
     });
   }
 
+  void _setAge(int age) {
+    setState(() {
+      _userAge = age;
+    });
+  }
+
+  void _setGender(String gender) {
+    setState(() {
+      _userGender = gender;
+    });
+  }
+
   void _trySubmit() {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
@@ -145,6 +165,8 @@ class _IntroScreenState extends State<IntroScreen> {
         _userEmail,
         _userPassword,
         _userName,
+        _userAge,
+        _userGender,
         context,
       );
     }
@@ -296,16 +318,18 @@ class _IntroScreenState extends State<IntroScreen> {
                                   });
                           },
                           child: _showText
-                              ? const Text("Comenzar", style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              )
+                              ? const Text(
+                                  "Comenzar",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                )
                               : const Icon(
-                                Icons.navigate_next,
-                                size: 50,
-                                color: Colors.white,
-                              ),
+                                  Icons.navigate_next,
+                                  size: 50,
+                                  color: Colors.white,
+                                ),
                         ),
                       ),
                     ],
