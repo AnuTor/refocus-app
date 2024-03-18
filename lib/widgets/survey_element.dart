@@ -80,10 +80,13 @@ class _SurveyElementState extends State<SurveyElement> {
                   : null,
               style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(fontSize: 22),
-                  shape: const CircleBorder(),
+                  shape: widget.enable 
+                    ? const CircleBorder(side: BorderSide(width: 3, color: Color(0xFFF9A826)))
+                    : const CircleBorder(),
+                  //shape: const CircleBorder(),
                   backgroundColor: (widget.enable && !widget.survey.done)
-                      ? Colors.deepOrange
-                      : Colors.lightGreenAccent[700],
+                    ? Colors.grey.shade200
+                    : const Color(0xFFF9A826),
                   padding: const EdgeInsets.all(15)),
               child: widget.enable
                   ? (widget.survey.done
