@@ -57,7 +57,7 @@ class _IntroSurveyScreenState extends State<IntroSurveyScreen> {
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
                 if (questionAnswer[questionNum] == ans) {
-                  return Colors.blue;
+                  return Colors.lightBlue;
                 }
                 return Colors.lightBlue[100]!;
               },

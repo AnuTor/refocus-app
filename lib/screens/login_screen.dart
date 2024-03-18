@@ -60,16 +60,23 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        // Evitar que la página retroceda
-        return false;
-      },
+      onWillPop: () async {return false;},
       child: Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
-        body: LoginForm(
-          key: const ValueKey('LoginForm'),
-          submitFn: _submitLoginForm,
-          isLoading: _isLoading,
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'assets/images/refocus-fondo.png',
+              fit: BoxFit.cover,
+            ),
+            Center(
+              child: LoginForm(
+                key: const ValueKey('LoginForm'),
+                submitFn: _submitLoginForm,
+                isLoading: _isLoading,
+              ),
+            ),
+          ]
         ),
       ),
     );

@@ -42,11 +42,8 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Card(
+      child: Container(
         margin: const EdgeInsets.all(20),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -109,16 +106,16 @@ class _LoginFormState extends State<LoginForm> {
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Theme.of(context).colorScheme.primary,
-                        textStyle: const TextStyle(fontSize: 20),
+                        textStyle: const TextStyle(fontSize: 23),
                       ),
                       child: Text(_isLogin ? 'Iniciar sesión' : 'Crear cuenta'),
                     ),
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 10),
                   if (!widget.isLoading)
                     TextButton(
                       style: TextButton.styleFrom(
                         foregroundColor: Theme.of(context).primaryColor,
-                        textStyle: const TextStyle(fontSize: 19),
+                        textStyle: const TextStyle(fontSize: 22),
                       ),
                       child: Text(_isLogin
                           ? '¿No tienes una cuenta? Registrate'

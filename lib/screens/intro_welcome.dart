@@ -51,7 +51,7 @@ class IntroWelcome extends StatelessWidget {
                 height: 70,
                 width: 200,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.lightBlue,
                   borderRadius: BorderRadius.circular(35),
                 ),
                 child: const Text(

@@ -10,6 +10,7 @@ class RegisterForm extends StatefulWidget {
     required this.setPassword,
     required this.setAge,
     required this.setGender,
+    required this.setHome,
   }) : super(key: key);
 
   final GlobalKey<FormState> formKey;
@@ -18,6 +19,7 @@ class RegisterForm extends StatefulWidget {
   final void Function(String password) setPassword;
   final void Function(int age) setAge;
   final void Function(String gender) setGender;
+  final void Function(String home) setHome;
 
   @override
   State<RegisterForm> createState() => _RegisterFormState();
@@ -28,7 +30,8 @@ class _RegisterFormState extends State<RegisterForm> {
   var _userName = "";
   var _userPassword = "";
   var _userAge = 0;
-  var _userGender = ""; 
+  var _userGender = "";
+  var _userHome = "";
 
   @override
   Widget build(BuildContext context) {
@@ -78,13 +81,15 @@ class _RegisterFormState extends State<RegisterForm> {
                           textCapitalization: TextCapitalization.words,
                           enableSuggestions: false,
                           validator: (value) {
-                            if (value == null || value.isEmpty || value.length < 4) {
+                            if (value == null ||
+                                value.isEmpty ||
+                                value.length < 4) {
                               return 'El nombre de usuario debe tener al menos 4 caracteres';
                             }
                             return null;
                           },
-                          decoration:
-                              const InputDecoration(labelText: 'Nombre de usuario'),
+                          decoration: const InputDecoration(
+                              labelText: 'Nombre de usuario'),
                           onSaved: (value) {
                             _userName = value!;
                             widget.setUser(_userName);
@@ -93,12 +98,15 @@ class _RegisterFormState extends State<RegisterForm> {
                         TextFormField(
                           key: const ValueKey('password'),
                           validator: (value) {
-                            if (value == null || value.isEmpty || value.length < 6) {
+                            if (value == null ||
+                                value.isEmpty ||
+                                value.length < 6) {
                               return 'La contraseña debe tener al menos 6 caracteres';
                             }
                             return null;
                           },
-                          decoration: const InputDecoration(labelText: 'Contraseña'),
+                          decoration:
+                              const InputDecoration(labelText: 'Contraseña'),
                           obscureText: true,
                           onSaved: (value) {
                             _userPassword = value!;
@@ -108,7 +116,9 @@ class _RegisterFormState extends State<RegisterForm> {
                         TextFormField(
                           key: const ValueKey('age'),
                           keyboardType: TextInputType.number,
-                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                           autocorrect: false,
                           enableSuggestions: false,
                           validator: (value) {
@@ -138,7 +148,6 @@ class _RegisterFormState extends State<RegisterForm> {
                           },
                           decoration: const InputDecoration(
                             labelText: 'Género',
-                            hintText: 'Selecciona tu género',
                           ),
                           items: ['Masculino', 'Femenino', 'No binario', 'Otro']
                               .map<DropdownMenuItem<String>>((String value) {
@@ -156,6 +165,46 @@ class _RegisterFormState extends State<RegisterForm> {
                           onSaved: (value) {
                             _userGender = value!;
                             widget.setGender(_userGender);
+                          },
+                        ),
+                        DropdownButtonFormField(
+                          menuMaxHeight: 350,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _userHome = newValue.toString();
+                            });
+                          },
+                          decoration: const InputDecoration(
+                            labelText: 'Lugar de residencia',
+                          ),
+                          items: ['Buenos Aires', 'CABA', 'Catamarca', 'Chaco', 
+                            'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 
+                            'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza',
+                            'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan',
+                            'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero',
+                            'Tierra del Fuego, Antártida e Islas del Atlántico Sur',
+                            'Tucumán'].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: SizedBox(
+                                  //width: double.infinity,
+                                  child: Text(
+                                    value,
+                                    //overflow: TextOverflow.visible,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          isExpanded: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, selecciona tu lugar de residencia';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) {
+                            _userHome = value!;
+                            widget.setHome(_userHome);
                           },
                         ),
                         const SizedBox(height: 20),

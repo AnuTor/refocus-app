@@ -33,6 +33,7 @@ class _IntroScreenState extends State<IntroScreen> {
   var _userPassword = "";
   var _userAge = 0;
   var _userGender = "";
+  var _userHome = "";
 
   final List<Survey> introSurveys = [
     panas(1),
@@ -58,6 +59,7 @@ class _IntroScreenState extends State<IntroScreen> {
         setPassword: _setPassword,
         setAge: _setAge,
         setGender: _setGender,
+        setHome: _setHome,
       ),
     ];
     super.initState();
@@ -73,6 +75,7 @@ class _IntroScreenState extends State<IntroScreen> {
     String username,
     int age,
     String gender,
+    String home,
     BuildContext ctx,
   ) async {
     UserCredential authResult;
@@ -92,6 +95,7 @@ class _IntroScreenState extends State<IntroScreen> {
         'email': email,
         'age': age,
         'gender': gender,
+        'home': home,
         'startdate': Timestamp.now(),
         'userId': authResult.user!.uid,
       });
@@ -156,6 +160,12 @@ class _IntroScreenState extends State<IntroScreen> {
     });
   }
 
+  void _setHome(String home) {
+    setState(() {
+      _userHome = home;
+    });
+  }
+
   void _trySubmit() {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
@@ -167,6 +177,7 @@ class _IntroScreenState extends State<IntroScreen> {
         _userName,
         _userAge,
         _userGender,
+        _userHome,
         context,
       );
     }
@@ -227,8 +238,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: (index == _currentPage)
-                            ? Colors.blue
-                            : Colors.blue.withOpacity(0.5),
+                            ? Colors.lightBlue
+                            : Colors.lightBlue.withOpacity(0.5),
                       ),
                     );
                   }),
@@ -260,7 +271,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             height: 70,
                             width: 75,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.lightBlue,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             child: const Icon(
@@ -305,7 +316,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           width:
                               (_currentPage == (_pages.length - 1)) ? 200 : 75,
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Colors.lightBlue,
                             borderRadius: BorderRadius.circular(35),
                           ),
                           onEnd: () {
