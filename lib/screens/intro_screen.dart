@@ -183,7 +183,7 @@ class _IntroScreenState extends State<IntroScreen> {
     }
   }
 
-  void _answerQuestion(String testName, Map<String, String> questionAnswer) {
+  void _answerQuestion(String testName, Map<String, int> questionAnswer) {
     setState(() {
       _questionsAnswered = true;
       answers[testName] = questionAnswer;

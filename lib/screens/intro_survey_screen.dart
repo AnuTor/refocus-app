@@ -12,7 +12,7 @@ class IntroSurveyScreen extends StatefulWidget {
   }) : super(key: key);
 
   final Survey survey;
-  final void Function(String testName, Map<String, String> questionAnswer)
+  final void Function(String testName, Map<String, int> questionAnswer)
     onAnswered;
 
   @override
@@ -21,7 +21,7 @@ class IntroSurveyScreen extends StatefulWidget {
 
 class _IntroSurveyScreenState extends State<IntroSurveyScreen> {
   final _formKey = GlobalKey<FormState>();
-  Map<String, String> questionAnswer = {};
+  Map<String, int> questionAnswer = {};
 
   List<Widget> form(Question question, List<String> options) {
     List<Widget> list = [];
@@ -31,20 +31,20 @@ class _IntroSurveyScreenState extends State<IntroSurveyScreen> {
     } else {
       questionNum = 'Q${question.id.toString()}';
     }
-    questionAnswer[questionNum] ??= 'Respuesta';
+    questionAnswer[questionNum] ??= 0;
     list.add(Text(question.question,
         style: const TextStyle(fontSize: 21), textAlign: TextAlign.center));
     list.add(const SizedBox(height: 15));
-    for (String ans in options) {
+    for (int i = 0; i < options.length; i++) {
       list.add(SizedBox(
         width: double.infinity,
         height: 65,
         child: TextButton(
           onPressed: () {
             setState(() {
-              questionAnswer[questionNum] = ans;
+              questionAnswer[questionNum] = i + 1;
             });
-            if (!questionAnswer.containsValue("Respuesta")) {
+            if (!questionAnswer.containsValue(0)) {
               widget.onAnswered(widget.survey.testName, questionAnswer);
             }
           },
@@ -56,7 +56,7 @@ class _IntroSurveyScreenState extends State<IntroSurveyScreen> {
             ),
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
-                if (questionAnswer[questionNum] == ans) {
+                if (questionAnswer[questionNum] == i + 1) {
                   return Colors.lightBlue;
                 }
                 return Colors.lightBlue[100]!;
@@ -68,10 +68,10 @@ class _IntroSurveyScreenState extends State<IntroSurveyScreen> {
           ),
           child: Center(
             child: Text(
-              ans,
+              options[i],
               style: TextStyle(
                 fontSize: 18,
-                color: questionAnswer[questionNum] == ans 
+                color: questionAnswer[questionNum] == i + 1
                   ? Colors.white
                   : Colors.blue,
               ),

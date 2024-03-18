@@ -15,10 +15,10 @@ class SurveyScreen extends StatefulWidget {
 
 class _SurveyScreenState extends State<SurveyScreen> {
   final _formKey = GlobalKey<FormState>();
-  Map<String, String> questionAnswer = {};
+  Map<String, int> questionAnswer = {};
 
   List<Widget> form(Question question, int lenght, List<String> options,
-      Map<String, String> answer) {
+      Map<String, int> answer) {
     List<Widget> list = [];
     String questionNum;
     if (question.id < 10) {
@@ -26,13 +26,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
     } else {
       questionNum = 'Q${question.id.toString()}';
     }
-    answer[questionNum] ??= 'Respuesta';
+    answer[questionNum] ??= 0;
     list.add(Text('(${question.id}/$lenght) ${question.question}',
         style: const TextStyle(fontSize: 16)));
     for (int i = 0; i < options.length; i++) {
       list.add(RadioListTile(
         title: Text(options[i]),
-        value: (i + 1).toString(),
+        value: i + 1,
         groupValue: answer[questionNum],
         onChanged: (value) {
           setState(() {
@@ -94,7 +94,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          if (questionAnswer.containsValue("Respuesta")) {
+                          if (questionAnswer.containsValue(0)) {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                               content: Text(
